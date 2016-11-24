@@ -34,7 +34,7 @@ app.get('/card',   function(req, res) { search_controller.card(req, res);   });
 
 // thess sort the requestes for the '/login' - '/register' routes in POST to the user_controller module
 app.post('/login',    function(req, res) { user_controller.login(req, res);    });
-app.post('/register', function(req, res) { user_controller.register(req, res); });
+app.get('/register', function(req, res) { user_controller.register(req, res); });
 
 
 //this sorts the requestes for the '/add_insertion' route in POST to the insertion_controller module

@@ -1,3 +1,6 @@
+var db = require('../Model/db_manager');         // requiring db_manager
+
+
 /*
  *
  * @param req
@@ -5,6 +8,7 @@
  */
 var add_insertion  = function(req, res) 
 {
+    db.add_insertion("id", "description");
     res.writeHead(200, {'Content-Type': 'text/html'});
     res.end("add_insertion in POST");
 }

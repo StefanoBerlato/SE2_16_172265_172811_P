@@ -1,3 +1,6 @@
+var db = require('../Model/db_manager');         // requiring db_manager
+
+
 /*
  *
  * @param req
@@ -16,6 +19,7 @@ var login  = function(req, res)
  */
 var register  = function(req, res) 
 {
+    db.add_user("nickname", "password", "email", "phone_number");
     res.writeHead(200, {'Content-Type': 'text/html'});
     res.end("register in POST");
 }
