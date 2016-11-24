@@ -10,6 +10,7 @@
   "author": "berlato_stefano giacomo_zara",
   "license": "ISC",
   "dependencies": {
+    "bind": "^0.1.7",
     "body-parser": "^1.15.2",
     "express": "^4.14.0"
   }

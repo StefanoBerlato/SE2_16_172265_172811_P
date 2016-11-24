@@ -1,4 +1,5 @@
 // collecting libraries
+var bind = require('bind');                 // bind library
 var express = require('express');           // express library
 var app = express();                        // instantiate express
 var bodyParser = require('body-parser');    // setting up the body parser, in order to get the parameters from the post requestes
@@ -10,6 +11,20 @@ var insertion_controller = require('./Control/insertion_controller');   // requi
 
 app.use(bodyParser.urlencoded({ extended: false }));    // in order to parse the requestes in 'post'
 app.use(express.static(__dirname + '/View'));           // add the content of the directory to the data sent to the user
+
+
+/*
+ *  this sorts the requestes for the '/' route in get
+ */
+app.get('/', function(req, res) 
+{
+    bind.toFile(__dirname + '/home_page.html', {},  
+    function(data) 
+    {
+        res.writeHead(200, {'Content-Type': 'text/html'});
+        res.end(data);
+    });
+});
 
 
 // these sort the requestes for the '/search' - '/card' routes in GET to the search_controller module
