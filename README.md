@@ -35,8 +35,9 @@ CONTROL. Lato server sono presenti:
 
 MODEL. Lato server sono presenti:
 - 'DB_manager.js'. Modulo che gestisce i dati. Espone funzioni per la manipolazione degli utenti e inserzioni. In dettaglio:
-    - add_user(nickname, password, email, phone_number). Aggiunge il nuovo utente al database. Ritorna un codice numerico per indicare l'esito dell'operazione.
-    - verify_user(nickname,password). Verifica se l'utente appartiene o no al database. Ritorna un oggetto con i dati dell'utente se presente, altrimenti un codice di errore
+    - add_user(User). Aggiunge il nuovo utente al database. Ritorna un codice numerico per indicare l'esito dell'operazione.
+    - verify_user(User). Verifica se l'utente appartiene al database. Riempie l'oggetto con i dati dell'utente se presente, altrimenti riempie con valori null. Ritorna un codice numerico.
+    ----------------------------------------------
     - bool add_insertion(id,data). Inserisce l'inserzione al database. Ritorna true se tutto va a buon fine, false altrimenti.
     - bool modify_insertion(id,data). Modifica l'inserzione del database. Ritorna true se tutto va a buon fine, false altrimenti.
     - bool delete_insertion(id). Elimina l'inserzione dal database. Ritorna true se tutto va a buon fine, false altrimenti.
