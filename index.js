@@ -38,9 +38,9 @@ app.post('/register', function(req, res) { user_controller.register(req, res); }
 
 
 //this sorts the requestes for the '/add_insertion' route in POST to the insertion_controller module
-app.post('/add_insertion',    function(req, res) { insertion_controller.add_insertion(req, res);    });
-app.post('/modify_insertion', function(req, res) { insertion_controller.modify_insertion(req, res); });
-app.post('/delete_insertion', function(req, res) { insertion_controller.delete_insertion(req, res); });
+app.get('/add_insertion',    function(req, res) { insertion_controller.add_insertion(req, res);    });
+app.get('/modify_insertion', function(req, res) { insertion_controller.modify_insertion(req, res); });
+app.get('/delete_insertion', function(req, res) { insertion_controller.delete_insertion(req, res); });
 
 
 app.set('port', (process.env.PORT || 5000));    // set the port of the application

@@ -43,3 +43,8 @@ MODEL. Lato server sono presenti:
     - bool delete_insertion(id). Elimina l'inserzione dal database. Ritorna true se tutto va a buon fine, false altrimenti.
     - Insertion[] search_insertions(filters). Opera una ricerca con i filtri, ritorna l'array di oggetti.
     - Insertion get_insertion(id). Ritorna tutti i dati di una inserzione.
+Tabelle database:
+- Users (nickname primary key, password, email, phone_number, profile_photo_path)
+- Insertions (title primary key, description, available_rooms, rooms_typology, house_typology, free_from, address, locality, price_per_person, photo_path, nickname foreign key)
+
+

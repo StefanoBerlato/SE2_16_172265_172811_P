@@ -8,7 +8,7 @@ var db = require('../Model/db_manager');         // requiring db_manager
  */
 var login  = function(req, res) 
 {
-    var User_to_authenticate = {nickname:"nickname5", password:"password5", email:null, phone_number:null};
+    var User_to_authenticate = {nickname:"nickname5", password:"password5", email:null, phone_number:null, profile_photo_path:null};
     code = db.verify_user(User_to_authenticate);
     console.log("login try");
     console.log(code);
@@ -24,7 +24,7 @@ var login  = function(req, res)
  */
 var register  = function(req, res) 
 {
-    var User_to_insert = {nickname:"nickname4", password:"password4", email:"4", phone_number:"4"};
+    var User_to_insert = {nickname:"nickname4", password:"password4", email:"4", phone_number:"4", profile_photo_path:"4"};
     code = db.add_user(User_to_insert);
     console.log("register try");
     console.log(code);
