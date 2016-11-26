@@ -3,7 +3,6 @@
 
     <head> 
         <title>Search Insertion</title>
-        <link href="homepage.css" rel="stylesheet" type="text/css">
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -60,7 +59,7 @@
             </div>
             <div class = "col-sm-3 col-sm-offset-1">
                 <div class = "well" style = "background: rgb(155, 188, 242); border-style: solid 2px; border-color:black;">
-                    <img src = "house_card_1.jpg" style="height:40%; width:100%; border-radius:15px;">
+                    <img src = "Pictures/house_card_1.jpg" style="height:40%; width:100%; border-radius:15px;">
                     <div style="height:80%">
                         <h4 style = "font-family:Arial Black, Gadget, sans-serif; top:0px;">La casa di Ciccio</h4>
                         <hr>
@@ -69,7 +68,7 @@
                     </div>
                 </div>
                 <div class = "well" style = "background: rgb(155, 188, 242); border-style: solid 2px; border-color:black;" >
-                    <img src = "house_card_1.jpg" style="height:40%; width:100%; border-radius:15px;">
+                    <img src = "Pictures/house_card_1.jpg" style="height:40%; width:100%; border-radius:15px;">
                     <div style="height:80%">
                         <h4 style = "font-family:Arial Black, Gadget, sans-serif; top:0px;">La casa di Ciccio</h4>
                         <hr>
@@ -80,7 +79,7 @@
             </div>
             <div class = "col-sm-3">
                 <div class = "well" style = "background: rgb(155, 188, 242); border-style: solid 2px; border-color:black;" >
-                    <img src = "house_card_1.jpg" style="height:40%; width:100%; border-radius:15px;">
+                    <img src = "Pictures/house_card_1.jpg" style="height:40%; width:100%; border-radius:15px;">
                     <div style="height:80%">
                         <h4 style = "font-family:Arial Black, Gadget, sans-serif; top:0px;">La casa di Ciccio</h4>
                         <hr>
@@ -89,7 +88,7 @@
                     </div>
                 </div>
                 <div class = "well" style = "background: rgb(155, 188, 242); border-style: solid 2px; border-color:black;" >
-                    <img src = "house_card_1.jpg" style="height:40%; width:100%; border-radius:15px;">
+                    <img src = "Pictures/house_card_1.jpg" style="height:40%; width:100%; border-radius:15px;">
                     <div style="height:80%">
                         <h4 style = "font-family:Arial Black, Gadget, sans-serif; top:0px;">La casa di Ciccio</h4>
                         <hr>
@@ -107,6 +106,6 @@
         
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     </body>
 </html>

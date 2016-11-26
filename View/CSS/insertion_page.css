@@ -1,0 +1,28 @@
+.gallery_image {
+    display: inline-block;
+    padding: 10px;
+}
+
+.pic {
+    border-radius: 10px;
+}
+
+.well {
+    background-color: beige !important;
+}
+
+.desc_title {
+    font-family: Impact, Charcoal, sans-serif;
+}
+
+.desc_par {
+    font-family: Trebuchet MS, Helvetica, sans-serif;
+}
+
+.centered_text {
+    text-align: center;
+}
+
+.map_iframe {
+    border: solid 1px;
+}
