@@ -37,14 +37,18 @@ MODEL. Lato server sono presenti:
 - 'DB_manager.js'. Modulo che gestisce i dati. Espone funzioni per la manipolazione degli utenti e inserzioni. In dettaglio:
     - add_user(User). Aggiunge il nuovo utente al database. Ritorna un codice numerico per indicare l'esito dell'operazione.
     - verify_user(User). Verifica se l'utente appartiene al database. Riempie l'oggetto con i dati dell'utente se presente, altrimenti riempie con valori null. Ritorna un codice numerico.
-    ----------------------------------------------
-    - bool add_insertion(id,data). Inserisce l'inserzione al database. Ritorna true se tutto va a buon fine, false altrimenti.
-    - bool modify_insertion(id,data). Modifica l'inserzione del database. Ritorna true se tutto va a buon fine, false altrimenti.
-    - bool delete_insertion(id). Elimina l'inserzione dal database. Ritorna true se tutto va a buon fine, false altrimenti.
-    - Insertion[] search_insertions(filters). Opera una ricerca con i filtri, ritorna l'array di oggetti.
-    - Insertion get_insertion(id). Ritorna tutti i dati di una inserzione.
+    - add_insertion(Insertion). Inserisce l'inserzione al database. Ritorna un codice numerico.
+    - modify_insertion(Insertion). Modifica l'inserzione del database. Ritorna un codice numerico.
+    - delete_insertion(Insertion). Elimina l'inserzione dal database. Ritorna un codice numerico.
+    - search_insertions(Insertions,filters). Opera una ricerca con i filtri in "filters", riempie "Insertions" (un array) con le inserzioni trovate.
+    - get_insertion(Insertion). Riempie il parametro di tutti i dati dell'inserzione (null se non presente). Ritorna un codice numerico.
 Tabelle database:
 - Users (nickname primary key, password, email, phone_number, profile_photo_path)
 - Insertions (title primary key, description, available_rooms, rooms_typology, house_typology, free_from, address, locality, price_per_person, photo_path, nickname foreign key)
 
 
+Codici numerici:
+ 1 ok
+-1 match not found
+-2 read file error
+-3 write file error

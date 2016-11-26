@@ -3,6 +3,8 @@ var fs = require("fs");                             // fs to read the json files
 
 var users_file_path = __dirname + "/data/users.json";               // users json file path
 var insertions_file_path = __dirname + "/data/insertions.json";     // insertions json file path
+var users_data_wrapper = "user";                                    // the object that, in the users json file, wraps the data
+var insertions_data_wrapper = "insertions";                         // the object that, in the insertions json file, wraps the data
 
 
 /*
@@ -20,17 +22,17 @@ var add_user_to_db = function (User) {
     var users = {data:""};                                      // the object that will contain the db data about users  
     var returning_value;                                        // the number code that is going to be returned
 
-    if ( (returning_value = read_db(users_file_path,"users",users)) == 1) {  // if there were no errors while reading the file
-        if (users.data({nickname:User.nickname}).count() != 1 ) {               // if there aren't users with the same nickname, insert the new user and write down the file
-            users.data.insert({  nickname:User.nickname,                        // insert query
+    if ( (returning_value = read_db(users_file_path,users_data_wrapper,users)) == 1) {  // if there were no errors while reading the file
+        if (users.data({nickname:User.nickname}).count() != 1 ) {                           // if there aren't users with the same nickname, insert the new user and write down the file
+            users.data.insert({  nickname:User.nickname,                                    // insert query
                             password:User.password, 
                             email:User.email, 
                             phone_number:User.phone_number,
                             profile_photo_path:User.profile_photo_path});
-            returning_value = write_db (users_file_path, "users", users.data);  // write down the db trough the write_db function, and set the returning value
+            returning_value = write_db (users_file_path, users_data_wrapper, users.data);   // write down the db trough the write_db function, and set the returning value
         }
-        else                                                                    // otherwise, if the user was already inserted
-            returning_value = -1;                                               // set the returning value to -1
+        else                                                                                // otherwise, if the user was already inserted
+            returning_value = -1;                                                           // set the returning value to -1
     }
     return returning_value;                                                 // return the code number
 }    
@@ -49,7 +51,7 @@ var verify_user_presence = function (User) {
     var users = {data:""};                                      // the object that will contain the db data about users 
     var returning_value;                                        // the number code that is going to be returned
 
-    if ( (returning_value = read_db(users_file_path,"users",users)) == 1) {      // if there were no errors while reading the file
+    if ( (returning_value = read_db(users_file_path,users_data_wrapper,users)) == 1) {  // if there were no errors while reading the file
         var query = users.data({nickname:User.nickname, password:User.password});   // execute the query
         if (query.count() == 1) {                                                   // if there is a match                                            
             query = query.first();                                                  // take the first (and only) record
@@ -82,9 +84,9 @@ var add_insertion_to_db  = function(Insertion) {
     var insertions = {data:""};                                         // the object that will contain the db data about insertions
     var returning_value;                                                // the number code that is going to be returned
 
-    if ( (returning_value = read_db(insertions_file_path,"insertions",insertions)) == 1) {  // if there were no errors while reading the file
-        if (insertions.data({title:Insertion.title}).count() != 1 ) {                           // if there aren't insertions with the same title, insert the new one and write down the file
-            insertions.data.insert({title:Insertion.title,                                      // insert query
+    if ( (returning_value = read_db(insertions_file_path,insertions_data_wrapper,insertions)) == 1) {  // if there were no errors while reading the file
+        if (insertions.data({title:Insertion.title}).count() != 1 ) {                                   // if there aren't insertions with same title, insert the new one and write down the file
+            insertions.data.insert({title:Insertion.title,                                              // insert query
                                     description:Insertion.description,  
                                     available_rooms:Insertion.available_rooms,  
                                     rooms_typology:Insertion.rooms_typology,  
@@ -96,12 +98,12 @@ var add_insertion_to_db  = function(Insertion) {
                                     photo_path:Insertion.photo_path,  
                                     nickname:Insertion.nickname}
                         );
-            returning_value = write_db (insertions_file_path, "insertions", insertions.data);   // write down the db trough the write_db function, and set the returning value
+            returning_value = write_db (insertions_file_path, insertions_data_wrapper, insertions.data);// write down the db trough the write_db function, and set the returning value
         }
-        else                                                                                    // otherwise, if the insertion was already inserted
-            returning_value = -1;                                                               // set the returning value to -1
+        else                                                                                            // otherwise, if the insertion was already inserted
+            returning_value = -1;                                                                       // set the returning value to -1
     }
-    return returning_value;                                                             // return the code number
+    return returning_value;                                                                 // return the code number
 }
 
 
@@ -119,9 +121,9 @@ var modify_insertion_in_db = function (Insertion) {
     var insertions = {data:""};                                         // the object that will contain the db data about insertions
     var returning_value;                                                // the number code that is going to be returned
 
-    if ( (returning_value = read_db(insertions_file_path,"insertions",insertions)) == 1) {  // if there were no errors while reading the file
-        if (insertions.data({title:Insertion.title}).count() == 1 ) {                           // if there is an insertion with the same title
-            insertions.data({title:Insertion.title}).update({                                   // update query
+    if ( (returning_value = read_db(insertions_file_path,insertions_data_wrapper,insertions)) == 1) {  // if there were no errors while reading the file
+        if (insertions.data({title:Insertion.title}).count() == 1 ) {                                   // if there is an insertion with the same title
+            insertions.data({title:Insertion.title}).update({                                           // update query
                                     description:Insertion.description,  
                                     available_rooms:Insertion.available_rooms,  
                                     rooms_typology:Insertion.rooms_typology,  
@@ -133,10 +135,10 @@ var modify_insertion_in_db = function (Insertion) {
                                     photo_path:Insertion.photo_path,  
                                     nickname:Insertion.nickname}
                         );
-            returning_value = write_db (insertions_file_path, "insertions", insertions.data);   // write down the db trough the write_db function, and set the returning value
+            returning_value = write_db (insertions_file_path, insertions_data_wrapper, insertions.data);// write down the db trough the write_db function, and set the returning value
         }
-        else                                                                                    // otherwise, if the insertion was already inserted
-            returning_value = -1;                                                               // set the returning value to -1
+        else                                                                                            // otherwise, if the insertion was already inserted
+            returning_value = -1;                                                                       // set the returning value to -1
     }
     return returning_value;                                                             // return the code number
 }
@@ -156,24 +158,96 @@ var delete_insertion_from_db = function (Insertion) {
     var insertions = {data:""};                                         // the object that will contain the db data about insertions
     var returning_value;                                                // the number code that is going to be returned
 
-    if ( (returning_value = read_db(insertions_file_path,"insertions",insertions)) == 1) {  // if there were no errors while reading the file
-        if (insertions.data({title:Insertion.title}).count() == 1 ) {                           // if there is an insertion with the same title
-            insertions.data({title:Insertion.title}).remove();                                  // remove query
-            returning_value = write_db (insertions_file_path, "insertions", insertions.data);   // write down the db trough the write_db function, and set the returning value
+    if ( (returning_value = read_db(insertions_file_path,insertions_data_wrapper,insertions)) == 1) {  // if there were no errors while reading the file
+        if (insertions.data({title:Insertion.title}).count() == 1 ) {                                       // if there is an insertion with the same title
+            insertions.data({title:Insertion.title}).remove();                                              // remove query
+            returning_value = write_db (insertions_file_path, insertions_data_wrapper, insertions.data);    // write down the db trough the write_db function, and set the returning value
         }
-        else                                                                                    // otherwise, if the insertion was already inserted
-            returning_value = -1;                                                               // set the returning value to -1
+        else                                                                                                // otherwise, if the insertion was already inserted
+            returning_value = -1;                                                                           // set the returning value to -1
     }
     return returning_value;                                                             // return the code number
 }
 
+
+/*
+ * this method retrieves insertions from the db basing on the filters.
+ * @param Insertion[]. The insertion array that will be filled with insertions that match filters.
+ * @param Insertion_filter. The insertion that contains filters. If a filter was not specified, it should be set to null
+ * @return a code number
+ *  1 everything went ok, one or more matches found
+ * -1 not match found
+ * -2 read file error
+ */
+var search_insertions_in_db = function (Insertions,Insertion_filter) {
+    var insertions = {data:""};                                         // the object that will contain the db data about insertions
+    var returning_value;                                                // the number code that is going to be returned
+    
+    if ( (returning_value = read_db(insertions_file_path,insertions_data_wrapper,insertions)) == 1) {  // if there were no errors while reading the file
+        var data = insertions.data().get();                                                             // retrieves all the data from db as an array of objects
+        for (filter in Insertion_filter) {                                                              // for each filter (available rooms, address, ...)
+            if (Insertion_filter[filter] != null) {                                                     // that is not nul
+                for (var i=0 ; i<data.length; i++){                                                     // check if each object matches the filter
+                    if (data[i][filter] != Insertion_filter[filter]) {                                  // if not, remove it
+                        data.splice(i, 1);
+                        i--;
+                    }
+                }
+            }    
+        }
+        Insertions = data;                                                                              // put the retrieved data into the wrapper object
+        if (Insertions.length == 0) {                                                                   // and if there are no object, set the proper returning value
+            returning_value = -1;
+        }
+    }
+    return returning_value;                                                             // return the code number
+}
+
+
+/*
+ * this method retrieves the data about an insertion from the db once given its title.
+ * @param Insertion. The insertion that will be filled with values taken from the db. Its title is the one to look for in the db.
+ * @return a code number
+ *  1 everything went ok, Insertion found
+ * -1 insertion not present, Insertion not found
+ * -2 read file error
+ */
+var get_insertion_from_db = function (Insertion) {
+    var insertions = {data:""};                                         // the object that will contain the db data about insertions
+    var returning_value;                                                // the number code that is going to be returned
+
+    if ( (returning_value = read_db(insertions_file_path,insertions_data_wrapper,insertions)) == 1) {  // if there were no errors while reading the file
+        var query = insertions.data({title:Insertion.title});                                               // execute the query
+        if (query.count() == 1) {                                                                           // if there is a match                                            
+            query = query.first();                                                                          // take the first (and only) record
+            Insertion.title = query.title;                                                                  // fills the Insertion object
+            Insertion.description = query.description;
+            Insertion.available_rooms = query.available_rooms;
+            Insertion.rooms_typology = query.rooms_typology;
+            Insertion.house_typology = query.house_typology;
+            Insertion.free_from = query.free_from;
+            Insertion.address = query.address;
+            Insertion.locality = query.locality;
+            Insertion.price_per_person = query.price_per_person;
+            Insertion.photo_path = query.photo_path;
+            Insertion.nickname = query.nickname;
+        }
+        else {                                                                                              // otherwise, if the insertion was already inserted
+            returning_value = -1;                                                                           // set the returning value to -1
+            Insertion.title = null;                                                                         // fills the User object with null values
+        }
+    }
+    return returning_value;                                                                 // return the code number
+}   
 
 
 exports.add_user = add_user_to_db;
 exports.verify_user = verify_user_presence;
 exports.add_insertion = add_insertion_to_db;
 exports.modify_insertion = modify_insertion_in_db;
-exports.delete_insertion = delete_insertion_from_db
+exports.delete_insertion = delete_insertion_from_db;
+exports.get_insertion = get_insertion_from_db;
+exports.search_insertions = search_insertions_in_db;
 
 
 /*

@@ -8,7 +8,7 @@ var db = require('../Model/db_manager');         // requiring db_manager
  */
 var add_insertion  = function(req, res) 
 {
-    var Insertion = {title:"title2", description:"description", available_rooms:2, rooms_typology:2, house_typology:2, free_from:2, address:2, locality:2, price_per_person:2, photo_path:2, nickname:2};
+    var Insertion = {title:"title3", description:"description", available_rooms:3, rooms_typology:3, house_typology:3, free_from:3, address:3, locality:3, price_per_person:3, photo_path:3, nickname:3};
     code = db.add_insertion(Insertion);
     console.log("add insertion try");
     console.log(code);

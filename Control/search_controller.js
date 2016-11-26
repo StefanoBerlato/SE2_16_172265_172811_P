@@ -1,14 +1,5 @@
+var db = require('../Model/db_manager');         // requiring db_manager
 
-/*
- *
- * @param req
- * @param res
- */
-var search  = function(req, res) 
-{
-    res.writeHead(200, {'Content-Type': 'text/html'});
-    res.end("search in GET");
-}
 
 /*
  *
@@ -17,9 +8,43 @@ var search  = function(req, res)
  */
 var card  = function(req, res) 
 {
+    var Insertion = {title:"title1", description:null, available_rooms:null, rooms_typology:null, house_typology:null, free_from:null, address:null, locality:null, price_per_person:null, photo_path:null, nickname:null};
+    code = db.get_insertion(Insertion);
+    console.log("get insertion try");
+    console.log(code);
+    console.log(Insertion);
     res.writeHead(200, {'Content-Type': 'text/html'});
     res.end("card in GET");
 }
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+ *
+ * @param req
+ * @param res
+ */
+var search  = function(req, res) 
+{
+    var Insertion_filter = {available_rooms:1, rooms_typology:null, house_typology:null, free_from:null, address:null, locality:null, price_per_person:null, photo_path:null, nickname:null};
+    var Insertions = {data:[]};
+    code = db.search_insertions(Insertions.data,Insertion_filter);
+    console.log("search insertions try");
+    console.log(code);
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.end("search in GET");
+}
+
+
 
 
 // export these two functions
