@@ -29,9 +29,11 @@
                 <br>
                 <hr>
                 <br>
-                <div class = "map_iframe">
-                    <iframe src="https://www.google.it/maps/@46.0593335,11.134046,14z"></iframe>
+                <h3 class = "desc_title">Map</h3>
+                <div style="width: 100%">
+                    <iframe width="100%" height="400" src="http://www.mapi.ie/create-google-map/map.php?width=100%&amp;height=600&amp;hl=en&amp;q=Trento+(Trento)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=A&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" class = "map_iframe"></iframe>
                 </div>
+                <br/>
             </div>
             <div class = "col-sm-5">
                 <div class = "well">
