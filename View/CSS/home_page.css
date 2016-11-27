@@ -1,0 +1,40 @@
+body {
+    background-image: url("../Pictures/homepage_bg.jpg"); 
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-position: center center;
+}
+
+.main_title {
+    text-align: center; 
+    font-family: Arial Black, Gadget, sans-serif;
+}
+
+.search_parameters {
+    text-align: center; 
+    font-family: Impact, Charcoal, sans-serif;
+}
+
+#well1 {
+    background: rgb(160, 190, 239);
+}
+
+#well2 {
+    background: rgb(239, 208, 160);
+}
+
+#well3 {
+    background: rgb(160, 239, 165);
+}
+
+#well4 {
+    background:  rgb(218, 171, 234);
+}
+
+#well5 {
+    background: rgb(252, 251, 209);
+}
+
+#well6 {
+    background: rgb(209, 250, 252);
+}

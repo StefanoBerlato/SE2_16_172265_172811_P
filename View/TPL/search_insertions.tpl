@@ -3,18 +3,19 @@
 
     <head> 
         <title>Search Insertion</title>
+        <link href="..\CSS\search_insertions.css" rel="stylesheet" type="text/css">
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     
     <body>
-        <h1 style = "text-align:center; font-family:Arial Black, Gadget, sans-serif">Affitti Trento</h1>
+        <h1 class = "main_title">Affitti Trento</h1>
         <hr>
         <div class = "container">
             <div class = "col-sm-4">
-                <div class = "well" style = "background: rgb(216, 216, 208); border-style: solid 2px; border-color:black;">
-                    <h3 style = "font-family:Impact, Charcoal, sans-serif;">Filter by zone</h3>
+                <div class = "well" id = "filters_div">
+                    <h3 class = "filters_title">Filter by zone</h3>
                     <hr>
                     <form id = "filterForm">
                         <input type = "checkbox" name = "Trento" value= "Trento" checked>
@@ -30,47 +31,47 @@
                         <input type = "checkbox" name = "Anywhere" value= "Anywhere">
                         <label>Anywhere</label><br>
                         <br>
-                        <h3 style = "font-family:Impact, Charcoal, sans-serif;">Filter by price</h3>
+                        <h3 class = "filters_title">Filter by price</h3>
                         <hr>
                         <label>Minumum Price</label><br>
-                        <input type = "number" name = "minPrice" style="border-radius: 5px;"><br>
+                        <input type = "number" name = "minPrice" class = "filters_input"><br>
                         <br>
                         <label>Maximum Price</label><br>
-                        <input type = "number" name = "maxPrice" style="border-radius: 5px;"><br>
+                        <input type = "number" name = "maxPrice" class = "filters_input"><br>
                         <br>
-                        <h3 style = "font-family:Impact, Charcoal, sans-serif;">Filter by available rooms</h3>
+                        <h3 class = "filters_title">Filter by available rooms</h3>
                         <hr>
                         <label>Quantity</label><br>
-                        <input type = "number" name = "availableRooms" style="border-radius: 5px;"><br>
+                        <input type = "number" name = "availableRooms" class = "filters_input"><br>
                         <br>
-                        <h3 style = "font-family:Impact, Charcoal, sans-serif;">Filter by period of availability</h3>
+                        <h3 class = "filters_title">Filter by period of availability</h3>
                         <hr>
                         <label>From</label><br>
-                        <input type = "date" name = "fromDate" style="border-radius: 5px;"><br>
+                        <input type = "date" name = "fromDate" class = "filters_input"><br>
                         <br>
                         <label>To</label><br>
-                        <input type = "date" name = "toDate" style="border-radius: 5px;">
+                        <input type = "date" name = "toDate" class = "filters_input">
                         <hr>
-                        <div style="text-align:center;">
+                        <div class = "centered_text">
                             <button type="submit" class="btn btn-primary btn-lg">Apply Filters</button>
                         </div>
                     </form>             
                 </div>
             </div>
             <div class = "col-sm-3 col-sm-offset-1">
-                <div class = "well" style = "background: rgb(155, 188, 242); border-style: solid 2px; border-color:black;">
-                    <img src = "Pictures/house_card_1.jpg" style="height:40%; width:100%; border-radius:15px;">
-                    <div style="height:80%">
-                        <h4 style = "font-family:Arial Black, Gadget, sans-serif; top:0px;">La casa di Ciccio</h4>
+                <div class = "well" id = "card_div">
+                    <img src = "../Pictures/house_card_1.jpg" class = "card_img">
+                    <div class = "card_img_div">
+                        <h4 class = "card_title">La casa di Ciccio</h4>
                         <hr>
                         <p>La casa di ciccio è la casa di ciccio. Prima di appartenere a Ciccio apparteneva a Ciccio e si narra
                         che il successore sia nominato e soprannominato Ciccio</p>
                     </div>
                 </div>
-                <div class = "well" style = "background: rgb(155, 188, 242); border-style: solid 2px; border-color:black;" >
-                    <img src = "Pictures/house_card_1.jpg" style="height:40%; width:100%; border-radius:15px;">
-                    <div style="height:80%">
-                        <h4 style = "font-family:Arial Black, Gadget, sans-serif; top:0px;">La casa di Ciccio</h4>
+                <div class = "well" id = "card_div">
+                    <img src = "../Pictures/house_card_1.jpg" class = "card_img">
+                    <div class = "card_img_div">
+                        <h4 class = "card_title">La casa di Ciccio</h4>
                         <hr>
                         <p>La casa di ciccio è la casa di ciccio. Prima di appartenere a Ciccio apparteneva a Ciccio e si narra
                         che il successore sia nominato e soprannominato Ciccio</p>
@@ -78,19 +79,19 @@
                 </div>
             </div>
             <div class = "col-sm-3">
-                <div class = "well" style = "background: rgb(155, 188, 242); border-style: solid 2px; border-color:black;" >
-                    <img src = "Pictures/house_card_1.jpg" style="height:40%; width:100%; border-radius:15px;">
-                    <div style="height:80%">
-                        <h4 style = "font-family:Arial Black, Gadget, sans-serif; top:0px;">La casa di Ciccio</h4>
+                <div class = "well" id = "card_div">
+                    <img src = "../Pictures/house_card_1.jpg" class = "card_img">
+                    <div class = "card_img_div">
+                        <h4 class = "card_title">La casa di Ciccio</h4>
                         <hr>
                         <p>La casa di ciccio è la casa di ciccio. Prima di appartenere a Ciccio apparteneva a Ciccio e si narra
                         che il successore sia nominato e soprannominato Ciccio</p>
                     </div>
                 </div>
-                <div class = "well" style = "background: rgb(155, 188, 242); border-style: solid 2px; border-color:black;" >
-                    <img src = "Pictures/house_card_1.jpg" style="height:40%; width:100%; border-radius:15px;">
-                    <div style="height:80%">
-                        <h4 style = "font-family:Arial Black, Gadget, sans-serif; top:0px;">La casa di Ciccio</h4>
+                <div class = "well" id = "card_div">
+                    <img src = "../Pictures/house_card_1.jpg" class = "card_img">
+                    <div class = "card_img_div">
+                        <h4 class = "card_title">La casa di Ciccio</h4>
                         <hr>
                         <p>La casa di ciccio è la casa di ciccio. Prima di appartenere a Ciccio apparteneva a Ciccio e si narra
                         che il successore sia nominato e soprannominato Ciccio</p>

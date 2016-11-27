@@ -2,7 +2,7 @@
 <html>
 
     <head> 
-        <title>Search Insertion</title>
+        <title>Insertion Page</title>
         <link href="..\CSS\insertion_page.css" rel="stylesheet" type="text/css">
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css">
         <meta charset="utf-8">
@@ -10,27 +10,24 @@
     </head>
     
     <body>
-        <h1 style = "text-align:center; font-family:Arial Black, Gadget, sans-serif">Affitti Trento</h1>
+        <h1 class = "main_title">Affitti Trento</h1>
         <hr>
         <div class = "container">
             <div class = "col-sm-7">
-                <div class = "gallery_image">
-                    <img class="pic" src="Pictures/flat_interior.jpg" width="180" height="100">
+                <div class = "gallery_image_div">
+                    <img class="gallery_image" src="../Pictures/flat_interior.jpg">
                 </div>
-                <div class = "gallery_image">
-                    <img class="pic" src="Pictures/flat_interior.jpg" width="180" height="100">
+                <div class = "gallery_image_div">
+                    <img class="gallery_image" src="../Pictures/flat_interior.jpg">
                 </div>
-                <div class = "gallery_image">
-                    <img class="pic" src="Pictures/flat_interior.jpg" width="180" height="100">
+                <div class = "gallery_image_div">
+                    <img class="gallery_image" src="../Pictures/flat_interior.jpg">
                 </div>
-                <div class = "gallery_image">
-                    <img class="pic" src="Pictures/flat_interior.jpg" width="180" height="100">
+                <div class = "gallery_image_div">
+                    <img class="gallery_image" src="../Pictures/flat_interior.jpg">
                 </div>
-                <br>
-                <hr>
-                <br>
                 <h3 class = "desc_title">Map</h3>
-                <div style="width: 100%">
+                <div class = "map_div">
                     <iframe width="100%" height="400" src="http://www.mapi.ie/create-google-map/map.php?width=100%&amp;height=600&amp;hl=en&amp;q=Trento+(Trento)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=A&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" class = "map_iframe"></iframe>
                 </div>
                 <br/>

@@ -1,9 +1,11 @@
-.gallery_image {
+.gallery_image_div {
     display: inline-block;
     padding: 10px;
 }
 
-.pic {
+.gallery_image {
+    width: 180px;
+    height: 100px;
     border-radius: 10px;
 }
 
@@ -25,4 +27,19 @@
 
 .map_iframe {
     border: solid 3px;
+}
+
+body {
+    background-image:url("../Pictures/swirl_pattern.png"); 
+    background-repeat:repeat; 
+    background-position: center;
+}
+
+.main_title {
+    text-align: center; 
+    font-family: Arial Black, Gadget, sans-serif;
+}
+
+.map_div {
+    width: 100%;
 }
