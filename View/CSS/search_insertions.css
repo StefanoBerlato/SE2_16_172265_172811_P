@@ -12,7 +12,7 @@ body {
 #filters_div {
     background: rgb(216, 216, 208); 
     border-style: solid 2px; 
-    border-color:black;
+    border-color: black;
 }
 
 .filters_title {
@@ -30,7 +30,7 @@ body {
 #card_div {
     background: rgb(155, 188, 242); 
     border-style: solid 2px; 
-    border-color:black;
+    border-color: black;
 }
 
 .card_img_div {
@@ -38,12 +38,12 @@ body {
 }
 
 .card_img {
-    height:40%; 
-    width:100%; 
-    border-radius:15px;
+    height: 40%; 
+    width: 100%; 
+    border-radius: 15px;
 }
 
 .card_title {
     font-family: Arial Black, Gadget, sans-serif; 
-    top:0px;
+    top: 0px;
 }

@@ -1,3 +1,7 @@
+<!-- This page contains the details of the accomodation selected by the user in the page of the results. It shows a photo gallery, 
+a map with the location of the building and a panel with the name of the accomodation, a general description and the salient
+information. In the panel there is also a button by which the user can contact the renter -->
+
 <!DOCTYPE html>
 <html>
 
@@ -14,6 +18,9 @@
         <hr>
         <div class = "container">
             <div class = "col-sm-7">
+                
+                <!-- Here follows the photo gallery -->
+                <h3 class = "desc_title">Photo Gallery</h3>
                 <div class = "gallery_image_div">
                     <img class="gallery_image" src="../Pictures/flat_interior.jpg">
                 </div>
@@ -26,12 +33,16 @@
                 <div class = "gallery_image_div">
                     <img class="gallery_image" src="../Pictures/flat_interior.jpg">
                 </div>
+                
+                <!-- Here follows the map -->
                 <h3 class = "desc_title">Map</h3>
                 <div class = "map_div">
                     <iframe width="100%" height="400" src="http://www.mapi.ie/create-google-map/map.php?width=100%&amp;height=600&amp;hl=en&amp;q=Trento+(Trento)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=A&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" class = "map_iframe"></iframe>
                 </div>
                 <br/>
             </div>
+            
+            <!-- Here follows the information panel -->
             <div class = "col-sm-5">
                 <div class = "well">
                     <h3 class = "desc_title">Beautiful flat for students</h3>

@@ -1,3 +1,7 @@
+<!-- This page shows the results of the search performed by the user, depending on the parameters he set. The page contains a panel 
+by which the user can modify the parameters and filter the results, and a series of cards. Each card contains a picture of the 
+accomodation, the name and a short description. -->
+
 <!DOCTYPE html>
 <html>
 
@@ -14,6 +18,8 @@
         <hr>
         <div class = "container">
             <div class = "col-sm-4">
+                
+                <!-- Here follows the panel with the filters -->
                 <div class = "well" id = "filters_div">
                     <h3 class = "filters_title">Filter by zone</h3>
                     <hr>
@@ -58,6 +64,8 @@
                     </form>             
                 </div>
             </div>
+            
+            <!-- Here follow the cards -->
             <div class = "col-sm-3 col-sm-offset-1">
                 <div class = "well" id = "card_div">
                     <img src = "../Pictures/house_card_1.jpg" class = "card_img">
