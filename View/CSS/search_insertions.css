@@ -1,5 +1,5 @@
 body {
-    background-image: url("../Pictures/school.png"); 
+    background-color: rgb(252, 245, 204) !important;
     background-repeat: repeat; 
     background-position: center;
 }
@@ -28,7 +28,7 @@ body {
 }
 
 #card_div {
-    background: rgb(155, 188, 242); 
+    background: rgb(106, 172, 186); 
     border-style: solid 2px; 
     border-color: black;
 }

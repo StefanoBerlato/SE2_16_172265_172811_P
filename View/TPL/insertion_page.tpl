@@ -15,36 +15,40 @@ information. In the panel there is also a button by which the user can contact t
     
     <body>
         <h1 class = "main_title">Affitti Trento</h1>
-        <hr>
+        <br>
+		<br>
         <div class = "container">
             <div class = "col-sm-7">
                 
                 <!-- Here follows the photo gallery -->
-                <h3 class = "desc_title">Photo Gallery</h3>
-                <div class = "gallery_image_div">
-                    <img class="gallery_image" src="../Pictures/flat_interior.jpg">
-                </div>
-                <div class = "gallery_image_div">
-                    <img class="gallery_image" src="../Pictures/flat_interior.jpg">
-                </div>
-                <div class = "gallery_image_div">
-                    <img class="gallery_image" src="../Pictures/flat_interior.jpg">
-                </div>
-                <div class = "gallery_image_div">
-                    <img class="gallery_image" src="../Pictures/flat_interior.jpg">
-                </div>
+				<div class = "well" id = "gallery_well">
+					<h3 class = "desc_title">Photo Gallery</h3>
+					<div class = "gallery_image_div">
+						<img class="gallery_image" src="../Pictures/flat_interior.jpg">
+					</div>
+					<div class = "gallery_image_div">
+						<img class="gallery_image" src="../Pictures/flat_interior.jpg">
+					</div>
+					<div class = "gallery_image_div">
+						<img class="gallery_image" src="../Pictures/flat_interior.jpg">
+					</div>
+					<div class = "gallery_image_div">
+						<img class="gallery_image" src="../Pictures/flat_interior.jpg">
+					</div>
+				</div>
                 
                 <!-- Here follows the map -->
                 <h3 class = "desc_title">Map</h3>
                 <div class = "map_div">
                     <iframe width="100%" height="400" src="http://www.mapi.ie/create-google-map/map.php?width=100%&amp;height=600&amp;hl=en&amp;q=Trento+(Trento)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=A&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" class = "map_iframe"></iframe>
                 </div>
-                <br/>
+				<br>
+				<br>
             </div>
             
             <!-- Here follows the information panel -->
             <div class = "col-sm-5">
-                <div class = "well">
+                <div class = "well" id = "info_well">
                     <h3 class = "desc_title">Beautiful flat for students</h3>
                     <hr>
                     <p class = "desc_par">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>

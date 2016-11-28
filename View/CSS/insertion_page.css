@@ -10,7 +10,9 @@
 }
 
 .well {
-    background-color: beige !important;
+   	border-radius: 15px !important;
+	background-color: rgb(106, 172, 186) !important;
+	border: 1px solid black !important;
 }
 
 .desc_title {
@@ -26,13 +28,11 @@
 }
 
 .map_iframe {
-    border: solid 3px;
+	border: solid 3px;
 }
 
 body {
-    background-image: url("../Pictures/swirl_pattern.png"); 
-    background-repeat: repeat; 
-    background-position: center;
+	background-color: rgb(252, 245, 204) !important;
 }
 
 .main_title {
@@ -40,6 +40,9 @@ body {
     font-family: Arial Black, Gadget, sans-serif;
 }
 
-.map_div {
+.map_div {  
     width: 100%;
 }
+
+
+

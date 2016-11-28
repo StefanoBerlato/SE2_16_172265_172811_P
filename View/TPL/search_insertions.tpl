@@ -15,7 +15,8 @@ accomodation, the name and a short description. -->
     
     <body>
         <h1 class = "main_title">Affitti Trento</h1>
-        <hr>
+        <br>
+		<br>
         <div class = "container">
             <div class = "col-sm-4">
                 
