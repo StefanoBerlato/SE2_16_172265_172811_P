@@ -16,5 +16,8 @@
     "fs": "0.0.2",
     "node-taffydb": "^0.2.0",
     "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "jasmine": "^2.5.2"
   }
 }
