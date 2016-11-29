@@ -1,6 +1,26 @@
-//test of the database manager module. It is divided into two sections:
-//    - the first one is to test the user management
-//    - the second one is to test the insertions management
+
+ /*  test of the database manager module. It is divided into two sections:
+  *  - the first one is to test the user management. It tests the following functionalities:
+  *          - insert new user (both nickname and password, only password)
+  *          - insert already inserted user (both nickname and password, only nickname)
+  *          - verify inserted user presence (both nickname and password, right nickname wrong password)
+  *          - verify not inserted user presence
+  *
+  *  - the second one is to test the insertions management. It tests the following functionalities:
+  *          - add new insertions
+  *          - add already inserted insertions
+  *          - recover data from an already added insertion
+  *          - recover data from a not yet added insertion
+  *          - update data from an already added insertion
+  *          - update data from a not yet added insertion
+  *          - check if the insertions were actually updated
+  * 
+  *
+  *
+  *
+  *
+  */
+
 
 var fs = require("fs");                                                 // fs to read the json files
 var db_manager = require('../Model/DB_manager.js');                     // requiring the db manager
@@ -10,27 +30,42 @@ var User_1 = {nickname:"mario_rossi_65",
               password:"password_di_mario_rossi", 
               email:"mariorossi@gmail.com", 
               phone_number:3873528941, 
-              profile_photo_path:"mario_rossi_photo.jpg"};             // a normal user
+              profile_photo_path:"mario_rossi_photo.jpg"};                 // a normal user
 var User_2 = {nickname:"giacomo_tait", 
               password:"password_di_giacomo_tait", 
               email:"giacomotait@yahoo.com", 
               phone_number:5698452147, 
-              profile_photo_path:"giacomo_tait_photo.jpg"};             // a normal user
+              profile_photo_path:"giacomo_tait_photo.jpg"};                 // a normal user
 var User_1_empty = {nickname:"mario_rossi_65", 
                     password:"password_di_mario_rossi", 
                     email:"", 
                     phone_number:"", 
-                    profile_photo_path:""};       // a user with same nickname and password of User_1. All the other fields are null
+                    profile_photo_path:""};           // a user with same nickname and password of User_1. All the other fields are null
 var User_2_empty = {nickname:"giacomo_tait", 
                     password:"password_di_giacomo_tait", 
                     email:"", 
                     phone_number:"", 
-                    profile_photo_path:""};       // a user with same nickname and password of User_2. All the other fields are null
+                    profile_photo_path:""};           // a user with same nickname and password of User_2. All the other fields are null
 var User_3 = {nickname:"gianni_verde", 
               password:"password_di_gianni_verde", 
               email:"", 
               phone_number:"", 
-              profile_photo_path:""};             // a normal user
+              profile_photo_path:""};                 // a normal user
+var User_1_only_nickname = {nickname:"mario_rossi_65", 
+              password:"", 
+              email:"", 
+              phone_number:"", 
+              profile_photo_path:""};   // a user with same nickname of User_1. All the other fields are null
+var User_2_only_password = {nickname:"", 
+              password:"password_di_giacomo_tait", 
+              email:"", 
+              phone_number:"", 
+              profile_photo_path:""};   // a user with same password of User_2. All the other fields are null
+var User_1_right_nickname = {nickname:"mario_rossi_65", 
+              password:"password_di_giacomo_tait", 
+              email:"", 
+              phone_number:"", 
+              profile_photo_path:""};   // a user with same password of User_2. All the other fields are null
 
 
  /* Test for insert users into the db file. It checks 
@@ -48,6 +83,9 @@ describe("Test: insert into user's database file", function() {
         it("insert user 2 should return 1", function(){
            expect(db_manager.add_user(User_2)).toBe(1);
         });  
+        it("insert User 2 only passowrd should return -1", function(){
+           expect(db_manager.add_user(User_2_only_password)).toBe(-1);
+        });
     });
     
     
@@ -57,6 +95,9 @@ describe("Test: insert into user's database file", function() {
         });
         it("insert user 2 should return -1", function(){
            expect(db_manager.add_user(User_2)).toBe(-1);
+        });
+        it("insert User 1 only nickname should return -1", function(){
+           expect(db_manager.add_user(User_1_only_nickname)).toBe(-1);
         });
     
     });
@@ -87,6 +128,19 @@ describe("Test: verify users' presence into user's database file", function() {
         });
     });
     
+    describe("Try to verify the presence of user 2", function() {           // this test tries to login user_1_right_nickname
+        var old_pn = User_1_right_nickname.phone_number;                    // store the old phone number
+        it("it returns 1", function(){                                      // it checks that the user is actually in the db
+            expect(db_manager.verify_user(User_1_right_nickname)).toBe(-1);
+        });
+        it("check the phone number", function(){
+            expect(User_1_right_nickname.phone_number).toBe(old_pn);        // then it controls if the fields of the empty user are now filled with the proper data (unmodified)
+        });
+        it("check the nickname", function(){
+            expect(User_1_right_nickname.nickname).toBe(null);              // finally it controls if the fields of the empty user are now filled with the proper data (set to null)
+        });
+    });
+    
     describe("Try to verify the presence of user 3", function() {           // this test tries to login user_3
         it("it returns -1", function(){                                     // user 3 was not inserted, so it should not be in the dv
            expect(db_manager.verify_user(User_3)).toBe(-1);
@@ -99,7 +153,7 @@ describe("Test: verify users' presence into user's database file", function() {
 });
 
 
-// end of section 1 -----------------------------------------------------
+// end of section 1 ----------------------------------------------------- begin of section 2
 
 
 var Insertion_1 = {title:"beautiful house", 

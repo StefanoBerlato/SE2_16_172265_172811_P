@@ -23,7 +23,7 @@ var add_user_to_db = function (User) {
     var returning_value;                                        // the number code that is going to be returned
 
     if ( (returning_value = read_db(users_file_path,users_data_wrapper,users)) == 1) {  // if there were no errors while reading the file
-        if (users.data({nickname:User.nickname}).count() != 1 ) {                           // if there aren't users with the same nickname, insert the new user and write down the file
+        if (users.data({nickname:User.nickname}).count() != 1 && User.nickname != "" ) {    // if there aren't users with the same nickname, insert the new user and write down the file
             users.data.insert({  nickname:User.nickname,                                    // insert query
                             password:User.password, 
                             email:User.email, 
@@ -186,7 +186,7 @@ var search_insertions_in_db = function (Insertions,Insertion_filter) {
     if ( (returning_value = read_db(insertions_file_path,insertions_data_wrapper,insertions)) == 1) {  // if there were no errors while reading the file
         var data = insertions.data().get();                                                             // retrieves all the data from db as an array of objects
         for (filter in Insertion_filter) {                                                              // for each filter (available rooms, address, ...)
-            if (Insertion_filter[filter] != null) {                                                     // that is not nul
+            if (Insertion_filter[filter] != null && Insertion_filter[filter] != "") {                   // that is not nul
                 for (var i=0 ; i<data.length; i++){                                                     // check if each object matches the filter
                     if (data[i][filter] != Insertion_filter[filter]) {                                  // if not, remove it
                         data.splice(i, 1);
