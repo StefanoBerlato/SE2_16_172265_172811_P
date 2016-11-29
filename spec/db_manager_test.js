@@ -7,16 +7,16 @@
   *          - verify not inserted user presence
   *
   *  - the second one is to test the insertions management. It tests the following functionalities:
-  *          - add new insertions
+  *          - add new insertions to populate db
   *          - add already inserted insertions
   *          - recover data from an already added insertion
   *          - recover data from a not yet added insertion
   *          - update data from an already added insertion
   *          - update data from a not yet added insertion
   *          - check if the insertions were actually updated
-  * 
-  *
-  *
+  *          - delete an already added insertion and a not yet added insertion
+  *          - try to recover data about the insertion just deleted
+  *          - search insertion with no filters, "locality" filter, all filters
   *
   *
   */
@@ -181,7 +181,7 @@ var Insertion_2 = {title:"nice apartment",
 var Insertion_1_new = {title:"beautiful house", 
                    description:"it's a nice house", 
                    available_rooms:2, 
-                   rooms_typology:"single", 
+                   rooms_typology:"single_room", 
                    house_typology:"apartment", 
                    free_from:"01_01_2017", 
                    address:"via Trento, 10", 
@@ -192,7 +192,7 @@ var Insertion_1_new = {title:"beautiful house",
 var Insertion_2_new = {title:"nice apartment", 
                    description:"boarding house near Trento", 
                    available_rooms:1, 
-                   rooms_typology:"double", 
+                   rooms_typology:"double_room", 
                    house_typology:"boarding house", 
                    free_from:"12_02_2017", 
                    address:"via Asiago, 10", 
@@ -225,13 +225,46 @@ var Insertion_2_empty = {title:"nice apartment",
 var Insertion_3 = {title:"fantastic house", 
                    description:"single house, Povo", 
                    available_rooms:1, 
-                   rooms_typology:"single", 
+                   rooms_typology:"single_room", 
+                   house_typology:"apartment", 
+                   free_from:"03_11_2016", 
+                   address:"via alle Volpare, 12", 
+                   locality:"povo", 
+                   price_per_person:220, 
+                   photo_path:"fantastic_house.jpg", 
+                   nickname:"giacomo_tait"};          // a normal insertion
+var Insertion_4 = {title:"big flat near university, povo", 
+                   description:"big flat near university, useful for students in povo", 
+                   available_rooms:2, 
+                   rooms_typology:"single_room", 
                    house_typology:"apartment", 
                    free_from:"30_12_2016", 
                    address:"via Sommarive, 11", 
                    locality:"povo", 
                    price_per_person:250, 
-                   photo_path:"fantastic_house.jpg", 
+                   photo_path:"big_flat.jpg", 
+                   nickname:"giacomo_tait"};          // a normal insertion
+var Insertion_5 = {title:"boarding house for students", 
+                   description:"boarding house in villazzano", 
+                   available_rooms:10, 
+                   rooms_typology:"double_room", 
+                   house_typology:"boarding_house", 
+                   free_from:"30_12_2016", 
+                   address:"via villazzano, 11", 
+                   locality:"villazzano", 
+                   price_per_person:250, 
+                   photo_path:"borading_house.jpg", 
+                   nickname:"giacomo_tait"};          // a normal insertion
+var Insertion_6 = {title:"old but gold apartment", 
+                   description:"an old apartment, but near the city center", 
+                   available_rooms:1, 
+                   rooms_typology:"single_room", 
+                   house_typology:"apartment", 
+                   free_from:"23_04_2017", 
+                   address:"via centro, 120", 
+                   locality:"trento", 
+                   price_per_person:150, 
+                   photo_path:"old_but_gold.jpg", 
                    nickname:"giacomo_tait"};          // a normal insertion
 
 
@@ -243,13 +276,22 @@ describe("Test: insert into the database file of insertions", function() {
     
     fs.writeFileSync( "./Model/data/insertions.json", '{"insertions":[]}');    // initialize the insertions's db file
         
-    describe("Try to add a new insertion", function() {                        // this test inserts into the db insertion 1 and insertion 2
+    describe("Try to add a new insertion", function() {                        // this test inserts into the db insertion 1, 2, 4, 5, 6
         it("insert insertion 1 should return 1", function(){
            expect(db_manager.add_insertion(Insertion_1)).toBe(1);
         });
         it("insert insertion 2 should return 1", function(){
            expect(db_manager.add_insertion(Insertion_2)).toBe(1);
+        });
+        it("insert insertion 1 should return 1", function(){
+           expect(db_manager.add_insertion(Insertion_4)).toBe(1);
+        });
+        it("insert insertion 2 should return 1", function(){
+           expect(db_manager.add_insertion(Insertion_5)).toBe(1);
         });  
+        it("insert insertion 1 should return 1", function(){
+           expect(db_manager.add_insertion(Insertion_6)).toBe(1);
+        });
     });
     
     describe("Try to add an already inserted insertion", function() {           // this test tries to insert again insertion 1 and insertion 2
@@ -339,7 +381,7 @@ describe("Test: recover from the database file of insertions", function() {
            expect(db_manager.get_insertion(Insertion_2_empty)).toBe(1);
         });
         it("check the house typology", function(){
-           expect(Insertion_2_empty.rooms_typology).toBe("double");
+           expect(Insertion_2_empty.rooms_typology).toBe("double_room");
         }); 
     });
     
@@ -360,23 +402,78 @@ describe("Test: delete an insertion from the database file of insertions", funct
 
     describe("Try to delete insertion 2", function() {                          // this test tries to delete insertion 2 from the db, then tests if it was actually deleted
         it("should return 1", function(){
-           expect(db_manager.delete_insertion(Insertion_2)).toBe(1);            // this test deletes insertion 2
+           expect(db_manager.delete_insertion(Insertion_2)).toBe(1);                
         });
-        it("get insertion 2 from the db after its elimination", function(){     // this test tries to get insertion 2 from the db after its elimination
+        it("get insertion 2 from the db after its elimination", function(){         
            expect(db_manager.get_insertion(Insertion_2)).toBe(-1);        
         });
-        it("modify insertion 2 from the db after its elimination", function(){  // this test tries to modify insertion 2 from the db after its elimination
+        it("modify insertion 2 from the db after its elimination", function(){      
            expect(db_manager.modify_insertion(Insertion_2_new)).toBe(-1);        
         });  
     });
     
    describe("Try to delete insertion 3", function() {                          // this test tries to delete insertion 3, that was not inserted
         it("should return -1", function(){
-           expect(db_manager.delete_insertion(Insertion_3)).toBe(-1);          // this test proves to delete insertion 3
+           expect(db_manager.delete_insertion(Insertion_3)).toBe(-1);           
         });
     });
 });
 
 
-// ricerca insertions: problema: ricerca per camera e prezzo, che richiede un comparativo?
+ /* Test for searching insertions (not in the db there are insertion 1, 4, 5, 6). It
+  * - search with no filters (all null)
+  * - search with one filter, "locality"
+  * - search with all single filters
+  * - search with combinated filters
+  */
+describe("Test: search insertions from the db", function() {     
 
+    var results = {data:[]};                                                    // the object that will contain the results of the search query
+    
+    describe("Try to search with no filters", function() {                      // this test tries to search with no filters, so that all the insertions should be returned
+        it("should return 1", function(){
+           expect(db_manager.search_insertions(results,null,null,null,null,null)).toBe(1);  
+        });
+        
+        it("verify that all the insertions in the db were taken", function(){         
+           expect(results.data.length).toBe(4);        
+        });
+    });
+    
+    describe("Try to search with one filter", function() {                      // this test tries to search with "trento" filter, so that only insertion 6 should be returned
+        it("should return 1", function(){
+           expect(db_manager.search_insertions(results,null,null,"trento",null,null)).toBe(1);                
+        });
+        it("verify that there is only one result", function(){         
+           expect(results.data.length).toBe(1);        
+        });
+        it("verify that the address is actually the one that belongs to insertion 6", function(){         
+           expect(results.data[0].address).toBe("via centro, 120");        
+        });
+    });
+    
+    describe("Try to search with all filters", function() {                     // this test tries to search with all filters refered to insertion 5, so that only insertion 5 should be returned
+        it("should return 1", function(){
+           expect(db_manager.search_insertions(results,"boarding_house","double_room","villazzano",2,250)).toBe(1);                
+        });
+        it("verify that there is only one result", function(){         
+           expect(results.data.length).toBe(1);        
+        });
+        it("verify that the description is actually the one that belongs to insertion 5", function(){         
+           expect(results.data[0].description).toBe("boarding house in villazzano");        
+        });
+    });
+    
+    describe("Try to search with all filters", function() {                     // this test tries to search with combinted filters. it should find insertion 1 and 4
+        it("should return 1", function(){
+           expect(db_manager.search_insertions(results,"apartment","double_room+single_room","povo+mesiano",2,300)).toBe(1);                
+        });
+        it("verify that there are two results", function(){         
+           expect(results.data.length).toBe(2);        
+        });
+        it("verify that the insertions retrieved are the 1 and the 4", function(){         
+           expect(results.data[0].title).toBe("beautiful house");  
+           expect(results.data[1].title).toBe("big flat near university, povo");  
+        });
+    });
+});

@@ -27,9 +27,9 @@ var card  = function(req, res)
 var search  = function(req, res) 
 {
     var Insertions = {data:[]};
-    code = db.search_insertions(Insertions.data,"boarding_house","single_room+double_room","povo+mesiano",1);
+    code = db.search_insertions(Insertions,null,"single_room+double_room","povo+mesiano",1,220);
     console.log("search insertions try");
-    console.log(code);
+    console.log(Insertions);
     res.writeHead(200, {'Content-Type': 'text/html'});
     res.end("search in GET");
 }

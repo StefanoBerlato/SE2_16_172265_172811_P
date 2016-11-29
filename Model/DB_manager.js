@@ -192,19 +192,19 @@ var search_insertions_in_db = function (Insertions, house_typ, rooms_typ, local,
     if (house_typ == null) house_typ = "apartment+boarding_house";          // checking the filters. If a filter was not specified, all classes are accepted
     if (rooms_typ == null) rooms_typ = "single_room+double_room";           // ...
     if (local == null) local = "trento+povo+mesiano+san_dona+villazzano";   // ...
-    if (av_rooms == null) av_rooms = Number.MAX_SAFE_INTEGER;               // ...
-    if (max_price == null) av_rooms = -Number.MAX_SAFE_INTEGER;             // ...
-    
+    if (av_rooms == null) av_rooms = -Number.MAX_SAFE_INTEGER;              // ...
+    if (max_price == null) max_price = +Number.MAX_SAFE_INTEGER;            // ...
+
     if ( (returning_value = read_db(insertions_file_path,insertions_data_wrapper,db)) == 1) {   // if there were no errors while reading the file
-        var Insertions = db.data({                                                              // do a select query with the filters
+            Insertions.data = db.data({                                                         // do a select query with the filters
             house_typology:house_typ.split("+"),                                                // so house_typology must be in the house_typ splitted string
             rooms_typology:rooms_typ.split("+"),                                                // so rooms_typology must be in the rooms_typ splitted string
             locality:local.split("+"),                                                          // so locality must be in the local splitted string
-            available_rooms:{'>=':av_rooms,                                                     // at least there should be "av_rooms" available rooms
+            available_rooms:{'>=':av_rooms},                                                    // at least there should be "av_rooms" available rooms
             price_per_person:{'<=':max_price}                                                   // at most the price shold be "max_price"
         }).get();                                                                               // retrieves all the data from db as an array of objects    
-            
-        if (Insertions.length == 0) {                                                           // and if there are no objects, set the proper returning value
+
+        if (Insertions.data.length == 0) {                                                      // and if there are no objects, set the proper returning value
             returning_value = -1;
         }
     }
