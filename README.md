@@ -40,11 +40,17 @@ MODEL. Lato server sono presenti:
     - add_insertion(Insertion). Inserisce l'inserzione al database. Ritorna un codice numerico.
     - modify_insertion(Insertion). Modifica l'inserzione del database. Ritorna un codice numerico.
     - delete_insertion(Insertion). Elimina l'inserzione dal database. Ritorna un codice numerico.
-    - search_insertions(Insertions,filters). Opera una ricerca con i filtri in "filters", riempie "Insertions" (un array) con le inserzioni trovate.
+    - search_insertions(Insertions,filters). Opera una ricerca con i filtri: house_typology, rooms_typology, locality, available_rooms, price_per_person. Ritorna un codice numerico.
     - get_insertion(Insertion). Riempie il parametro di tutti i dati dell'inserzione (null se non presente). Ritorna un codice numerico.
+    
 Tabelle database:
 - Users (nickname primary key, password, email, phone_number, profile_photo_path)
 - Insertions (title primary key, description, available_rooms, rooms_typology, house_typology, free_from, address, locality, price_per_person, photo_path, nickname foreign key)
+
+rooms_typology -> ["single_room", "double_room"]
+house_typology -> ["boarding_house", "apartment"]
+locality -> ["povo", "mesiano", "villazzano", "san_dona", "trento"]
+if you add a class in the above ones, remember to add it also into the DB_manager.js file, in the search_insertions_in_db method
 
 
 Codici numerici:

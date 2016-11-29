@@ -29,7 +29,7 @@ var add_user_to_db = function (User) {
                             email:User.email, 
                             phone_number:User.phone_number,
                             profile_photo_path:User.profile_photo_path});
-            returning_value = write_db (users_file_path, users_data_wrapper, users.data);   // write down the db trough the write_db function, and set the returning value
+            returning_value = write_db (users_file_path, users_data_wrapper, users);        // write down the db trough the write_db function, and set the returning value
         }
         else                                                                                // otherwise, if the user was already inserted
             returning_value = -1;                                                           // set the returning value to -1
@@ -98,7 +98,7 @@ var add_insertion_to_db  = function(Insertion) {
                                     photo_path:Insertion.photo_path,  
                                     nickname:Insertion.nickname}
                         );
-            returning_value = write_db (insertions_file_path, insertions_data_wrapper, insertions.data);// write down the db trough the write_db function, and set the returning value
+            returning_value = write_db (insertions_file_path, insertions_data_wrapper, insertions);     // write down the db trough the write_db function, and set the returning value
         }
         else                                                                                            // otherwise, if the insertion was already inserted
             returning_value = -1;                                                                       // set the returning value to -1
@@ -135,7 +135,7 @@ var modify_insertion_in_db = function (Insertion) {
                                     photo_path:Insertion.photo_path,  
                                     nickname:Insertion.nickname}
                         );
-            returning_value = write_db (insertions_file_path, insertions_data_wrapper, insertions.data);// write down the db trough the write_db function, and set the returning value
+            returning_value = write_db (insertions_file_path, insertions_data_wrapper, insertions);     // write down the db trough the write_db function, and set the returning value
         }
         else                                                                                            // otherwise, if the insertion was already inserted
             returning_value = -1;                                                                       // set the returning value to -1
@@ -161,7 +161,7 @@ var delete_insertion_from_db = function (Insertion) {
     if ( (returning_value = read_db(insertions_file_path,insertions_data_wrapper,insertions)) == 1) {  // if there were no errors while reading the file
         if (insertions.data({title:Insertion.title}).count() == 1 ) {                                       // if there is an insertion with the same title
             insertions.data({title:Insertion.title}).remove();                                              // remove query
-            returning_value = write_db (insertions_file_path, insertions_data_wrapper, insertions.data);    // write down the db trough the write_db function, and set the returning value
+            returning_value = write_db (insertions_file_path, insertions_data_wrapper, insertions);         // write down the db trough the write_db function, and set the returning value
         }
         else                                                                                                // otherwise, if the insertion was already inserted
             returning_value = -1;                                                                           // set the returning value to -1
@@ -171,38 +171,45 @@ var delete_insertion_from_db = function (Insertion) {
 
 
 /*
- * this method retrieves insertions from the db basing on the filters.
+ * this method retrieves insertions from the db basing on the filters (house_typology, rooms_typology, locality, available_rooms, price_per_person). 
+ * If a filter was not specified, it should be set to null bu the invoking function. If the user selects more than one preference (for example, a
+ * house that is either in mesiano or povo) the "locality" filter should be "mesiano+povo" (so you concat strings with '+' char).
  * @param Insertion[]. The insertion array that will be filled with insertions that match filters.
- * @param Insertion_filter. The insertion that contains filters. If a filter was not specified, it should be set to null
+ * @param house_typ. house_typology filter
+ * @param rooms_typ. rooms_typology filter
+ * @param local. locality filter
+ * @param av_rooms. available_rooms filter
+ * @param max_price. max price_per_person filter
  * @return a code number
  *  1 everything went ok, one or more matches found
  * -1 not match found
  * -2 read file error
  */
-var search_insertions_in_db = function (Insertions,Insertion_filter) {
-    var insertions = {data:""};                                         // the object that will contain the db data about insertions
-    var returning_value;                                                // the number code that is going to be returned
+var search_insertions_in_db = function (Insertions, house_typ, rooms_typ, local, av_rooms, max_price) {
+    var db = {data:""};                                                     // the object that will contain the db data about insertions
+    var returning_value;                                                    // the number code that is going to be returned
     
-    if ( (returning_value = read_db(insertions_file_path,insertions_data_wrapper,insertions)) == 1) {  // if there were no errors while reading the file
-        var data = insertions.data().get();                                                             // retrieves all the data from db as an array of objects
-        for (filter in Insertion_filter) {                                                              // for each filter (available rooms, address, ...)
-            if (Insertion_filter[filter] != null) {                                                     // that is not nul
-                for (var i=0 ; i<data.length; i++){                                                     // check if each object matches the filter
-                    if (data[i][filter] != Insertion_filter[filter]) {                                  // if not, remove it
-                        data.splice(i, 1);
-                        i--;
-                    }
-                }
-            }    
-        }
-        Insertions = data;                                                                              // put the retrieved data into the wrapper object
-        if (Insertions.length == 0) {                                                                   // and if there are no object, set the proper returning value
+    if (house_typ == null) house_typ = "apartment+boarding_house";          // checking the filters. If a filter was not specified, all classes are accepted
+    if (rooms_typ == null) rooms_typ = "single_room+double_room";           // ...
+    if (local == null) local = "trento+povo+mesiano+san_dona+villazzano";   // ...
+    if (av_rooms == null) av_rooms = Number.MAX_SAFE_INTEGER;               // ...
+    if (max_price == null) av_rooms = -Number.MAX_SAFE_INTEGER;             // ...
+    
+    if ( (returning_value = read_db(insertions_file_path,insertions_data_wrapper,db)) == 1) {   // if there were no errors while reading the file
+        var Insertions = db.data({                                                              // do a select query with the filters
+            house_typology:house_typ.split("+"),                                                // so house_typology must be in the house_typ splitted string
+            rooms_typology:rooms_typ.split("+"),                                                // so rooms_typology must be in the rooms_typ splitted string
+            locality:local.split("+"),                                                          // so locality must be in the local splitted string
+            available_rooms:{'>=':av_rooms,                                                     // at least there should be "av_rooms" available rooms
+            price_per_person:{'<=':max_price}                                                   // at most the price shold be "max_price"
+        }).get();                                                                               // retrieves all the data from db as an array of objects    
+            
+        if (Insertions.length == 0) {                                                           // and if there are no objects, set the proper returning value
             returning_value = -1;
         }
     }
     return returning_value;                                                             // return the code number
 }
-
 
 /*
  * this method retrieves the data about an insertion from the db once given its title.
@@ -276,14 +283,14 @@ function read_db (file_path, object_name, container) {
  * @brief  This method just writes down a json file from a taffy db as a single json object with name "object_name".
  * @param file_path. The path of the json file.
  * @param object_name. The object that is going to wrap the data
- * @param db. The taffy db
+ * @param db. The taffy db (data are inside the data attribute)
  * @return a code number:
  *  1 everything went well
  * -3 write file error
  */
 function write_db (file_path, object_name, db) {
     try {                                                                   // try to write down the db
-        fs.writeFileSync( file_path, '{"' + object_name + '":' + db().stringify() + '}');
+        fs.writeFileSync( file_path, '{"' + object_name + '":' + db.data().stringify() + '}');
         return 1;                                                           // return the 'everything ok' code number
     } 
     catch (err) {                                                           // if this is the case, catch the error

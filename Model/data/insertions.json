@@ -1,13 +1,5 @@
-{"insertions":[{"title":"title1","description":"description","available_rooms":1,"rooms_typology":1,"house_typology":1,"free_from":1,"address":1,"locality":1,"price_per_person":1,"photo_path":1,"nickname":1,"___id":"T000002R000002","___s":true},{"title":"title2","description":"description","available_rooms":2,"rooms_typology":2,"house_typology":2,"free_from":2,"address":2,"locality":2,"price_per_person":2,"photo_path":2,"nickname":2,"___id":"T000002R000003","___s":true},
-{"title":"title3","description":"description","available_rooms":3,"rooms_typology":3,"house_typology":3,"free_from":3,"address":3,"locality":3,"price_per_person":3,"photo_path":3,"nickname":3,"___id":"T000002R000003","___s":true},
-{"title":"title4","description":"description","available_rooms":1,"rooms_typology":1,"house_typology":1,"free_from":1,"address":1,"locality":1,"price_per_person":1,"photo_path":1,"nickname":1,"___id":"T000002R000003","___s":true},
-{"title":"title5","description":"description","available_rooms":2,"rooms_typology":2,"house_typology":2,"free_from":2,"address":2,"locality":2,"price_per_person":2,"photo_path":2,"nickname":2,"___id":"T000002R000003","___s":true},
-{"title":"title6","description":"description","available_rooms":3,"rooms_typology":3,"house_typology":3,"free_from":3,"address":3,"locality":3,"price_per_person":3,"photo_path":3,"nickname":3,"___id":"T000002R000003","___s":true}
-
-              
-              
-              
-              
-              
-              
-              ]}
+{"insertions":[{"title":"title1","description":"description","available_rooms":1,"rooms_typology":"single_room","house_typology":"apartment","free_from":1,"address":1,"locality":"trento","price_per_person":1,"photo_path":1,"nickname":1,"___id":"T000002R000002","___s":true},{"title":"title2","description":"description","available_rooms":2,"rooms_typology":"double_room","house_typology":"boarding_house","free_from":2,"address":2,"locality":"povo","price_per_person":2,"photo_path":2,"nickname":2,"___id":"T000002R000003","___s":true},
+{"title":"title3","description":"description","available_rooms":3,"rooms_typology":"double_room","house_typology":"boarding_house","free_from":3,"address":3,"locality":"san_dona","price_per_person":3,"photo_path":3,"nickname":3,"___id":"T000002R000003","___s":true},
+{"title":"title4","description":"description","available_rooms":1,"rooms_typology":"double_room","house_typology":"apartment","free_from":1,"address":1,"locality":"villazzano","price_per_person":2,"photo_path":1,"nickname":1,"___id":"T000002R000003","___s":true},
+{"title":"title5","description":"description","available_rooms":2,"rooms_typology":"single_room","house_typology":"boarding_house","free_from":2,"address":2,"locality":"mesiano","price_per_person":1,"photo_path":2,"nickname":2,"___id":"T000002R000003","___s":true},
+{"title":"title6","description":"description","available_rooms":3,"rooms_typology":"single_room","house_typology":"boarding_house","free_from":3,"address":3,"locality":"povo","price_per_person":1,"photo_path":3,"nickname":3,"___id":"T000002R000003","___s":true} ]}

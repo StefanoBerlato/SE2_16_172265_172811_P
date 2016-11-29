@@ -19,15 +19,6 @@ var card  = function(req, res)
 
 
 
-
-
-
-
-
-
-
-
-
 /*
  *
  * @param req
@@ -35,9 +26,8 @@ var card  = function(req, res)
  */
 var search  = function(req, res) 
 {
-    var Insertion_filter = {available_rooms:1, rooms_typology:null, house_typology:null, free_from:null, address:null, locality:null, price_per_person:null, photo_path:null, nickname:null};
     var Insertions = {data:[]};
-    code = db.search_insertions(Insertions.data,Insertion_filter);
+    code = db.search_insertions(Insertions.data,"boarding_house","single_room+double_room","povo+mesiano",1);
     console.log("search insertions try");
     console.log(code);
     res.writeHead(200, {'Content-Type': 'text/html'});
