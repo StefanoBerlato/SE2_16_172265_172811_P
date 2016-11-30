@@ -15,7 +15,16 @@ information. In the panel there is also a button by which the user can contact t
     
     <body>
         <h1 class = "main_title">Affitti Trento</h1>
-        <br>
+		<hr>
+		<nav>
+  			<div class="container-fluid ">
+    			<ul class="nav navbar-nav">
+      				<li><a href="home_page.html" class = "white">Home</a></li>
+      				<li><a href="#" id = "loginButton">Login</a></li>
+      				<li><a href="#" id = "registerButton">Register</a></li> 
+    			</ul>
+  			</div>
+		</nav>
 		<br>
         <div class = "container">
             <div class = "col-sm-7">

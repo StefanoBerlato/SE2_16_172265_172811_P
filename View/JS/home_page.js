@@ -12,7 +12,7 @@ function select(){
 			var thisCard = document.getElementById("card1");		// get the card element
 			var checkbox = document.getElementById("checkbox1");	// get the hidden checkbox element
 			if(checkbox.checked == false){							// if the checkbox isn't selected...
-				thisCard.style = "border: 3px solid green;";		// ...modify the view of the card
+				thisCard.style = "border: 4px solid green;";		// ...modify the view of the card
 				checkbox.checked = true;							// and set the checkbox as selected
 			}
 			else {													// otherwise...
@@ -25,7 +25,7 @@ function select(){
 			var thisCard = document.getElementById("card2");
 			var checkbox = document.getElementById("checkbox2");
 			if(checkbox.checked == false){
-				thisCard.style = "border: 3px solid green;";
+				thisCard.style = "border: 4px solid green;";
 				checkbox.checked = true;
 			}
 			else {
@@ -38,7 +38,7 @@ function select(){
 			var thisCard = document.getElementById("card3");
 			var checkbox = document.getElementById("checkbox3");
 			if(checkbox.checked == false){
-				thisCard.style = "border: 3px solid green;";
+				thisCard.style = "border: 4px solid green;";
 				checkbox.checked = true;
 			}
 			else {
@@ -51,7 +51,7 @@ function select(){
 			var thisCard = document.getElementById("card4");
 			var checkbox = document.getElementById("checkbox4");
 			if(checkbox.checked == false){
-				thisCard.style = "border: 3px solid green;";
+				thisCard.style = "border: 4px solid green;";
 				checkbox.checked = true;
 			}
 			else {
@@ -64,7 +64,7 @@ function select(){
 			var thisCard = document.getElementById("card5");
 			var checkbox = document.getElementById("checkbox5");
 			if(checkbox.checked == false){
-				thisCard.style = "border: 3px solid green;";
+				thisCard.style = "border: 4px solid green;";
 				checkbox.checked = true;
 			}
 			else {
@@ -77,7 +77,7 @@ function select(){
 			var thisCard = document.getElementById("card6");
 			var checkbox = document.getElementById("checkbox6");
 			if(checkbox.checked == false){
-				thisCard.style = "border: 3px solid green;";
+				thisCard.style = "border: 4px solid green;";
 				checkbox.checked = true;
 			}
 			else {
@@ -90,7 +90,7 @@ function select(){
 			var thisCard = document.getElementById("card7");
 			var checkbox = document.getElementById("checkbox7");
 			if(checkbox.checked == false){
-				thisCard.style = "border: 3px solid green;";
+				thisCard.style = "border: 4px solid green;";
 				checkbox.checked = true;
 			}
 			else {
@@ -103,7 +103,7 @@ function select(){
 			var thisCard = document.getElementById("card8");
 			var checkbox = document.getElementById("checkbox8");
 			if(checkbox.checked == false){
-				thisCard.style = "border: 3px solid green;";
+				thisCard.style = "border: 4px solid green;";
 				checkbox.checked = true;
 			}
 			else {
@@ -116,7 +116,7 @@ function select(){
 			var thisCard = document.getElementById("card9");
 			var checkbox = document.getElementById("checkbox9");
 			if(checkbox.checked == false){
-				thisCard.style = "border: 3px solid green;";
+				thisCard.style = "border: 4px solid green;";
 				checkbox.checked = true;
 			}
 			else {

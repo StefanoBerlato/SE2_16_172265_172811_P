@@ -5,9 +5,10 @@ body {
 
 .main_title {
     text-align: center; 
-    font-family: Arial Black, Gadget, sans-serif;
 	color: white;
-	text-decoration: underline;
+	font-family: 'Cinzel', serif;
+	font-size: 60px;
+	margin-top: 5%;
 }
 
 .form_well {
@@ -16,20 +17,46 @@ body {
 	margin: auto;
 }
 
+.buttons_well {
+	background-color: rgba(255, 255, 255, 0.4) !important;
+	text-align: center;
+	width: 13%;
+	margin: auto;
+}
+
 .search_parameters {
     text-align: center; 
-    font-family: Impact, Charcoal, sans-serif;
+    font-family: 'Amatic SC', cursive;
+	font-size: 40px;
 	color: white;
 }
 
+.buttons_div {
+	background-color: white;
+}
+
+.white {
+	color: white !important;
+}
+
+.white:hover {
+	color: black !important;
+}
+
 #loginButton {
-	float: right;
-	margin-right: 5%;
+	color: white;
+}
+
+#loginButton:hover {
+	color: black !important;
 }
 
 #registerButton {
-	float: right;
-	margin-right: 1%;
+	color: white;
+}
+
+#registerButton:hover {
+	color: black !important;
 }
 
 .registerModal {
@@ -109,8 +136,14 @@ body {
     font-family: Arial Black, Gadget, sans-serif;
 }
 
+.centered_nav {
+	text-align: center !important;
+	margin: auto !important;
+	width: 20%;
+}
+
 .centered_text {
-	text-align: center;
+	text-align: center !important;
 }
 
 .search_card1 {
@@ -230,6 +263,8 @@ body {
 
 .calendar_title {
 	color: white;
+	font-family: 'Reem Kufi', sans-serif;
+
 }
 
 .card_checkbox {
@@ -239,4 +274,7 @@ body {
 .search_card_label {
 	margin-left: 5%;
 	color: white;
+	font-family: 'Reem Kufi', sans-serif;
+	font-size: 20px;
 }
+
