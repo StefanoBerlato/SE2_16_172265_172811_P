@@ -39,7 +39,7 @@ var add_user_to_db = function (User) {
 
 
 /*
- * @brief  This method just authenticates a user. It reads the file, then does its checks through a select query. If the  
+ * @brief This method just authenticates a user. It reads the file, then does its checks through a select query. If the  
  * user is present in the db, the function fills the given object with his data. Otherwise, it fills it with null values.
  * @param User. The user to authenticate.
  * @return a code number
@@ -71,7 +71,7 @@ var verify_user_presence = function (User) {
 
 
 /*
- * this method just add an insertion to the insertions.json file. More in detail, it reads the file from the 'data' directory.
+ * @brief this method just add an insertion to the insertions.json file. More in detail, it reads the file from the 'data' directory.
  * Then, if there are not other insertions with the same title, it adds it to the db and writes it down.
  * @param Insertion. The Insertion to insert in the db
  * @return a code number
@@ -108,7 +108,7 @@ var add_insertion_to_db  = function(Insertion) {
 
 
 /*
- * this method retrieves the data from the db. Then, if the insertion to modify is present in the db,
+ * @brief this method retrieves the data from the db. Then, if the insertion to modify is present in the db,
  * it updates its attributes and writes the db down. Otherwise, set an error code number.
  * @param Insertion. The Insertion to update in the db
  * @return a code number
@@ -145,7 +145,7 @@ var modify_insertion_in_db = function (Insertion) {
 
 
 /*
- * this method retrieves the data from the db. Then, if the insertion to delete is present in the db,
+ * @brief this method retrieves the data from the db. Then, if the insertion to delete is present in the db,
  * it removes it and writes the db down. Otherwise, set an error code number.
  * @param Insertion. The Insertion to delete in the db
  * @return a code number
@@ -171,7 +171,7 @@ var delete_insertion_from_db = function (Insertion) {
 
 
 /*
- * this method retrieves insertions from the db basing on the filters (house_typology, rooms_typology, locality, available_rooms, price_per_person). 
+ * @brief this method retrieves insertions from the db basing on the filters (house_typology, rooms_typology, locality, available_rooms, price_per_person). 
  * If a filter was not specified, it should be set to null bu the invoking function. If the user selects more than one preference (for example, a
  * house that is either in mesiano or povo) the "locality" filter should be "mesiano+povo" (so you concat strings with '+' char).
  * @param Insertion[]. The insertion array that will be filled with insertions that match filters.
@@ -225,7 +225,7 @@ var search_insertions_in_db = function (Insertions, house_typ, rooms_typ, local,
 }
 
 /*
- * this method retrieves the data about an insertion from the db once given its title.
+ * @brief this method retrieves the data about an insertion from the db once given its title.
  * @param Insertion. The insertion that will be filled with values taken from the db. Its title is the one to look for in the db.
  * @return a code number
  *  1 everything went ok, Insertion found
@@ -253,6 +253,35 @@ var get_insertion_from_db = function (Insertion) {
 }   
 
 
+/*
+ * @brief this method saves the single photo in the request in the file system.
+ * @param req. http request that contains the photo
+ * @param path. relative photo path in the fs
+ * @param folder. folder to save the photo (users or insertions)
+ * @return a code number
+ *  1 everything went ok, photo inserted
+ * -4 read photo error
+ * -5 write photo error
+ */
+var save_photo_in_fs = function (req, path, folder) {
+     try {                                                  
+        var img = fs.readFileSync(req.file.path)                                // try to get the photo from the http req
+        try {            
+            fs.writeFileSync(__dirname + "/photo/" + folder + "/" + path, img);     // try to save the photo in the fs
+            return 1;                                                               // return the 'everything ok' code number
+        }
+        catch (err) {                                                               // otherwise, catch the error
+            console.log(err);                                                       // console the error
+            return -5;                                                              // return the error code number
+        }  
+    } 
+    catch (err) {                                                               // otherwise, catch the error
+        console.log(err);                                                       // print the error
+        return -4;                                                              // return the error code number
+    }           
+}
+
+
 exports.add_user = add_user_to_db;
 exports.verify_user = verify_user_presence;
 exports.add_insertion = add_insertion_to_db;
@@ -260,6 +289,7 @@ exports.modify_insertion = modify_insertion_in_db;
 exports.delete_insertion = delete_insertion_from_db;
 exports.get_insertion = get_insertion_from_db;
 exports.search_insertions = search_insertions_in_db;
+exports.save_photo = save_photo_in_fs;
 
 
 /*

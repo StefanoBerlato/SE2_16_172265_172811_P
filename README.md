@@ -58,3 +58,5 @@ Codici numerici:
 -1 match not found
 -2 read file error
 -3 write file error
+-4 read photo from request error
+-5 write photo in file system error
