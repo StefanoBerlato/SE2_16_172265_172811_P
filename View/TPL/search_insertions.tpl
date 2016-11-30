@@ -25,7 +25,7 @@ accomodation, the name and a short description. -->
                     <h3 class = "filters_title">Filter by zone</h3>
                     <hr>
                     <form id = "filterForm">
-                        <input type = "checkbox" name = "Trento" value= "Trento" checked>
+                        <input type = "checkbox" name = "Trento" value= "Trento">
                         <label>Trento</label><br>
                         <input type = "checkbox" name = "Povo" value= "Povo">
                         <label>Povo</label><br>
@@ -40,9 +40,6 @@ accomodation, the name and a short description. -->
                         <br>
                         <h3 class = "filters_title">Filter by price</h3>
                         <hr>
-                        <label>Minumum Price</label><br>
-                        <input type = "number" name = "minPrice" class = "filters_input"><br>
-                        <br>
                         <label>Maximum Price</label><br>
                         <input type = "number" name = "maxPrice" class = "filters_input"><br>
                         <br>
@@ -51,6 +48,7 @@ accomodation, the name and a short description. -->
                         <label>Quantity</label><br>
                         <input type = "number" name = "availableRooms" class = "filters_input"><br>
                         <br>
+						<!--
                         <h3 class = "filters_title">Filter by period of availability</h3>
                         <hr>
                         <label>From</label><br>
@@ -58,7 +56,17 @@ accomodation, the name and a short description. -->
                         <br>
                         <label>To</label><br>
                         <input type = "date" name = "toDate" class = "filters_input">
-                        <hr>
+						-->
+						<h3 class = "filters_title">Filter by typology</h3>
+						<hr>
+						<input type = "checkbox" name = "singleRoom" value= "singleRoom">
+                        <label>Single room</label><br>
+						<input type = "checkbox" name = "doubleRoom" value= "doubleRoom">
+                        <label>Double room</label><br>
+						<input type = "checkbox" name = "boardingHouse" value= "boardingHouse">
+                        <label>Boarding house</label><br>
+						<input type = "checkbox" name = "apartment" value= "apartment">
+                        <label>Apartment</label><br>
                         <div class = "centered_text">
                             <button type="submit" class="btn btn-primary btn-lg">Apply Filters</button>
                         </div>
