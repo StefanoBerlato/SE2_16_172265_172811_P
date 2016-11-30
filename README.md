@@ -45,7 +45,7 @@ MODEL. Lato server sono presenti:
     
 Tabelle database:
 - Users (nickname primary key, password, email, phone_number, profile_photo_path)
-- Insertions (title primary key, description, available_rooms, rooms_typology, house_typology, free_from, address, locality, price_per_person, photo_path, nickname foreign key)
+- Insertions (title primary key, description, available_rooms, rooms_typology, house_typology, free_from (DD_MM_YYYY format), address, locality, price_per_person, photo_path, nickname foreign key)
 
 rooms_typology -> ["single_room", "double_room"]
 house_typology -> ["boarding_house", "apartment"]

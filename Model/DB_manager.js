@@ -23,7 +23,7 @@ var add_user_to_db = function (User) {
     var returning_value;                                        // the number code that is going to be returned
 
     if ( (returning_value = read_db(users_file_path,users_data_wrapper,users)) == 1) {  // if there were no errors while reading the file
-        if (users.data({nickname:User.nickname}).count() != 1 ) {                           // if there aren't users with the same nickname, insert the new user and write down the file
+        if (users.data({nickname:User.nickname}).count() != 1 && User.nickname != "" ) {    // if there aren't users with the same nickname, insert the new user and write down the file
             users.data.insert({  nickname:User.nickname,                                    // insert query
                             password:User.password, 
                             email:User.email, 
@@ -85,7 +85,7 @@ var add_insertion_to_db  = function(Insertion) {
     var returning_value;                                                // the number code that is going to be returned
 
     if ( (returning_value = read_db(insertions_file_path,insertions_data_wrapper,insertions)) == 1) {  // if there were no errors while reading the file
-        if (insertions.data({title:Insertion.title}).count() != 1 ) {                                   // if there aren't insertions with same title, insert the new one and write down the file
+        if (insertions.data({title:Insertion.title}).count() != 1 ) {                                  // if there aren't insertions with same title, insert the new one and write down the file
             insertions.data.insert({title:Insertion.title,                                              // insert query
                                     description:Insertion.description,  
                                     available_rooms:Insertion.available_rooms,  
@@ -180,35 +180,48 @@ var delete_insertion_from_db = function (Insertion) {
  * @param local. locality filter
  * @param av_rooms. available_rooms filter
  * @param max_price. max price_per_person filter
+ * @param from. free from date filter
  * @return a code number
  *  1 everything went ok, one or more matches found
  * -1 not match found
  * -2 read file error
  */
-var search_insertions_in_db = function (Insertions, house_typ, rooms_typ, local, av_rooms, max_price) {
+var search_insertions_in_db = function (Insertions, house_typ, rooms_typ, local, av_rooms, max_price, from) {
     var db = {data:""};                                                     // the object that will contain the db data about insertions
     var returning_value;                                                    // the number code that is going to be returned
     
     if (house_typ == null) house_typ = "apartment+boarding_house";          // checking the filters. If a filter was not specified, all classes are accepted
     if (rooms_typ == null) rooms_typ = "single_room+double_room";           // ...
     if (local == null) local = "trento+povo+mesiano+san_dona+villazzano";   // ...
-    if (av_rooms == null) av_rooms = Number.MAX_SAFE_INTEGER;               // ...
-    if (max_price == null) av_rooms = -Number.MAX_SAFE_INTEGER;             // ...
-    
-    if ( (returning_value = read_db(insertions_file_path,insertions_data_wrapper,db)) == 1) {   // if there were no errors while reading the file
-        var Insertions = db.data({                                                              // do a select query with the filters
+    if (av_rooms == null) av_rooms = -Number.MAX_SAFE_INTEGER;              // ...
+    if (max_price == null) max_price = +Number.MAX_SAFE_INTEGER;            // ...
+    if (from == null) from = "31_12_9999";                                  // ...
+
+    if ( (returning_value = read_db(insertions_file_path,insertions_data_wrapper,db)) == 1) {   // filters: if there were no errors while reading the file
+            Insertions.data = db.data({                                                         // do a select query with the filters
             house_typology:house_typ.split("+"),                                                // so house_typology must be in the house_typ splitted string
             rooms_typology:rooms_typ.split("+"),                                                // so rooms_typology must be in the rooms_typ splitted string
             locality:local.split("+"),                                                          // so locality must be in the local splitted string
-            available_rooms:{'>=':av_rooms,                                                     // at least there should be "av_rooms" available rooms
+            available_rooms:{'>=':av_rooms},                                                    // at least there should be "av_rooms" available rooms
             price_per_person:{'<=':max_price}                                                   // at most the price shold be "max_price"
         }).get();                                                                               // retrieves all the data from db as an array of objects    
-            
-        if (Insertions.length == 0) {                                                           // and if there are no objects, set the proper returning value
-            returning_value = -1;
+
+        from = from.split("_");                                                         // filter for date: elaborate the from filter in order to cast it into a date
+        from = new Date(parseInt(from[2]),(parseInt(from[1])-1),parseInt(from[1]));     // creating a date givin as parameters YYYY, MM-1, DD
+        for (var i = 0 ; i < Insertions.data.length ; i++) {                            // then, for each remaining insertion
+            var i_date = Insertions.data[i].free_from.split("_");                       // do the same elaboration for this date as before
+            i_date = new Date(parseInt(i_date[2]),(parseInt(i_date[1])-1),parseInt(i_date[0]));
+            if (from.getTime() > i_date.getTime()) {                                    // if the apartment becomes free after the filter specified by the user
+                Insertions.data.splice(i,1);                                            // remove it
+                i--;                                                                    // obviously decrease the index (we've just cut an elemet)
+            }
+        }
+        
+        if (Insertions.data.length == 0) {      // and if there are no objects
+            returning_value = -1;               // set the proper returning value
         }
     }
-    return returning_value;                                                             // return the code number
+    return returning_value;                     // return the code number
 }
 
 /*
@@ -227,17 +240,9 @@ var get_insertion_from_db = function (Insertion) {
         var query = insertions.data({title:Insertion.title});                                               // execute the query
         if (query.count() == 1) {                                                                           // if there is a match                                            
             query = query.first();                                                                          // take the first (and only) record
-            Insertion.title = query.title;                                                                  // fills the Insertion object
-            Insertion.description = query.description;
-            Insertion.available_rooms = query.available_rooms;
-            Insertion.rooms_typology = query.rooms_typology;
-            Insertion.house_typology = query.house_typology;
-            Insertion.free_from = query.free_from;
-            Insertion.address = query.address;
-            Insertion.locality = query.locality;
-            Insertion.price_per_person = query.price_per_person;
-            Insertion.photo_path = query.photo_path;
-            Insertion.nickname = query.nickname;
+            for (attribute in query) {                                                                      // fill the Insertion object
+                Insertion[attribute] = query[attribute];
+            }
         }
         else {                                                                                              // otherwise, if the insertion was already inserted
             returning_value = -1;                                                                           // set the returning value to -1
