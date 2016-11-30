@@ -207,11 +207,11 @@ var search_insertions_in_db = function (Insertions, house_typ, rooms_typ, local,
         }).get();                                                                               // retrieves all the data from db as an array of objects    
 
         from = from.split("_");                                                         // filter for date: elaborate the from filter in order to cast it into a date
-        from = new Date(parseInt(from[2]),(parseInt(from[1])-1),parseInt(from[1]));     // creating a date givin as parameters YYYY, MM-1, DD
+        from = new Date(parseInt(from[2]),(parseInt(from[1])-1),parseInt(from[0]));     // creating a date givin as parameters YYYY, MM-1, DD
         for (var i = 0 ; i < Insertions.data.length ; i++) {                            // then, for each remaining insertion
             var i_date = Insertions.data[i].free_from.split("_");                       // do the same elaboration for this date as before
             i_date = new Date(parseInt(i_date[2]),(parseInt(i_date[1])-1),parseInt(i_date[0]));
-            if (from.getTime() > i_date.getTime()) {                                    // if the apartment becomes free after the filter specified by the user
+            if (from.getTime() < i_date.getTime()) {                                    // if the apartment becomes free after the filter specified by the user
                 Insertions.data.splice(i,1);                                            // remove it
                 i--;                                                                    // obviously decrease the index (we've just cut an elemet)
             }

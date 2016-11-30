@@ -432,7 +432,7 @@ describe("Test: search insertions from the db", function() {
     
     describe("Try to search with no filters", function() {                      // this test tries to search with no filters, so that all the insertions should be returned
         it("should return 1", function(){
-           expect(db_manager.search_insertions(results,null,null,null,null,null)).toBe(1);  
+           expect(db_manager.search_insertions(results,null,null,null,null,null,null)).toBe(1);  
         });
         
         it("verify that all the insertions in the db were taken", function(){         
@@ -442,7 +442,7 @@ describe("Test: search insertions from the db", function() {
     
     describe("Try to search with one filter", function() {                      // this test tries to search with "trento" filter, so that only insertion 6 should be returned
         it("should return 1", function(){
-           expect(db_manager.search_insertions(results,null,null,"trento",null,null)).toBe(1);                
+           expect(db_manager.search_insertions(results,null,null,"trento",null,null,null)).toBe(1);                
         });
         it("verify that there is only one result", function(){         
            expect(results.data.length).toBe(1);        
@@ -454,7 +454,7 @@ describe("Test: search insertions from the db", function() {
     
     describe("Try to search with all filters", function() {                     // this test tries to search with all filters refered to insertion 5, so that only insertion 5 should be returned
         it("should return 1", function(){
-           expect(db_manager.search_insertions(results,"boarding_house","double_room","villazzano",2,250)).toBe(1);                
+           expect(db_manager.search_insertions(results,"boarding_house","double_room","villazzano",2,250,"30_12_2016")).toBe(1);                
         });
         it("verify that there is only one result", function(){         
            expect(results.data.length).toBe(1);        
@@ -464,16 +464,15 @@ describe("Test: search insertions from the db", function() {
         });
     });
     
-    describe("Try to search with all filters", function() {                     // this test tries to search with combinted filters. it should find insertion 1 and 4
+    describe("Try to search with all filters", function() {                     // this test tries to search with combinted filters. it should find insertion 4
         it("should return 1", function(){
-           expect(db_manager.search_insertions(results,"apartment","double_room+single_room","povo+mesiano",2,300)).toBe(1);                
+           expect(db_manager.search_insertions(results,"apartment","double_room+single_room","povo+mesiano",2,300,"31_12_2016")).toBe(1);                
         });
-        it("verify that there are two results", function(){         
-           expect(results.data.length).toBe(2);        
+        it("verify that there is only one result", function(){         
+           expect(results.data.length).toBe(1);        
         });
-        it("verify that the insertions retrieved are the 1 and the 4", function(){         
-           expect(results.data[0].title).toBe("beautiful house");  
-           expect(results.data[1].title).toBe("big flat near university, povo");  
+        it("verify that the insertion retrieved is the insertion 1", function(){         
+           expect(results.data[0].title).toBe("big flat near university, povo");
         });
     });
 });
