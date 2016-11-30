@@ -24,7 +24,7 @@ accomodation, the name and a short description. -->
                 </div>
                 <br>
                 <div class = "well" id = "user_well">
-                    <h3 class = "user_div_title">Mario Red</h3>
+                    <h3 class = "user_div_title">(:nickname:)</h3>
                     <hr>
                     <button class="btn btn-primary btn-lg">Manage your insertions</button>
                 </div>
@@ -33,6 +33,7 @@ accomodation, the name and a short description. -->
                 <h2 class = "insertions_title">Your Insertions</h2>
                 <br>
 				<br>
+				
                 <div class = "well" id = "card_div">
                     <img src = "../Pictures/house_card_1.jpg" class = "card_img">
                     <div class = "card_img_div">

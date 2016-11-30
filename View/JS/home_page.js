@@ -1,40 +1,36 @@
-var checkbox = document.getElementById("checkbox1");
+/*
+This script is meant to handle the graphic of the homepage. There is a single function "select", that modifies the view of the
+cards in the homepage once the user selects them. 
+*/
 
 function select(){
 	
-	console.log("Chiamata Select");
-	
+	// on the basis of the id attribute of the selected card, 
 	switch (event.target.id) {
 			
 		case "card1":
-			var thisCard = document.getElementById("card1");
-			var checkbox = document.getElementById("checkbox1");
-			if(checkbox.checked == false){
-				thisCard.style = "border: 3px solid green;";
-				checkbox.checked = true;
-				console.log(checkbox.checked);
+			var thisCard = document.getElementById("card1");		// get the card element
+			var checkbox = document.getElementById("checkbox1");	// get the hidden checkbox element
+			if(checkbox.checked == false){							// if the checkbox isn't selected...
+				thisCard.style = "border: 3px solid green;";		// ...modify the view of the card
+				checkbox.checked = true;							// and set the checkbox as selected
 			}
-			else {
-				console.log("Entro nell'else");
-				thisCard.style = "border: 1px solid white;";
-				checkbox1.checked = false;
-				console.log(checkbox.checked);
+			else {													// otherwise...
+				thisCard.style = "border: 1px solid white;";		// ...set the card to its previous view
+				checkbox1.checked = false;							// set the checkbox as unchecked
 			}
 			break;
 			
-		case "card2":
+		case "card2":												// do the same for every card
 			var thisCard = document.getElementById("card2");
 			var checkbox = document.getElementById("checkbox2");
 			if(checkbox.checked == false){
 				thisCard.style = "border: 3px solid green;";
 				checkbox.checked = true;
-				console.log(checkbox.checked);
 			}
 			else {
-				console.log("Entro nell'else");
 				thisCard.style = "border: 1px solid white;";
 				checkbox.checked = false;
-				console.log(checkbox.checked);
 			}
 			break;
 			
@@ -44,13 +40,10 @@ function select(){
 			if(checkbox.checked == false){
 				thisCard.style = "border: 3px solid green;";
 				checkbox.checked = true;
-				console.log(checkbox.checked);
 			}
 			else {
-				console.log("Entro nell'else");
 				thisCard.style = "border: 1px solid white;";
 				checkbox.checked = false;
-				console.log(checkbox.checked);
 			}
 			break;
 			
@@ -60,13 +53,10 @@ function select(){
 			if(checkbox.checked == false){
 				thisCard.style = "border: 3px solid green;";
 				checkbox.checked = true;
-				console.log(checkbox.checked);
 			}
 			else {
-				console.log("Entro nell'else");
 				thisCard.style = "border: 1px solid white;";
 				checkbox.checked = false;
-				console.log(checkbox.checked);
 			}
 			break;
 			
@@ -76,13 +66,10 @@ function select(){
 			if(checkbox.checked == false){
 				thisCard.style = "border: 3px solid green;";
 				checkbox.checked = true;
-				console.log(checkbox.checked);
 			}
 			else {
-				console.log("Entro nell'else");
 				thisCard.style = "border: 1px solid white;";
 				checkbox.checked = false;
-				console.log(checkbox.checked);
 			}
 			break;
 			
@@ -92,13 +79,10 @@ function select(){
 			if(checkbox.checked == false){
 				thisCard.style = "border: 3px solid green;";
 				checkbox.checked = true;
-				console.log(checkbox.checked);
 			}
 			else {
-				console.log("Entro nell'else");
 				thisCard.style = "border: 1px solid white;";
 				checkbox.checked = false;
-				console.log(checkbox.checked);
 			}
 			break;
 			
@@ -108,13 +92,10 @@ function select(){
 			if(checkbox.checked == false){
 				thisCard.style = "border: 3px solid green;";
 				checkbox.checked = true;
-				console.log(checkbox.checked);
 			}
 			else {
-				console.log("Entro nell'else");
 				thisCard.style = "border: 1px solid white;";
 				checkbox.checked = false;
-				console.log(checkbox.checked);
 			}
 			break;
 			
@@ -124,13 +105,10 @@ function select(){
 			if(checkbox.checked == false){
 				thisCard.style = "border: 3px solid green;";
 				checkbox.checked = true;
-				console.log(checkbox.checked);
 			}
 			else {
-				console.log("Entro nell'else");
 				thisCard.style = "border: 1px solid white;";
 				checkbox.checked = false;
-				console.log(checkbox.checked);
 			}
 			break;
 			
@@ -140,13 +118,10 @@ function select(){
 			if(checkbox.checked == false){
 				thisCard.style = "border: 3px solid green;";
 				checkbox.checked = true;
-				console.log(checkbox.checked);
 			}
 			else {
-				console.log("Entro nell'else");
 				thisCard.style = "border: 1px solid white;";
 				checkbox.checked = false;
-				console.log(checkbox.checked);
 			}
 			break;
 			
