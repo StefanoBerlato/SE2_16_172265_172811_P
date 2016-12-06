@@ -58,15 +58,15 @@ information. In the panel there is also a button by which the user can contact t
             <!-- Here follows the information panel -->
             <div class = "col-sm-5">
                 <div class = "well" id = "info_well">
-                    <h3 class = "desc_title">Beautiful flat for students</h3>
+                    <h3 class = "desc_title">(:insertionTitle:)</h3>
                     <hr>
-                    <p class = "desc_par">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <p class = "desc_par">(:description:)</p>
                     <br>
-                    <h3 class = "desc_title">Salient Information</h3>
+                    <h3 class = "desc_title">(:salientInformation:)</h3>
                     <hr>
-                    <p class = "desc_par">Price : 250€/mese</p>
-                    <p class = "desc_par">Available rooms : 2</p>
-                    <p class = "desc_par">Free from: now</p>
+                    <p class = "desc_par">Price : (:price:)</p>
+                    <p class = "desc_par">Available rooms : (:availableRooms:)</p>
+                    <p class = "desc_par">Free from: (:freeFrom:)</p>
                     <br>
                     <br>
                     <div class = "centered_text">

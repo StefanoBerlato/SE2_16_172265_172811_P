@@ -20,8 +20,6 @@ accomodation, the name and a short description. -->
   			<div class="container-fluid">
     			<ul class="nav navbar-nav">
       				<li><a href="home_page.html" class = "white">Home</a></li>
-      				<li><a href="#" id = "loginButton">Login</a></li>
-      				<li><a href="#" id = "registerButton">Register</a></li> 
     			</ul>
   			</div>
 		</nav>
@@ -29,7 +27,7 @@ accomodation, the name and a short description. -->
         <div class = "container">
             <div class = "col-sm-6">
                 <div class = "profile_pic_div">
-                    <img src = "../Pictures/profile_pic.png" class = "profile_pic">
+                    <img src = "(:photo_src:)" class = "profile_pic">
                 </div>
                 <br>
                 <div class = "well" id = "user_well">
