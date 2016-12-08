@@ -85,8 +85,8 @@ var delete_user_from_db = function (User) {
     var returning_value;                                                // the number code that is going to be returned
 
     if ( (returning_value = read_db(users_file_path, users_data_wrapper, users)) == 1) {   // if there were no errors while reading the file
-        if (users.data({nickname:users.nickname}).count() == 1 ) {                              // if there is a user with the same nickname
-            users.data({nickname:users.nickname}).remove();                                     // remove query
+        if (users.data({nickname:User.nickname}).count() == 1 ) {                               // if there is a user with the same nickname
+            users.data({nickname:User.nickname}).remove();                                      // remove query
             returning_value = write_db (users_file_path, users_data_wrapper, users);            // write down the db trough the write_db function, and set the returning value
         }
         else                                                                                    // otherwise, if the user wasn't present

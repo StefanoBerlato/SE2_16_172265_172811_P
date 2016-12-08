@@ -1,4 +1,3 @@
-
  /*  test of the database manager module. It is divided into two sections:
   *  - the first one is to test the user management. It tests the following functionalities:
   *          - insert new user (both nickname and password, only password)
@@ -65,7 +64,7 @@ var User_1_right_nickname = {nickname:"mario_rossi_65",
               password:"password_di_giacomo_tait", 
               email:"", 
               phone_number:"", 
-              profile_photo_path:""};   // a user with same password of User_2. All the other fields are null
+              profile_photo_path:""};  // a user with same password of User_2. All the other fields are null
 
 
  /* Test for insert users into the db file. It checks 
@@ -128,7 +127,7 @@ describe("Test: verify users' presence into user's database file", function() {
         });
     });
     
-    describe("Try to verify the presence of user 2", function() {           // this test tries to login user_1_right_nickname
+    describe("Try to verify the presence of user 1", function() {           // this test tries to login user_1_right_nickname
         var old_pn = User_1_right_nickname.phone_number;                    // store the old phone number
         it("it returns 1", function(){                                      // it checks that the user is actually in the db
             expect(db_manager.verify_user(User_1_right_nickname)).toBe(-1);
@@ -142,13 +141,40 @@ describe("Test: verify users' presence into user's database file", function() {
     });
     
     describe("Try to verify the presence of user 3", function() {           // this test tries to login user_3
-        it("it returns -1", function(){                                     // user 3 was not inserted, so it should not be in the dv
+        it("it returns -1", function(){                                     // user 3 was not inserted, so it should not be in the db
            expect(db_manager.verify_user(User_3)).toBe(-1);
         });
         it("check the username, that should be null", function(){           // hence its fields should now be set to 'null'
            expect(User_3.nickname).toBe(null);
         });
     
+    });
+});
+
+
+ /* Test for delete users. It 
+  * - deletes user 2.
+  * - verifies the not presence of the user 2
+  * - deletes user 3
+  */
+describe("Test: delete users from user's database file", function() {
+    
+    describe("Try to delete user 2", function() {                           // this test tries to delete user_2
+        it("it returns 1", function(){                                      // first of all, it checks that the user is actually in the db
+           expect(db_manager.delete_user(User_2)).toBe(1);
+        });      
+    });
+    
+    describe("Try to verify the presence of user 2", function() {           // this test tries to login user_2
+        it("it returns 1", function(){                                      // it checks that the user is no more in the db
+            expect(db_manager.verify_user(User_2_empty)).toBe(-1);
+        });
+    });
+    
+   describe("Try to delete user 3", function() {                            // this test tries to delete user_3
+        it("it returns -1", function(){                                     // user 3 was not inserted, so it should not be in the db
+           expect(db_manager.delete_user(User_3)).toBe(-1);
+        });      
     });
 });
 

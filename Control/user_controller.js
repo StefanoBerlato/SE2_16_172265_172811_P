@@ -24,7 +24,10 @@ var login  = function(req, res) {
         default:    message = error_message_prefix + "\"user - login - error, code " + code + "  " + new Date()  + "\""; 
                     http_status = 500; to_bind_file_path = __dirname + '/../View/TPL/error_page.tpl';
     }
-    
+    console.log("code ", code);
+    console.log("message ", message);
+    console.log("http_status ", http_status);
+    console.log("to_bind_file_path ", to_bind_file_path);    
     res.writeHead(http_status, {'Content-Type': 'text/html'});      // write the proper set header
         bind.toFile( to_bind_file_path, {                           // bind to tpl
             nickname : User_to_authenticate.nickname,               // set the attributes
@@ -73,10 +76,10 @@ var register  = function(req, res) {
     
     res.writeHead(http_status, {'Content-Type': 'text/html'});      // write the proper set header
         bind.toFile( to_bind_file_path, {                           // bind to tpl
-            nickname : User_to_authenticate.nickname,               // set the attributes
-            photo_src : User_to_authenticate.profile_photo_path,    // ...
-            phone_number : User_to_authenticate.phone_number,       // ...
-            email : User_to_authenticate.email,                     // ...
+            nickname : User_to_insert.nickname,                     // set the attributes
+            photo_src : User_to_insert.profile_photo_path,          // ...
+            phone_number : User_to_insert.phone_number,             // ...
+            email : User_to_insert.email,                           // ...
             error_message : message                                 // ...
         }, function(data) { res.end(data); });                      // return the tpl   
 }
