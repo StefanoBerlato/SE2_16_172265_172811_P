@@ -1,22 +1,21 @@
-body {
-    background-color: rgb(252, 245, 204) !important;
-    background-repeat: repeat; 
-    background-position: center;
-}
-
-.main_title {
-    text-align: center; 
-    font-family: Arial Black, Gadget, sans-serif;
-}
-
 #filters_div {
-    background: rgb(216, 216, 208); 
-    border-style: solid 2px; 
-    border-color: black;
+    border: 2px solid white;
+	border-radius: 15px;
+	background-color: rgba(255, 255, 255, 0.3) !important;
 }
 
 .filters_title {
-    font-family: Impact, Charcoal, sans-serif;
+     text-align: center; 
+    font-family: 'Amatic SC', cursive;
+	color: white;
+	font-size: 30px;
+}
+
+label {
+	color: white;
+	font-family: 'Reem Kufi', sans-serif;
+	font-size: 15px;
+	text-align: center;
 }
 
 .filters_input {
@@ -28,9 +27,9 @@ body {
 }
 
 #card_div {
-    background: rgb(106, 172, 186); 
-    border-style: solid 2px; 
-    border-color: black;
+    border: 2px solid white;
+	border-radius: 15px;
+	background-color: rgba(255, 255, 255, 0.3) !important;
 }
 
 .card_img_div {
@@ -44,6 +43,16 @@ body {
 }
 
 .card_title {
-    font-family: Arial Black, Gadget, sans-serif; 
-    top: 0px;
+    text-align: center; 
+    font-family: 'Amatic SC', cursive;
+	color: white;
+	font-size: 30px;
 }
+
+.shortDescription {
+	color: white;
+	font-family: 'Reem Kufi', sans-serif;
+	font-size: 15px;
+	text-align: center;
+}
+

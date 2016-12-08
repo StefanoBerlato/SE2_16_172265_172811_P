@@ -6,9 +6,9 @@ information. In the panel there is also a button by which the user can contact t
 <html>
 
     <head> 
-        <title>Insertion Page</title>
-        <link href="..\CSS\insertion_page.css" rel="stylesheet" type="text/css">
+        <title>Error Page</title>
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+		<link href="..\CSS\error_page.css" rel="stylesheet" type="text/css">
 		<link href="..\CSS\navbar_modals.css" rel="stylesheet" type="text/css">
 		<link href="https://fonts.googleapis.com/css?family=Amatic+SC|Cinzel|Reem+Kufi" rel="stylesheet">
         <meta charset="utf-8">
@@ -89,43 +89,17 @@ information. In the panel there is also a button by which the user can contact t
   			</div>
 		</div>
 		<br>
-        <div class = "container">
-            <div class = "col-sm-7">
-                
-                <!-- Here follows the map -->
-                <h3 class = "desc_title">Map</h3>
-                <div class = "map_div">
-                    <iframe width="100%" height="400" src="http://www.mapi.ie/create-google-map/map.php?width=100%&amp;height=600&amp;hl=en&amp;q=Trento+(Trento)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=A&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" class = "map_iframe"></iframe>
-                </div>
-				<br>
-				<br>
-            </div>
-            
-            <!-- Here follows the information panel -->
-            <div class = "col-sm-5">
-                <div class = "well" id = "info_well">
-                    <h3 class = "desc_title">(:insertionTitle:)</h3>
-                    <hr>
-                    <p class = "desc_par">(:description:)</p>
-                    <br>
-                    <h3 class = "desc_title">(:salientInformation:)</h3>
-                    <hr>
-                    <p class = "desc_par">Price : (:price:)</p>
-                    <p class = "desc_par">Available rooms : (:availableRooms:)</p>
-                    <p class = "desc_par">Free from: (:freeFrom:)</p>
-                    <br>
-                    <br>
-                    <div class = "centered_text">
-                        <button class="btn btn-primary btn-lg">Contact the renter</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        
-        
-        
-        
+		
+		<div class = "container">
+			<div class = "col-sm-4 col-sm-offset-4 error_div">
+				<h3 class = "ops">Oops!</h3>
+				<hr>
+				<p class = "error_message">(:message:)</p>
+			</div>
+		</div>
+		
+		
+		
         <script src = "../JS/modals.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
