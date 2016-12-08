@@ -17,7 +17,6 @@ var add_insertion  = function(req, res)
 }
 
 
-
 /*
  *
  * @param req

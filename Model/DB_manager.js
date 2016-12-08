@@ -71,6 +71,32 @@ var verify_user_presence = function (User) {
 
 
 /*
+ * @brief this method retrieves the data from the db. Then, if the user to delete is present in the db,
+ * it removes it and writes the db down. Otherwise, set an error code number.
+ * @param User. The User to delete from the db
+ * @return a code number
+ *  1 everything went ok, User deleted
+ * -1 User not present, User not deleted
+ * -2 read file error
+ * -3 write file error
+ */
+var delete_user_from_db = function (User) {
+    var users = {data:""};                                              // the object that will contain the db data about Users
+    var returning_value;                                                // the number code that is going to be returned
+
+    if ( (returning_value = read_db(users_file_path, users_data_wrapper, users)) == 1) {   // if there were no errors while reading the file
+        if (users.data({nickname:users.nickname}).count() == 1 ) {                              // if there is a user with the same nickname
+            users.data({nickname:users.nickname}).remove();                                     // remove query
+            returning_value = write_db (users_file_path, users_data_wrapper, users);            // write down the db trough the write_db function, and set the returning value
+        }
+        else                                                                                    // otherwise, if the user wasn't present
+            returning_value = -1;                                                               // set the returning value to -1
+    }
+    return returning_value;                                                                 // return the code number
+}
+
+
+/*
  * @brief this method just add an insertion to the insertions.json file. More in detail, it reads the file from the 'data' directory.
  * Then, if there are not other insertions with the same title, it adds it to the db and writes it down.
  * @param Insertion. The Insertion to insert in the db
@@ -147,7 +173,7 @@ var modify_insertion_in_db = function (Insertion) {
 /*
  * @brief this method retrieves the data from the db. Then, if the insertion to delete is present in the db,
  * it removes it and writes the db down. Otherwise, set an error code number.
- * @param Insertion. The Insertion to delete in the db
+ * @param Insertion. The Insertion to delete from the db
  * @return a code number
  *  1 everything went ok, Insertion deleted
  * -1 insertion not present, Insertion not deleted
@@ -163,7 +189,7 @@ var delete_insertion_from_db = function (Insertion) {
             insertions.data({title:Insertion.title}).remove();                                              // remove query
             returning_value = write_db (insertions_file_path, insertions_data_wrapper, insertions);         // write down the db trough the write_db function, and set the returning value
         }
-        else                                                                                                // otherwise, if the insertion was already inserted
+        else                                                                                                // otherwise, if the insertion wasn't present
             returning_value = -1;                                                                           // set the returning value to -1
     }
     return returning_value;                                                             // return the code number
@@ -284,6 +310,7 @@ var save_photo_in_fs = function (req, path, folder) {
 
 exports.add_user = add_user_to_db;
 exports.verify_user = verify_user_presence;
+exports.delete_user = delete_user_from_db;
 exports.add_insertion = add_insertion_to_db;
 exports.modify_insertion = modify_insertion_in_db;
 exports.delete_insertion = delete_insertion_from_db;

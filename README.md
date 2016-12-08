@@ -59,4 +59,4 @@ Codici numerici:
 -2 read file error
 -3 write file error
 -4 read photo from request error
--5 write photo in file system error
+-5 save photo in file system error
