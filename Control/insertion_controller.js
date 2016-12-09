@@ -4,9 +4,9 @@ var bind = require('bind');                     // requiring bind, in order to r
 var insertions_photos_folder = "insertions";                    // the name of the directory where we save the photos of the insertions
 var error_message_prefix = "An error occured. Please contact the webmaster at_support@gmail.com with this message: ";   // error message prefix
 var User_pushing_data = {nickname:null, password:null, email:null, phone_number:null, profile_photo_path:null};         // the user that's forwarding the request
-var to_bind_file_path = __dirname + '/../View/TPL/user.tpl';    // the file the function should bind (by default, the user.tpl page)
-var http_status = 200;                                          // the http status (by default 200 ok)
-var message = "none";                                           // error message to display to the user (by default, none)
+var to_bind_file_path;                                          // the file the function should bind
+var http_status;                                                // the http status
+var message;                                                    // error message to display to the users
 
 
 /*
@@ -34,7 +34,8 @@ var add_insertion  = function(req, res) {
         switch (add_code) {                                                             // switch based on the code
         case 1:     var photo_code = db.save_photo(req, relative_photo_path, insertions_photos_folder);         // if 1, the insertion was succesfully inserted 
                     switch (photo_code) {                                                                       // so try to save the photo too 
-                    case  1:    break;                                                                              // if 1, the photo is saved. Everything went ok 
+                    case  1:    to_bind_file_path = __dirname + '/../View/TPL/user.tpl';                            // if 1, the photo is saved. Everything went ok 
+                                http_status = 200; break; 
                     default:    to_bind_file_path = __dirname + '/../View/TPL/error_page.tpl';                      // if not, there was a server error
                                 http_status = 500;  
                                 var delete_insertion_code = db.delete_insertion_from_db(new_insertion_to_add);      // Try to rollback
@@ -46,7 +47,7 @@ var add_insertion  = function(req, res) {
                     }  
                     break; 
         case -1:    message = "Sorry, the title is already in use. Please try again with a different title";    // if -1, the title of the insertion was already in use. Otherwise, error
-                    to_bind_file_path = __dirname + '/../View/TPL/error_page.tpl'; break;
+                    to_bind_file_path = __dirname + '/../View/TPL/error_page.tpl'; http_status = 500; break;
         default:    message = error_message_prefix + "\"insertion add - error - code " + add_code + "  " + new Date()  + "\""; 
                     to_bind_file_path = __dirname + '/../View/TPL/error_page.tpl'; http_status = 500;
         }
@@ -81,7 +82,8 @@ var modify_insertion  = function(req, res) {
         switch (update_code) {                                                          // switch based on the code
         case 1:     var photo_code = db.save_photo(req, relative_photo_path, insertions_photos_folder);         // if 1, the insertion was succesfully updated
                     switch (photo_code) {                                                                       // try to update the photo 
-                    case  1:    break;                                                                              // if 1, the photo is updated. Everything went ok 
+                    case  1:    to_bind_file_path = __dirname + '/../View/TPL/user.tpl';                            // if 1, the photo is saved. Everything went ok 
+                                http_status = 200; break; 
                     default:    to_bind_file_path = __dirname + '/../View/TPL/error_page.tpl';                      // if not, there was a server error. Notificate it to the user
                                 http_status = 500;      
                                 message = error_message_prefix + "\"insertion update save_photo - error - code " + delete_insertion_code + "  " + new Date()  + "\""; 
@@ -89,7 +91,7 @@ var modify_insertion  = function(req, res) {
                     }  
                     break;                                                                                      // break 1 and go further with other cases (insertion not present, errors)
         case -1:    message = "There isn't any insertion with that title... If you think there is an error, contact the webmaster at_support@gmail.com"; 
-                    to_bind_file_path = __dirname + '/../View/TPL/error_page.tpl'; break;
+                    to_bind_file_path = __dirname + '/../View/TPL/error_page.tpl'; http_status = 500; break;
         default:    message = error_message_prefix + "\"insertion update - error - code " + add_code + "  " + new Date()  + "\""; 
                     to_bind_file_path = __dirname + '/../View/TPL/error_page.tpl'; http_status = 500;
         }
@@ -111,9 +113,10 @@ var delete_insertion  = function(req, res) {
         var insertion_to_delete =  {title:req.body.title};                              // the insertion that is going to be deleted from the db
         var delete_code = db.delete_insertion(insertion_to_delete);                     // try to delete the insertion
         switch (delete_code) {                                                          // switch based on the returned code
-        case 1:     break;                                                              // if 1, everything went ok. Else, insertion not present or errors
+        case  1:    to_bind_file_path = __dirname + '/../View/TPL/user.tpl';            // if 1, the insertion has been deleted. Otherwise, error
+                    http_status = 200; break; 
         case -1:    message = "There isn't any insertion with that title... If you think there is an error, contact the webmaster at_support@gmail.com"; 
-                    to_bind_file_path = __dirname + '/../View/TPL/error_page.tpl'; break;
+                    to_bind_file_path = __dirname + '/../View/TPL/error_page.tpl'; http_status = 500; break;
         default:    message = error_message_prefix + "\"insertion delete - error - code " + add_code + "  " + new Date()  + "\""; 
                     to_bind_file_path = __dirname + '/../View/TPL/error_page.tpl'; http_status = 500;
         }
