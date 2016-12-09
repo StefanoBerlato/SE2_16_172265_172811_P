@@ -39,8 +39,8 @@ app.post('/register', upload.single('file'), function(req, res, next) {user_cont
 
 
 //this sorts the requestes for the '/add_insertion' route in POST to the insertion_controller module
-app.post('/add_insertion',    function(req, res) { insertion_controller.add_insertion(req, res);    });
-app.post('/modify_insertion', function(req, res) { insertion_controller.modify_insertion(req, res); });
+app.post('/add_insertion',    upload.single('file'), function(req, res, next) { insertion_controller.add_insertion(req, res);    });
+app.post('/modify_insertion', upload.single('file'), function(req, res, next) { insertion_controller.modify_insertion(req, res); });
 app.post('/delete_insertion', function(req, res) { insertion_controller.delete_insertion(req, res); });
 
 

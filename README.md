@@ -28,9 +28,9 @@ CONTROL. Lato server sono presenti:
     - "/login" POST. Controlla i parametri e ritorna 'user.tpl' con i dati ricavati dal DB_manager.
     - "/register" POST. Controlla i parametri, inserisce il nuovo utente e ritorna 'user.tpl' con i dati ricavati dal DB_manager.
 - "insertions_controller.js". Si occupa di gestire add-modify-delete delle inserzioni. Ha le rotte:
-    - "/add_insertion.js". Controlla i parametri e aggiunge l'inserzione. Ritorna 'user.tpl'.
-    - "/modify_insertion.js". Controlla i parametri e modifica l'inserzione. Ritorna 'user.tpl'.
-    - "/delete_insertion.js". Controlla i parametri ed elimina l'inserzione. Ritorna 'user.tpl'.
+    - "/add_insertion". Controlla i parametri e aggiunge l'inserzione. Ritorna 'user.tpl'.
+    - "/modify_insertion". Controlla i parametri e modifica l'inserzione. Ritorna 'user.tpl'.
+    - "/delete_insertion". Controlla i parametri ed elimina l'inserzione. Ritorna 'user.tpl'.
 
 
 MODEL. Lato server sono presenti:
@@ -50,7 +50,7 @@ Tabelle database:
 rooms_typology -> ["single_room", "double_room"]
 house_typology -> ["boarding_house", "apartment"]
 locality -> ["povo", "mesiano", "villazzano", "san_dona", "trento"]
-if you add a class in the above ones, remember to add it also into the DB_manager.js file, in the search_insertions_in_db method
+NB: if you add a class in the above ones, remember to add it also into the DB_manager.js file, in the search_insertions_in_db method
 
 
 Codici numerici:

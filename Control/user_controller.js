@@ -2,11 +2,11 @@ var db = require('../Model/db_manager');        // requiring db_manager
 var bind = require('bind');                     // requiring bind, in order to return templates 
 
 var users_photos_folder = "users";              // the name of the directory where we save the users' photos
-var error_message_prefix = "An error occured. Please contact the webmaster at_support@gmail.com with this messagge: ";
+var error_message_prefix = "An error occured. Please contact the webmaster at_support@gmail.com with this message: ";
 
 /*
  * @brief this method receives the request forwarded by the index.js file for the "/login" route.
- * It authenticates the user, and handle the returned code from the db_manager. Ir returns the 
+ * It authenticates the user, and handles the returned code from the db_manager. Ir returns the 
  * user.tpl template if everything is succesful, an error page otherwise
  * @param req. http request
  * @param res. http response
@@ -24,18 +24,16 @@ var login  = function(req, res) {
         default:    message = error_message_prefix + "\"user - login - error, code " + code + "  " + new Date()  + "\""; 
                     http_status = 500; to_bind_file_path = __dirname + '/../View/TPL/error_page.tpl';
     }
-    console.log("code ", code);
-    console.log("message ", message);
-    console.log("http_status ", http_status);
-    console.log("to_bind_file_path ", to_bind_file_path);    
-    res.writeHead(http_status, {'Content-Type': 'text/html'});      // write the proper set header
-        bind.toFile( to_bind_file_path, {                           // bind to tpl
-            nickname : User_to_authenticate.nickname,               // set the attributes
-            photo_src : User_to_authenticate.profile_photo_path,    // ...
-            phone_number : User_to_authenticate.phone_number,       // ...
-            email : User_to_authenticate.email,                     // ...
-            error_message : message                                 // ...
-        }, function(data) { res.end(data); });                      // return the tpl
+
+    res.writeHead(http_status, {'Content-Type': 'text/html'});  // write the proper set header
+    bind.toFile( to_bind_file_path, {                           // bind to tpl
+        nickname : User_to_authenticate.nickname,               // set the attributes
+        password : User_to_authenticate.password,               // ...
+        photo_src : User_to_authenticate.profile_photo_path,    // ...
+        phone_number : User_to_authenticate.phone_number,       // ...
+        email : User_to_authenticate.email,                     // ...
+        error_message : message                                 // ...
+    }, function(data) { res.end(data); });                      // return the tpl
 }
 
 
@@ -62,9 +60,9 @@ var register  = function(req, res) {
                             http_status = 500;
                             var delete_user_code = db.delete_user(User_to_insert);
                             switch (delete_user_code) {             // if 1, the user is deleted. Otherwise, notificate the two errors (save_photo and delete_user)
-                                case 1 :    message = error_message_prefix + "\"user register save_photo delet_user - error - code " + delete_user_code + "  " + new Date()  + "\""; 
+                                case 1 :    message = error_message_prefix + "\"user register save_photo - error - code " + delete_user_code + "  " + new Date()  + "\""; 
                                             break;
-                                default:    message = error_message_prefix + "\"user register save_photo - error - code " + code + "  " + new Date()  + "\""; 
+                                default:    message = error_message_prefix + "\"user register save_photo delete_user - error - code " + delete_user_code + "  " + new Date()  + "\""; 
                         } 
                 }  
                 break; 
@@ -74,14 +72,15 @@ var register  = function(req, res) {
                 to_bind_file_path = __dirname + '/../View/TPL/error_page.tpl'; http_status = 500;
     }
     
-    res.writeHead(http_status, {'Content-Type': 'text/html'});      // write the proper set header
-        bind.toFile( to_bind_file_path, {                           // bind to tpl
-            nickname : User_to_insert.nickname,                     // set the attributes
-            photo_src : User_to_insert.profile_photo_path,          // ...
-            phone_number : User_to_insert.phone_number,             // ...
-            email : User_to_insert.email,                           // ...
-            error_message : message                                 // ...
-        }, function(data) { res.end(data); });                      // return the tpl   
+    res.writeHead(http_status, {'Content-Type': 'text/html'});  // write the proper set header
+    bind.toFile( to_bind_file_path, {                           // bind to tpl
+        nickname : User_to_insert.nickname,                     // set the attributes
+        password : User_to_insert.password,                     // ...
+        photo_src : User_to_insert.profile_photo_path,          // ...
+        phone_number : User_to_insert.phone_number,             // ...
+        email : User_to_insert.email,                           // ...
+        error_message : message                                 // ...
+    }, function(data) { res.end(data); });                      // return the tpl   
 }
 
 
