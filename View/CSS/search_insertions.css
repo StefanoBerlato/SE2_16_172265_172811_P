@@ -1,4 +1,4 @@
-#filters_div {
+.filters_div {
     border: 2px solid white;
 	border-radius: 15px;
 	background-color: rgba(255, 255, 255, 0.3) !important;
@@ -26,7 +26,7 @@ label {
     text-align: center;
 }
 
-#card_div {
+.card_div {
     border: 2px solid white;
 	border-radius: 15px;
 	background-color: rgba(255, 255, 255, 0.3) !important;
@@ -49,7 +49,7 @@ label {
 	font-size: 30px;
 }
 
-.shortDescription {
+.short_description {
 	color: white;
 	font-family: 'Reem Kufi', sans-serif;
 	font-size: 15px;

@@ -22,111 +22,58 @@ body {
 	text-align: center !important;
 }
 
-.search_card1 {
-	background: radial-gradient(rgba(0,0,0, 0.5), rgba(0,0,0, 0.9)) no-repeat center center fixed, url(../Pictures/trentocard.jpeg);
+.search_card {
 	border: 3px solid white;
-	background-size: cover;
+	background-size: cover !important;
 	transition: transform 0.2s ease-in-out;
 }
 
-.search_card1:hover {
+
+.search_card:hover {
 	transform: scale(1.05);
+}
+
+.search_card1 {
+	background: radial-gradient(rgba(0,0,0, 0.5), rgba(0,0,0, 0.9)) no-repeat center center fixed, url(../Pictures/trentocard.jpeg);
 }
 
 .search_card2 {
 	background: radial-gradient(rgba(0,0,0, 0.5), rgba(0,0,0, 0.9)) no-repeat center center fixed, url(../Pictures/povocard.jpg);
-	border: 3px solid white;
-	background-size:cover;
-	transition: transform 0.2s ease-in-out;
-}
-
-.search_card2:hover {
-	transform: scale(1.05);
 }
 
 .search_card3 {
 	background: radial-gradient(rgba(0,0,0, 0.5), rgba(0,0,0, 0.9)) no-repeat center center fixed, url(../Pictures/mesianocard.jpg);
-	border: 3px solid white;
-	background-size:cover;
-	transition: transform 0.2s ease-in-out;
-}
-
-.search_card3:hover {
-	transform: scale(1.05);
 }
 
 .search_card4 {
 	background: radial-gradient(rgba(0,0,0, 0.5), rgba(0,0,0, 0.9)) no-repeat center center fixed, url(../Pictures/villazzanocard.jpg);
-	border: 3px solid white;
-	background-size:cover;
-	transition: transform 0.2s ease-in-out;
-}
-
-.search_card4:hover {
-	transform: scale(1.05);
 }
 
 .search_card5 {
 	background: radial-gradient(rgba(0,0,0, 0.5), rgba(0,0,0, 0.9)) no-repeat center center fixed, url(../Pictures/sandonacard.jpg);
-	border: 3px solid white;
-	background-size:cover;
-	transition: transform 0.2s ease-in-out;
-}
-
-.search_card5:hover {
-	transform: scale(1.05);
 }
 
 .search_card6 {
-	background: radial-gradient(rgba(0,0,0, 0.5), rgba(0,0,0, 0.9)) no-repeat center center fixed, url(../Pictures/singleroomcard.jpg) !important;
-	border: 3px solid white;
-	background-size:cover  !important;
-	transition: transform 0.2s ease-in-out;
-}
-
-.search_card6:hover {
-	transform: scale(1.05);
+	background: radial-gradient(rgba(0,0,0, 0.5), rgba(0,0,0, 0.9)) no-repeat center center fixed, url(../Pictures/singleroomcard.jpg);
 }
 
 .search_card7 {
-	background: radial-gradient(rgba(0,0,0, 0.5), rgba(0,0,0, 0.9)) no-repeat center center fixed, url(../Pictures/doubleroomcard.jpg) !important;
-	border: 3px solid white;
-	background-size:cover !important;
-	transition: transform 0.2s ease-in-out;
-}
-
-.search_card7:hover {
-	transform: scale(1.05);
+	background: radial-gradient(rgba(0,0,0, 0.5), rgba(0,0,0, 0.9)) no-repeat center center fixed, url(../Pictures/doubleroomcard.jpg);
 }
 
 .search_card8 {
-	background: radial-gradient(rgba(0,0,0, 0.5), rgba(0,0,0, 0.9)) no-repeat center center fixed, url(../Pictures/boardinghousecard.jpg) !important;
-	border: 3px solid white;
-	background-size:cover !important;
-	transition: transform 0.2s ease-in-out;
-}
-
-.search_card8:hover {
-	transform: scale(1.05);
+	background: radial-gradient(rgba(0,0,0, 0.5), rgba(0,0,0, 0.9)) no-repeat center center fixed, url(../Pictures/boardinghousecard.jpg);
 }
 
 .search_card9 {
-	background: radial-gradient(rgba(0,0,0, 0.5), rgba(0,0,0, 0.9)) no-repeat center center fixed, url(../Pictures/flatcard.jpg) !important;
-	border: 3px solid white;
-	background-size:cover !important;
-	transition: transform 0.2s ease-in-out;
-}
-
-.search_card9:hover {
-	transform: scale(1.05);
+	background: radial-gradient(rgba(0,0,0, 0.5), rgba(0,0,0, 0.9)) no-repeat center center fixed, url(../Pictures/flatcard.jpg);
 }
 
 .calendar_card {
-	background: radial-gradient(rgba(0,0,0, 0.5), rgba(0,0,0, 0.9)) no-repeat center center fixed, url(../Pictures/calendarcard.jpg) !important;
+	background: radial-gradient(rgba(0,0,0, 0.5), rgba(0,0,0, 0.9)) no-repeat center center fixed, url(../Pictures/calendarcard.jpg);
 	border: 3px solid white;
 	background-size:cover !important;
 }
-
 
 .hidden_checkbox {
 	visibility: hidden;

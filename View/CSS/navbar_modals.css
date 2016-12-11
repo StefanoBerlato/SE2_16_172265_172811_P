@@ -40,7 +40,7 @@ body {
 	color: black !important;
 }
 
-.register_modal {
+.modal {
     display: none; 
     position: fixed; 
     z-index: 1;
@@ -54,7 +54,7 @@ body {
 }
 
 
-.register-modal-content {
+.modal_content {
     background-color: #fefefe;
     margin: 5% auto; 
     padding: 20px;
@@ -62,57 +62,56 @@ body {
     width: 30%; 
 }
 
-.loginModal {
-    display: none; 
-    position: fixed; 
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-	background-color: rgb(0,0,0);
-	background-color: rgba(0,0,0,0.4);
-}
-
-
-.login-modal-content {
-    background-color: #fefefe;
-    margin: 5% auto; 
-    padding: 20px;
-    border: 1px solid #888;
-    width: 30%; 
-}
-
-.closeRegister {
+.close_login {
     color: #aaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
 }
 
-.closeLogin {
+.close_register {
     color: #aaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
 }
 
-.closeRegister:hover,
-.closeRegister:focus {
+.close_add_insertion {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close_add_insertion {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close_register:hover,
+.close_register:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
 }
 
-.closeLogin:hover,
-.closeLogin:focus {
+.close_login:hover,
+.close_login:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
 }
 
-.modalTitle {
+.close_add_insertion:hover,
+.close_add_insertion:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal_title {
 	text-align: center; 
     font-family: Arial Black, Gadget, sans-serif;
 }
@@ -121,6 +120,10 @@ body {
 	/*text-align: center !important;*/
 	margin: auto !important;
 	width: 17%;
+}
+
+.centered_text {
+	text-align: center;
 }
 
 .buttons_well {

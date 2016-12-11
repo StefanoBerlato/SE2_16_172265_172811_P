@@ -1,6 +1,4 @@
-<!-- This page contains the details of the accomodation selected by the user in the page of the results. It shows a photo gallery, 
-a map with the location of the building and a panel with the name of the accomodation, a general description and the salient
-information. In the panel there is also a button by which the user can contact the renter -->
+<!-- This page is displayed when the system encounters an error, it shows a message with the description of the error -->
 
 <!DOCTYPE html>
 <html>
@@ -17,6 +15,7 @@ information. In the panel there is also a button by which the user can contact t
     
     <body>
         <h1 class = "main_title">Affitti Trento</h1>
+		
 		<hr>
 		
 		<!-- Navbar -->
@@ -24,8 +23,8 @@ information. In the panel there is also a button by which the user can contact t
   			<div class="container-fluid">
     			<ul class="nav navbar-nav">
       				<li><a href="home_page.html" class = "white">Home</a></li>
-      				<li><a href="#" id = "loginButton">Login</a></li>
-      				<li><a href="#" id = "registerButton">Register</a></li> 
+      				<li><a href="#" id = "login_button">Login</a></li>
+      				<li><a href="#" id = "register_button">Register</a></li> 
     			</ul>
   			</div>
 		</nav>
@@ -33,13 +32,13 @@ information. In the panel there is also a button by which the user can contact t
 		<br>
 		<br>
 		
-		<!-- Modals -->
-		<div id = "registerModal" class = "registerModal">
-			<div class = "register-modal-content">
-    			<span class = "closeRegister">x</span>
-    			<h3 class = "modalTitle">Register</h3>
+		<!-- Register modal -->
+		<div id = "register_modal" class = "modal">
+			<div class = "modal_content">
+    			<span class = "close_register">x</span>
+    			<h3 class = "modal_title">Register</h3>
 				<hr>
-				<form>
+				<form action="/register" method="post" enctype="multipart/form-data">
 					<div class = "form-group">
 						<label for = "text">Nickname:</label>
     					<input type = "text" class = "form-control" id = "nickname">
@@ -67,12 +66,14 @@ information. In the panel there is also a button by which the user can contact t
 				</form>
   			</div>
 		</div>
-		<div id = "loginModal" class = "loginModal">
-			<div class = "login-modal-content">
-    			<span class = "closeLogin">x</span>
-    			<h3 class = "modalTitle">Login</h3>
+		
+		<!-- Login modal -->
+		<div id = "login_modal" class = "modal">
+			<div class = "modal_content">
+    			<span class = "close_login">x</span>
+    			<h3 class = "modal_title">Login</h3>
 				<hr>
-				<form>
+				<form action="/login" method="post" enctype="multipart/form-data">
 					<div class = "form-group">
     					<label for = "email">Email address:</label>
     					<input type = "email" class = "form-control" id = "email">
@@ -88,8 +89,10 @@ information. In the panel there is also a button by which the user can contact t
 				</form>
   			</div>
 		</div>
+		
 		<br>
 		
+		<!-- Error message -->
 		<div class = "container">
 			<div class = "col-sm-4 col-sm-offset-4 error_div">
 				<h3 class = "ops">Oops!</h3>
@@ -98,8 +101,7 @@ information. In the panel there is also a button by which the user can contact t
 			</div>
 		</div>
 		
-		
-		
+		<!-- JS scripts -->
         <script src = "../JS/modals.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>

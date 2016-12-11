@@ -3,42 +3,59 @@ This script is meant to handle the modals for the registration and the login of 
 of the page, the user is shown a very simple modal that allows him to either sign in (if he's already registered) or sign up (otherwise).
 */
 
-// declaring variables to handle the modals
-var register_modal = document.getElementById("registerModal");
-var register_btn = document.getElementById("registerButton");
+// modals
+var register_modal = document.getElementById("register_modal");
+var login_modal = document.getElementById("login_modal");
+var add_insertion_modal = document.getElementById("add_insertion_modal");
 
-var login_modal = document.getElementById("loginModal");
-var register_modal = document.getElementById("registerModal");
+// buttons
+var register_btn = document.getElementById("register_button");
+var login_btn = document.getElementById("login_button");
+var add_insertion_btn = document.getElementById("add_insertion_button");
 
-var login_btn = document.getElementById("loginButton");
-var register_btn = document.getElementById("registerButton");
+// close buttons
+var close_register = document.getElementsByClassName("close_register")[0];
+var close_login = document.getElementsByClassName("close_login")[0];
+var close_add_insertion = document.getElementsByClassName("close_add_insertion")[0];
 
-var closeRegister = document.getElementsByClassName("closeRegister")[0];
-var closeLogin = document.getElementsByClassName("closeLogin")[0];
 
-
-// if the register button is clicked, make the register modal visible
+// if the register button is clicked, show the modal by changing its visibility value
 register_btn.onclick = function() {
     register_modal.style.display = "block";
 }
 
-// if the login button is clicked, make the login modal visible
+// if the login button is clicked, show the modal by changing its visibility value
 login_btn.onclick = function() {
     login_modal.style.display = "block";
 }
 
-// if the "x" in the modals is clicked, close the modals making them hidden
-closeRegister.onclick = function() {
+// if the add insertion button exists and is clicked, show the modal by changing its visibility value
+if(add_insertion_btn != null){
+	add_insertion_btn.onclick = function() {
+		add_insertion_modal.style.display = "block";
+	}
+}
+
+// if the "x" in the modals is clicked, close the modals by changing its visibility value
+close_register.onclick = function() {
     register_modal.style.display = "none";
 }
-closeLogin.onclick = function() {
+
+close_login.onclick = function() {
 	login_modal.style.display = "none";
 }
 
-// if the user clicks anywhere outside the modal, close the modal
+if(add_insertion_btn != null){							// checks wether the button is defined (only in user.tpl)
+	close_add_insertion.onclick = function() {
+		add_insertion_modal.style.display = "none";
+	}
+}
+
+// if the user clicks anywhere outside the modal, close the modal by changing its visibility value
 window.onclick = function(event) {
     if ((event.target == register_modal) || (event.target == login_modal)) {
-        register_modal.style.display = "none";
+        register_modal.style.display = "none";									
 		login_modal.style.display = "none";
+		add_insertion_modal.style.display = "none";
     }
 }

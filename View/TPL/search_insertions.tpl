@@ -17,6 +17,7 @@ accomodation, the name and a short description. -->
     
     <body>
         <h1 class = "main_title">Affitti Trento</h1>
+		
 		<hr>
 		
 		<!-- Navbar -->
@@ -24,8 +25,8 @@ accomodation, the name and a short description. -->
   			<div class="container-fluid">
     			<ul class="nav navbar-nav">
       				<li><a href="home_page.html" class = "white">Home</a></li>
-      				<li><a href="#" id = "loginButton">Login</a></li>
-      				<li><a href="#" id = "registerButton">Register</a></li> 
+      				<li><a href="#" id = "login_button">Login</a></li>
+      				<li><a href="#" id = "register_button">Register</a></li> 
     			</ul>
   			</div>
 		</nav>
@@ -33,13 +34,13 @@ accomodation, the name and a short description. -->
 		<br>
 		<br>
 		
-		<!-- Modals -->
-		<div id = "registerModal" class = "registerModal">
-			<div class = "register-modal-content">
-    			<span class = "closeRegister">x</span>
-    			<h3 class = "modalTitle">Register</h3>
+		<!-- Register modal -->
+		<div id = "register_modal" class = "modal">
+			<div class = "modal_content">
+    			<span class = "close_register">x</span>
+    			<h3 class = "modal_title">Register</h3>
 				<hr>
-				<form>
+				<form action="/register" method="post" enctype="multipart/form-data">
 					<div class = "form-group">
 						<label for = "text">Nickname:</label>
     					<input type = "text" class = "form-control" id = "nickname">
@@ -68,13 +69,13 @@ accomodation, the name and a short description. -->
   			</div>
 		</div>
 		
-		<!-- Content -->
-		<div id = "loginModal" class = "loginModal">
-			<div class = "login-modal-content">
-    			<span class = "closeLogin">x</span>
-    			<h3 class = "modalTitle">Login</h3>
+		<!-- Login modal -->
+		<div id = "login_modal" class = "modal">
+			<div class = "modal_content">
+    			<span class = "close_login">x</span>
+    			<h3 class = "modal_title">Login</h3>
 				<hr>
-				<form>
+				<form action="/login" method="post" enctype="multipart/form-data">
 					<div class = "form-group">
     					<label for = "email">Email address:</label>
     					<input type = "email" class = "form-control" id = "email">
@@ -90,15 +91,17 @@ accomodation, the name and a short description. -->
 				</form>
   			</div>
 		</div>
+		
 		<br>
+		
         <div class = "container">
             <div class = "col-sm-4">
                 
-                <!-- Here follows the panel with the filters -->
-                <div class = "well" id = "filters_div">
+                <!-- Panel with filters -->
+                <div class = "well filters_div">
                     <h3 class = "filters_title">Filter by zone</h3>
                     <hr>
-                    <form id = "filterForm">
+                    <form id = "filterForm" action="/search" method="get" enctype="multipart/form-data">
                         <input type = "checkbox" name = "Trento" value= "Trento">
                         <label>Trento</label><br>
                         <input type = "checkbox" name = "Povo" value= "Povo">
@@ -122,15 +125,6 @@ accomodation, the name and a short description. -->
                         <label>Quantity</label><br>
                         <input type = "number" name = "availableRooms" class = "filters_input"><br>
                         <br>
-						<!--
-                        <h3 class = "filters_title">Filter by period of availability</h3>
-                        <hr>
-                        <label>From</label><br>
-                        <input type = "date" name = "fromDate" class = "filters_input"><br>
-                        <br>
-                        <label>To</label><br>
-                        <input type = "date" name = "toDate" class = "filters_input">
-						-->
 						<h3 class = "filters_title">Filter by typology</h3>
 						<hr>
 						<input type = "checkbox" name = "singleRoom" value= "singleRoom">
@@ -148,23 +142,20 @@ accomodation, the name and a short description. -->
                 </div>
             </div>
             
-            <!-- Here follow the cards -->
-            <div class = "col-sm-3 col-sm-offset-1">
-                <div class = "well" id = "card_div">
-                    <img src = "../Pictures/house_card_1.jpg" class = "card_img">
+            <!-- List of cards -->
+            <div class = "col-sm-3 col-sm-offset-1">(:data
+                <div class = "well card_div">
+                    <img src = "[:photo_path:]" class = "card_img">
                     <div class = "card_img_div">
-                        <h4 class = "card_title">(:insertionTitle:)</h4>
+                        <h4 class = "card_title">(:title:)</h4>
                         <hr>
-                        <p class = "shortDescription">(:insertionShortDescription:)</p>
+                        <p class = "short_description">(:description:)</p>
                     </div>
                 </div>
-            </div>
+			:)</div>
         </div>
-        
-        
-        
-        
-        
+                
+        <!-- JS scripts -->
         <script src = "../JS/modals.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
