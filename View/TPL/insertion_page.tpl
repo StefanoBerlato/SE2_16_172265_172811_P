@@ -98,9 +98,8 @@ by which the user can contact the renter -->
             <div class = "col-sm-7">
                 
                 <!-- Map -->
-                <h3 class = "desc_title">Map</h3>
-                <div class = "map_div">
-                    <iframe width="100%" height="400" src="http://www.mapi.ie/create-google-map/map.php?width=100%&amp;height=600&amp;hl=en&amp;q=Trento+(Trento)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=A&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" class = "map_iframe"></iframe>
+                <div class = "img_div">
+                    <img src = "(:photo_src:)">
                 </div>
 				<br>
 				<br>
