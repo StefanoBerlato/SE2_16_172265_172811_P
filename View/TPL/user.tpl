@@ -284,6 +284,8 @@ by filling forms in pop-up modals -->
 						<br>
 						<button class = "btn btn-success" id = "modify_insertion_button">Modify Insertion</button>
                     </div>
+					<hr>
+					<hr>
                 :)</div>
 				
             </div>
