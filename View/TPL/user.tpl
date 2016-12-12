@@ -98,9 +98,11 @@ by filling forms in pop-up modals -->
     			<h3 class = "modal_title">Add Insertion</h3>
 				<hr>
 				<form action="/add_insertion" method="post" enctype="multipart/form-data">
-					<div class = "form-group">
-						<label for = "text">Your Nickname:</label>
-    					<input type = "text" class = "form-control" name = "nickname">
+					<div class = "form-group hidden_field">
+    					<input type = "text" class = "form-control" name = "nickname" value = "(:nikname:)">
+					</div>
+					<div class = "form-group hidden_field">
+    					<input type = "text" class = "form-control" name = "password" value = "(:password:)">
 					</div>
 					<div class = "form-group">
 						<label for = "text">Title:</label>
@@ -172,6 +174,12 @@ by filling forms in pop-up modals -->
     			<h3 class = "modal_title">Modify insertion</h3>
 				<hr>
 				<form action="/modify_insertion" method="post" enctype="multipart/form-data" id = "modify_form">
+					<div class = "form-group hidden_field">
+    					<input type = "text" class = "form-control" name = "nickname" value = "(:nikname:)">
+					</div>
+					<div class = "form-group hidden_field">
+    					<input type = "text" class = "form-control" name = "password" value = "(:password:)">
+					</div>
 					<div class = "form-group">
 						<label for = "text">Title:</label>
     					<input type = "text" class = "form-control" name = "title" readonly>
