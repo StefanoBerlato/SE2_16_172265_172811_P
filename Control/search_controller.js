@@ -21,7 +21,12 @@ var card  = function(req, res)
     code = db.get_insertion(Insertion);
     
     switch (code) { // setting the http status and eventually the proper error message basing on the 'code' returned by db manager
-        case  1:    to_bind_file_path = __dirname + '/../View/TPL/insertion_page.tpl'; http_status = 200; break;
+        case  1:    var user_code = db.verify_user(Insertion.nickname, null);
+                    switch (user_code) {
+                        case 1: to_bind_file_path = __dirname + '/../View/TPL/insertion_page.tpl'; http_status = 200; break;
+                        default: message = error_message_prefix + "\"search_controller card - user_code - error, code " + code + "  " + new Date()  + "\""; 
+                                 http_status = 500; to_bind_file_path = __dirname + '/../View/TPL/error_page.tpl';
+                    }
         case -1:    message = "Insertion not found";  
                     to_bind_file_path = __dirname + '/../View/TPL/error_page.tpl'; http_status = 404; break;
         default:    message = error_message_prefix + "\"search_controller card - error, code " + code + "  " + new Date()  + "\""; 
@@ -41,7 +46,9 @@ var card  = function(req, res)
         locality : Insertion.locality,                  // ...
         price_per_person : Insertion.price_per_person,  // ...
         photo_src : Insertion.photo_path,               // ...
-        nickname : Insertion.nickname,                  // ...
+        nickname : User.nickname,                       // ...
+        phone_number : User.phone_number,               // ...
+        email : User.email,                             // ...
         message : message                               // ...
     }, function(data) { res.end(data); });              // return the tpl
 }
@@ -101,7 +108,7 @@ var search  = function(req, res)
         price = req.query.price_per_person;
     }
    
-    code = db.search_insertions(Insertions.data, house, rooms, loc, room_num, price, date);
+    code = db.search_insertions(Insertions, house, rooms, loc, room_num, price, date, null);
     
     switch (code) { // setting the http status and eventually the proper error message basing on the 'code' returned by db manager
         case  1:    to_bind_file_path = __dirname + '/../View/TPL/search_insertions.tpl'; http_status = 200; break;

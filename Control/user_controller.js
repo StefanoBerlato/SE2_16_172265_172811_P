@@ -71,9 +71,21 @@ exports.register = register;
 
 /*
  * @brief internal procedure that responds returning the user.tpl with all the parameters
+ * It also retrieves the user's insertions
  * @param res
  */
 function response (User, res) {
+    
+    var Insertions = {data:[]};
+    
+    code = db.search_insertions(Insertions, null, null, null, null, null, null, User.nickname);
+    
+    switch (code) { // setting the http status and eventually the proper error message basing on the 'code' returned by db manager
+        case  1:    break;
+        case -1:    break;
+        default:    message = error_message_prefix + "\"user_controller response - error, code " + code + "  " + new Date()  + "\""; 
+                    http_status = 500; to_bind_file_path = __dirname + '/../View/TPL/error_page.tpl';
+    }
     
     res.writeHead(http_status, {'Content-Type': 'text/html'});  // write the proper set header
 
@@ -83,6 +95,7 @@ function response (User, res) {
         photo_src : User.profile_photo_path,                    // ...
         phone_number : User.phone_number,                       // ...
         email : User.email,                                     // ...
+        data : Insertions.data,                                 // ...
         message : message                                       // ...
     }, function(data) { res.end(data); });                      // return the tpl
 }
