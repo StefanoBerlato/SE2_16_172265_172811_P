@@ -1,0 +1,24 @@
+{
+  "name": "affitti_trento",
+  "version": "1.0.0",
+  "description": "Corso di Ingegneria del Software 2. Progetto basato su mock-up realizzato a lezione. Berlato Stefano, matricola 172811, Giacomo Zara, matricola 172265.",
+  "main": "index.js",
+  "scripts": {
+    "test": "",
+    "start": "node index.js"
+  },
+  "author": "berlato_stefano giacomo_zara",
+  "license": "ISC",
+  "dependencies": {
+    "bind": "^0.1.7",
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "fs": "0.0.2",
+    "multer": "^1.2.0",
+    "node-taffydb": "^0.2.0",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "jasmine": "^2.5.2"
+  }
+}

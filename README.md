@@ -28,17 +28,35 @@ CONTROL. Lato server sono presenti:
     - "/login" POST. Controlla i parametri e ritorna 'user.tpl' con i dati ricavati dal DB_manager.
     - "/register" POST. Controlla i parametri, inserisce il nuovo utente e ritorna 'user.tpl' con i dati ricavati dal DB_manager.
 - "insertions_controller.js". Si occupa di gestire add-modify-delete delle inserzioni. Ha le rotte:
-    - "/add_insertion.js". Controlla i parametri e aggiunge l'inserzione. Ritorna 'user.tpl'.
-    - "/modify_insertion.js". Controlla i parametri e modifica l'inserzione. Ritorna 'user.tpl'.
-    - "/delete_insertion.js". Controlla i parametri ed elimina l'inserzione. Ritorna 'user.tpl'.
+    - "/add_insertion". Controlla i parametri e aggiunge l'inserzione. Ritorna 'user.tpl'.
+    - "/modify_insertion". Controlla i parametri e modifica l'inserzione. Ritorna 'user.tpl'.
+    - "/delete_insertion". Controlla i parametri ed elimina l'inserzione. Ritorna 'user.tpl'.
 
 
 MODEL. Lato server sono presenti:
 - 'DB_manager.js'. Modulo che gestisce i dati. Espone funzioni per la manipolazione degli utenti e inserzioni. In dettaglio:
-    - bool add_user(username,password,data). Aggiunge il nuovo utente al database. Ritorna true se l'operazione va a buon fine, false altrimenti.
-    - User verify_user(username,password). Verifica se l'utente appartiene o no al database. Ritorna un oggetto con i dati dell'utente se presente, altrimenti un oggetto vuoto.
-    - bool add_insertion(id,data). Inserisce l'inserzione al database. Ritorna true se tutto va a buon fine, false altrimenti.
-    - bool modify_insertion(id,data). Modifica l'inserzione del database. Ritorna true se tutto va a buon fine, false altrimenti.
-    - bool delete_insertion(id). Elimina l'inserzione dal database. Ritorna true se tutto va a buon fine, false altrimenti.
-    - Insertion[] search_insertions(filters). Opera una ricerca con i filtri, ritorna l'array di oggetti.
-    - Insertion get_insertion(id). Ritorna tutti i dati di una inserzione.
+    - add_user(User). Aggiunge il nuovo utente al database. Ritorna un codice numerico per indicare l'esito dell'operazione.
+    - verify_user(User). Verifica se l'utente appartiene al database. Riempie l'oggetto con i dati dell'utente se presente, altrimenti riempie con valori null. Ritorna un codice numerico.
+    - add_insertion(Insertion). Inserisce l'inserzione al database. Ritorna un codice numerico.
+    - modify_insertion(Insertion). Modifica l'inserzione del database. Ritorna un codice numerico.
+    - delete_insertion(Insertion). Elimina l'inserzione dal database. Ritorna un codice numerico.
+    - search_insertions(Insertions,filters). Opera una ricerca con i filtri: house_typology, rooms_typology, locality, available_rooms, price_per_person. Ritorna un codice numerico.
+    - get_insertion(Insertion). Riempie il parametro di tutti i dati dell'inserzione (null se non presente). Ritorna un codice numerico.
+    
+Tabelle database:
+- Users (nickname primary key, password, email, phone_number, profile_photo_path)
+- Insertions (title primary key, description, available_rooms, rooms_typology, house_typology, free_from (DD_MM_YYYY format), address, locality, price_per_person, photo_path, nickname foreign key)
+
+rooms_typology -> ["single_room", "double_room"]
+house_typology -> ["boarding_house", "apartment"]
+locality -> ["povo", "mesiano", "villazzano", "san_dona", "trento"]
+NB: if you add a class in the above ones, remember to add it also into the DB_manager.js file, in the search_insertions_in_db method
+
+
+Codici numerici:
+ 1 ok
+-1 match not found
+-2 read file error
+-3 write file error
+-4 read photo from request error
+-5 save photo in file system error
