@@ -25,8 +25,8 @@ submit button -->
   			<div class="container-fluid">
     			<ul class="nav navbar-nav">
       				<li><a href="home_page.html" class = "white">Home</a></li>
-      				<li><a href="#" id = "login_button">Login</a></li>
-      				<li><a href="#" id = "register_button">Register</a></li> 
+      				<li><a href="#" id = "login_button" class = "white">Login</a></li>
+      				<li><a href="#" id = "register_button" class = "white">Register</a></li> 
     			</ul>
   			</div>
 		</nav>
@@ -75,7 +75,7 @@ submit button -->
     			<span class = "close_login">x</span>
     			<h3 class = "modal_title">Login</h3>
 				<hr>
-				<form action="/login" method="post" enctype="multipart/form-data">
+				<form action="/login" method="post">
 					<div class = "form-group">
     					<label for = "email">Email address:</label>
     					<input type = "email" class = "form-control" id = "email">
@@ -93,7 +93,7 @@ submit button -->
 		</div>
 		
 		<!-- Search form -->
-		<form action="/search" method="get" enctype="multipart/form-data">
+		<form action="/search" method="get">
 			<div class = "well form_well">
 				<div class = "container">
 					<form class = "form-vertical">
@@ -104,23 +104,23 @@ submit button -->
 								<h2 class = "search_parameters">Where?</h2>
 								<hr>
 								<div class = "search_card search_card1 well" id = "card1" onclick="select()">
-									<input type = "checkbox" class = "hidden_checkbox" id = "checkbox1">
+									<input type = "checkbox" class = "hidden_checkbox" id = "checkbox1" name = "locality" value = "trento">
 									<label class = "search_card_label" id = "card1">Trento</label>
 								</div>
 								<div class = "search_card search_card2 well" id = "card2" onclick="select()">
-									<input type = "checkbox" class = "hidden_checkbox" id = "checkbox2">
+									<input type = "checkbox" class = "hidden_checkbox" id = "checkbox2" name = "locality" value = "povo">
 									<label class = "search_card_label" id = "card2">Povo</label>
 								</div>
 								<div class = "search_card search_card3 well" id = "card3" onclick="select()">
-									<input type = "checkbox" class = "hidden_checkbox" id = "checkbox3">
+									<input type = "checkbox" class = "hidden_checkbox" id = "checkbox3" name = "locality" value = "mesiano">
 									<label class = "search_card_label" id = "card3">Mesiano</label>
 								</div>
 								<div class = "search_card search_card4 well" id = "card4" onclick="select()">
-									<input type = "checkbox" class = "hidden_checkbox" id = "checkbox4">
+									<input type = "checkbox" class = "hidden_checkbox" id = "checkbox4" name = "locality" value = "villazzano">
 									<label class = "search_card_label" id = "card4">Villazzano</label>
 								</div>
 								<div class = "search_card search_card5 well" id = "card5" onclick="select()">
-									<input type = "checkbox" class = "hidden_checkbox" id = "checkbox5">
+									<input type = "checkbox" class = "hidden_checkbox" id = "checkbox5" name = "locality" value = "san_dona">
 									<label class = "search_card_label" id = "card5">San Donà</label>
 								</div>
 							</div>
@@ -131,19 +131,19 @@ submit button -->
 								<h2 class = "search_parameters">What?</h2>
 								<hr>
 								<div class = "search_card search_card6 well" id = "card6" onclick="select()">
-									<input type = "checkbox" class = "hidden_checkbox" id = "checkbox6">
+									<input type = "checkbox" class = "hidden_checkbox" id = "checkbox6" name = "rooms_typology" value = "single_room">
 									<label class = "search_card_label" id = "card6">Single <br> Room</label>
 								</div>
 								<div class = "search_card search_card7 well" id = "card7" onclick="select()">
-									<input type = "checkbox" class = "hidden_checkbox" id = "checkbox7">
+									<input type = "checkbox" class = "hidden_checkbox" id = "checkbox7" name = "rooms_typology" value = "single_room">
 									<label class = "search_card_label" id = "card7">Double <br> Room</label>
 								</div>
 								<div class = "search_card search_card8 well" id = "card8" onclick="select()">
-									<input type = "checkbox" class = "hidden_checkbox" id = "checkbox8">
+									<input type = "checkbox" class = "hidden_checkbox" id = "checkbox8" name = "house_typology" value = "boarding_house">
 									<label class = "search_card_label" id = "card8">Boarding <br> House</label>
 								</div>
 								<div class = "search_card search_card9 well" id = "card9" onclick="select()">
-									<input type = "checkbox" class = "hidden_checkbox" id = "checkbox9">
+									<input type = "checkbox" class = "hidden_checkbox" id = "checkbox9" name = "house_typology" value = "apartment">
 									<label class = "search_card_label" id = "card9">Apartment</label>
 								</div>
 							</div>

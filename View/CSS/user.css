@@ -12,6 +12,7 @@
 
 .user_div_title {
     font-family: Impact, Charcoal, sans-serif;
+	color: white;
 }
 
 .centered_text {
@@ -50,6 +51,15 @@
 	border-radius: 15px;
 	background-color: rgba(255, 255, 255, 0.3) !important;
 }
+
+.hidden_title {
+	display: none;
+}
+
+.special_label {
+	text-decoration: underline;
+}
+
 
 
 

@@ -25,7 +25,7 @@ body {
 }
 
 #loginButton {
-	color: white;
+	color: white !important;
 }
 
 #loginButton:hover {
@@ -33,7 +33,7 @@ body {
 }
 
 #registerButton {
-	color: white;
+	color: white !important;
 }
 
 #registerButton:hover {
@@ -83,7 +83,7 @@ body {
     font-weight: bold;
 }
 
-.close_add_insertion {
+.close_modify_insertion {
     color: #aaa;
     float: right;
     font-size: 28px;
@@ -106,6 +106,13 @@ body {
 
 .close_add_insertion:hover,
 .close_add_insertion:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.close_modify_insertion:hover,
+.close_modify_insertion:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;

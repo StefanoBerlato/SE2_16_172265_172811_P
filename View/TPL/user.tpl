@@ -74,7 +74,7 @@ by filling forms in pop-up modals -->
     			<span class = "close_login">x</span>
     			<h3 class = "modal_title">Login</h3>
 				<hr>
-				<form action="/login" method="post" enctype="multipart/form-data">
+				<form action="/login" method="post">
 					<div class = "form-group">
     					<label for = "email">Email address:</label>
     					<input type = "email" class = "form-control" id = "email">
@@ -111,32 +111,121 @@ by filling forms in pop-up modals -->
     					<input type = "text" class = "form-control" name = "description">
   					</div>
 					<div class = "form-group">
-    					<label for = "pwd">Room tipology:</label>
-    					<input type = "password" class = "form-control" name = "room_tipology">
+    					<label for = "text">Available rooms:</label>
+    					<input type = "number" class = "form-control" name = "available_rooms">
+  					</div>
+					<div class = "form-group">
+    					<label for = "text" class = "special_label">Room typology:</label><br>
+    					<input type = "checkbox" name = "rooms_typology" value= "single_room">
+                        <label>Single room</label><br>
+						<input type = "checkbox" name = "rooms_typology" value= "double_room">
+                        <label>Double room</label><br>
   					</div>
   					<div class = "form-group">
-    					<label for = "pwd">House tipology:</label>
-    					<input type = "password" class = "form-control" name = "house_tipology">
+    					<label for = "text" class = "special_label">House typology:</label><br>
+    					<input type = "checkbox" name = "house_typology" value= "boarding_house">
+                        <label>Boarding house</label><br>
+						<input type = "checkbox" name = "house_typology" value= "apartment">
+                        <label>Apartment</label><br>
   					</div>
 					<div class = "form-group">
-    					<label for = "pwd">Free from:</label>
-    					<input type = "text" class = "form-control" name = "free_from">
+    					<label for = "text">Free from:</label>
+    					<input type = "date" class = "form-control" name = "free_from">
   					</div>
 					<div class = "form-group">
-    					<label for = "pwd">Address:</label>
+    					<label for = "text">Address:</label>
     					<input type = "text" class = "form-control" name = "address">
   					</div>
 					<div class = "form-group">
-    					<label for = "pwd">Locality</label>
-    					<input type = "text" class = "form-control" name = "locality">
+    					<label for = "text" class = "special_label">Locality:</label>
+    					<input type = "checkbox" name = "locality" value= "trento">
+                        <label>Trento</label><br>
+                        <input type = "checkbox" name = "locality" value= "povo">
+                        <label>Povo</label><br>
+                        <input type = "checkbox" name = "locality" value= "mesiano">
+                        <label>Mesiano</label><br>
+                        <input type = "checkbox" name = "locality" value= "villazzano">
+                        <label>Villazzano</label><br>
+                        <input type = "checkbox" name = "locality" value= "san_dona">
+                        <label>San Donà</label><br>
   					</div>
 					<div class = "form-group">
-    					<label for = "pwd">Price per person</label>
-    					<input type = "text" class = "form-control" name = "price_per_person">
+    					<label for = "text">Price per person:</label>
+    					<input type = "number" class = "form-control" name = "price_per_person">
   					</div>
 					<div class = "form-group">
-    					<label for = "pwd">Add a photo picture</label>
-    					<input type = "file" class = "form-control" id = "profilePic">
+    					<label for = "text">Add a photo:</label>
+    					<input type = "file" class = "form-control">
+  					</div>
+					<hr>
+					<div class = "centered_text">
+  						<button type = "submit" class = "btn btn-primary">Submit</button>
+					</div>
+				</form>
+  			</div>
+		</div>
+		
+		<!-- Modify insertion modal -->
+		<div id = "modify_insertion_modal" class = "modal">
+			<div class = "modal_content">
+    			<span class = "close_modify_insertion">x</span>
+    			<h3 class = "modal_title">Modify insertion</h3>
+				<hr>
+				<form action="/modify_insertion" method="post" enctype="multipart/form-data" id = "modify_form">
+					<div class = "form-group">
+						<label for = "text">Title:</label>
+    					<input type = "text" class = "form-control" name = "title" readonly>
+					</div>
+					<div class = "form-group">
+    					<label for = "text">Description:</label>
+    					<input type = "text" class = "form-control" name = "description">
+  					</div>
+					<div class = "form-group">
+    					<label for = "text">Available rooms:</label>
+    					<input type = "number" class = "form-control" name = "available_rooms">
+  					</div>
+					<div class = "form-group">
+    					<label for = "text" class = "special_label">Room typology:</label><br>
+    					<input type = "checkbox" name = "rooms_typology" value= "single_room">
+                        <label>Single room</label><br>
+						<input type = "checkbox" name = "rooms_typology" value= "double_room">
+                        <label>Double room</label><br>
+  					</div>
+  					<div class = "form-group">
+    					<label for = "text" class = "special_label">House typology:</label><br>
+    					<input type = "checkbox" name = "house_typology" value= "boarding_house">
+                        <label>Boarding house</label><br>
+						<input type = "checkbox" name = "house_typology" value= "apartment">
+                        <label>Apartment</label><br>
+  					</div>
+					<div class = "form-group">
+    					<label for = "text">Free from:</label>
+    					<input type = "date" class = "form-control" name = "free_from">
+  					</div>
+					<div class = "form-group">
+    					<label for = "text">Address:</label>
+    					<input type = "text" class = "form-control" name = "address">
+  					</div>
+					<div class = "form-group">
+    					<label for = "text" class = "special_label">Locality:</label><br>
+    					<input type = "checkbox" name = "locality" value= "trento">
+                        <label>Trento</label><br>
+                        <input type = "checkbox" name = "locality" value= "povo">
+                        <label>Povo</label><br>
+                        <input type = "checkbox" name = "locality" value= "mesiano">
+                        <label>Mesiano</label><br>
+                        <input type = "checkbox" name = "locality" value= "villazzano">
+                        <label>Villazzano</label><br>
+                        <input type = "checkbox" name = "locality" value= "san_dona">
+                        <label>San Donà</label><br>
+  					</div>
+					<div class = "form-group">
+    					<label for = "text">Price per person:</label>
+    					<input type = "number" class = "form-control" name = "price_per_person">
+  					</div>
+					<div class = "form-group">
+    					<label for = "text">Add a photo:</label>
+    					<input type = "file" class = "form-control">
   					</div>
 					<hr>
 					<div class = "centered_text">
@@ -169,12 +258,23 @@ by filling forms in pop-up modals -->
                 <br>
 				<br>
 
-				<div class = "well card_div">(:data
+				<div class = "well card_div">(:data ~
                     <img src = "[:photo_path:]" class = "card_img">
                     <div class = "card_img_div">
                         <h4 class = "card_title">[:title:]</h4>
                         <hr>
                         <p class = "short_description">[:description:]</p>
+						<form class = "deletion_form" action = "/delete_insertion">
+							<input type = "text" name = "title" value = "[:title:]" class = "hidden_title">
+							<br>			
+							<hr>
+							<button type = "submit" class = "btn btn-danger">Delete Insertion</button>
+						</form>
+						<form id = "modify_btn_form">
+							<input type = "text" name = "title" value = "[:title:]" class = "hidden_title">
+						</form>
+						<br>
+						<button class = "btn btn-success" id = "modify_insertion_button">Modify Insertion</button>
                     </div>
                 :)</div>
 				

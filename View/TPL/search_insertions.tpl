@@ -102,38 +102,36 @@ accomodation, the name and a short description. -->
                     <h3 class = "filters_title">Filter by zone</h3>
                     <hr>
                     <form id = "filterForm" action="/search" method="get" enctype="multipart/form-data">
-                        <input type = "checkbox" name = "Trento" value= "Trento">
+                        <input type = "checkbox" name = "locality" value= "trento">
                         <label>Trento</label><br>
-                        <input type = "checkbox" name = "Povo" value= "Povo">
+                        <input type = "checkbox" name = "locality" value= "povo">
                         <label>Povo</label><br>
-                        <input type = "checkbox" name = "Mesiano" value= "Mesiano">
+                        <input type = "checkbox" name = "locality" value= "mesiano">
                         <label>Mesiano</label><br>
-                        <input type = "checkbox" name = "Villazzano" value= "Villazzano">
+                        <input type = "checkbox" name = "locality" value= "villazzano">
                         <label>Villazzano</label><br>
-                        <input type = "checkbox" name = "San Donà" value= "San Donà">
+                        <input type = "checkbox" name = "locality" value= "san_dona">
                         <label>San Donà</label><br>
-                        <input type = "checkbox" name = "Anywhere" value= "Anywhere">
-                        <label>Anywhere</label><br>
                         <br>
                         <h3 class = "filters_title">Filter by price</h3>
                         <hr>
                         <label>Maximum Price</label><br>
-                        <input type = "number" name = "maxPrice" class = "filters_input"><br>
+                        <input type = "number" name = "price_per_person" class = "filters_input"><br>
                         <br>
                         <h3 class = "filters_title">Filter by available rooms</h3>
                         <hr>
                         <label>Quantity</label><br>
-                        <input type = "number" name = "availableRooms" class = "filters_input"><br>
+                        <input type = "number" name = "available_rooms" class = "filters_input"><br>
                         <br>
 						<h3 class = "filters_title">Filter by typology</h3>
 						<hr>
-						<input type = "checkbox" name = "singleRoom" value= "singleRoom">
+						<input type = "checkbox" name = "rooms_typology" value= "single_room">
                         <label>Single room</label><br>
-						<input type = "checkbox" name = "doubleRoom" value= "doubleRoom">
+						<input type = "checkbox" name = "rooms_typology" value= "double_room">
                         <label>Double room</label><br>
-						<input type = "checkbox" name = "boardingHouse" value= "boardingHouse">
+						<input type = "checkbox" name = "house_typology" value= "boarding_house">
                         <label>Boarding house</label><br>
-						<input type = "checkbox" name = "apartment" value= "apartment">
+						<input type = "checkbox" name = "house_typology" value= "apartment">
                         <label>Apartment</label><br>
                         <div class = "centered_text">
                             <button type="submit" class="btn btn-primary btn-lg">Apply Filters</button>
@@ -143,7 +141,7 @@ accomodation, the name and a short description. -->
             </div>
             
             <!-- List of cards -->
-            <div class = "col-sm-3 col-sm-offset-1">(:data
+            <div class = "col-sm-3 col-sm-offset-1">(:data ~
                 <div class = "well card_div">
                     <img src = "[:photo_path:]" class = "card_img">
                     <div class = "card_img_div">
