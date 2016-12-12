@@ -24,8 +24,8 @@ by filling forms in pop-up modals -->
   			<div class="container-fluid">
     			<ul class="nav navbar-nav">
       				<li><a href="home_page.html" class = "white">Home</a></li>
-      				<li><a href="#" id = "login_button">Login</a></li>
-      				<li><a href="#" id = "register_button">Register</a></li> 
+      				<li><a href="#" id = "login_button" class = "white">Login</a></li>
+      				<li><a href="#" id = "register_button" class = "white">Register</a></li> 
     			</ul>
   			</div>
 		</nav>
