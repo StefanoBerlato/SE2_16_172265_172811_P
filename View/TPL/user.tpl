@@ -42,23 +42,23 @@ by filling forms in pop-up modals -->
 				<form action="/register" method="post" enctype="multipart/form-data">
 					<div class = "form-group">
 						<label for = "text">Nickname:</label>
-    					<input type = "text" class = "form-control" id = "nickname">
+    					<input type = "text" class = "form-control" name = "nickname" id = "nickname">
 					</div>
 					<div class = "form-group">
     					<label for = "email">Email address:</label>
-    					<input type = "email" class = "form-control" id = "email">
+    					<input type = "email" class = "form-control" name = "email" id = "email">
   					</div>
   					<div class = "form-group">
     					<label for = "pwd">Password:</label>
-    					<input type = "password" class = "form-control" id = "pwd">
+    					<input type = "password" class = "form-control" name = "password" id = "pwd">
   					</div>
 					<div class = "form-group">
     					<label for = "pwd">Phone number</label>
-    					<input type = "text" class = "form-control" id = "phoneNUmber">
+    					<input type = "text" class = "form-control" name = "phone_number" id = "phoneNUmber">
   					</div>
 					<div class = "form-group">
     					<label for = "pwd">Choose profile picture</label>
-    					<input type = "file" class = "form-control" id = "profilePic">
+    					<input type = "file" name = "file" class = "form-control" id = "profilePic">
   					</div>
 					<hr>
 					<div class = "centered_text">
@@ -77,11 +77,11 @@ by filling forms in pop-up modals -->
 				<form action="/login" method="post">
 					<div class = "form-group">
     					<label for = "email">Email address:</label>
-    					<input type = "email" class = "form-control" id = "email">
+    					<input type = "email" class = "form-control" id = "email" name = "email">
   					</div>
   					<div class = "form-group">
     					<label for = "pwd">Password:</label>
-    					<input type = "password" class = "form-control" id = "pwd">
+    					<input type = "password" class = "form-control" id = "pwd" name = "password">
   					</div>
 					<hr>
 					<div class = "centered_text">
