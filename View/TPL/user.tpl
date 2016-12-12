@@ -99,7 +99,7 @@ by filling forms in pop-up modals -->
 				<hr>
 				<form action="/add_insertion" method="post" enctype="multipart/form-data">
 					<div class = "form-group hidden_field">
-    					<input type = "text" class = "form-control" name = "nickname" value = "(:nikname:)">
+    					<input type = "text" class = "form-control" name = "nickname" value = "(:nickname:)">
 					</div>
 					<div class = "form-group hidden_field">
     					<input type = "text" class = "form-control" name = "password" value = "(:password:)">
