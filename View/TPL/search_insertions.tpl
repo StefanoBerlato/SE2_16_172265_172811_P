@@ -142,7 +142,7 @@ accomodation, the name and a short description. -->
             
             <!-- List of cards -->
 			
-            <div class = "col-sm-3 col-sm-offset-1">(:data ~
+            <div class = "col-sm-7 col-sm-offset-1">(:data ~
 				<a href = "/card?title=[:title:]">
 					<div class = "well card_div">
 						<img src = "[:photo_path:]" class = "card_img">
