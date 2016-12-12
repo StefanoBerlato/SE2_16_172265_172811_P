@@ -42,23 +42,23 @@ by filling forms in pop-up modals -->
 				<form action="/register" method="post" enctype="multipart/form-data">
 					<div class = "form-group">
 						<label for = "text">Nickname:</label>
-    					<input type = "text" class = "form-control" name = "nickname" id = "nickname">
+    					<input type = "text" class = "form-control" name = "nickname" id = "nickname" required>
 					</div>
 					<div class = "form-group">
     					<label for = "email">Email address:</label>
-    					<input type = "email" class = "form-control" name = "email" id = "email">
+    					<input type = "email" class = "form-control" name = "email" id = "email" required>
   					</div>
   					<div class = "form-group">
     					<label for = "pwd">Password:</label>
-    					<input type = "password" class = "form-control" name = "password" id = "pwd">
+    					<input type = "password" class = "form-control" name = "password" id = "pwd" required>
   					</div>
 					<div class = "form-group">
     					<label for = "pwd">Phone number</label>
-    					<input type = "text" class = "form-control" name = "phone_number" id = "phoneNUmber">
+    					<input type = "text" class = "form-control" name = "phone_number" id = "phoneNUmber" required>
   					</div>
 					<div class = "form-group">
     					<label for = "pwd">Choose profile picture</label>
-    					<input type = "file" name = "file" class = "form-control" id = "profilePic">
+    					<input type = "file" name = "file" class = "form-control" id = "profilePic" required>
   					</div>
 					<hr>
 					<div class = "centered_text">
@@ -77,11 +77,11 @@ by filling forms in pop-up modals -->
 				<form action="/login" method="post">
 					<div class = "form-group">
     					<label for = "text">Nickname:</label>
-    					<input type = "text" class = "form-control" id = "nickname" name = "nickname">
+    					<input type = "text" class = "form-control" id = "nickname" name = "nickname" required>
   					</div>
   					<div class = "form-group">
     					<label for = "pwd">Password:</label>
-    					<input type = "password" class = "form-control" id = "pwd" name = "password">
+    					<input type = "password" class = "form-control" id = "pwd" name = "password" required>
   					</div>
 					<hr>
 					<div class = "centered_text">
@@ -106,15 +106,15 @@ by filling forms in pop-up modals -->
 					</div>
 					<div class = "form-group">
 						<label for = "text">Title:</label>
-    					<input type = "text" class = "form-control" name = "title">
+    					<input type = "text" class = "form-control" name = "title" required>
 					</div>
 					<div class = "form-group">
     					<label for = "text">Description:</label>
-    					<input type = "text" class = "form-control" name = "description">
+    					<input type = "text" class = "form-control" name = "description" required>
   					</div>
 					<div class = "form-group">
     					<label for = "text">Available rooms:</label>
-    					<input type = "number" class = "form-control" name = "available_rooms">
+    					<input type = "number" class = "form-control" name = "available_rooms" required>
   					</div>
 					<div class = "form-group">
     					<label for = "text" class = "special_label">Room typology:</label><br>
@@ -132,14 +132,14 @@ by filling forms in pop-up modals -->
   					</div>
 					<div class = "form-group">
     					<label for = "text">Free from:</label>
-    					<input type = "date" class = "form-control" name = "free_from">
+    					<input type = "date" class = "form-control" name = "free_from" required>
   					</div>
 					<div class = "form-group">
     					<label for = "text">Address:</label>
-    					<input type = "text" class = "form-control" name = "address">
+    					<input type = "text" class = "form-control" name = "address" required>
   					</div>
 					<div class = "form-group">
-    					<label for = "text" class = "special_label">Locality:</label>
+    					<label for = "text" class = "special_label">Locality:</label><br>
     					<input type = "checkbox" name = "locality" value= "trento">
                         <label>Trento</label><br>
                         <input type = "checkbox" name = "locality" value= "povo">
@@ -153,11 +153,11 @@ by filling forms in pop-up modals -->
   					</div>
 					<div class = "form-group">
     					<label for = "text">Price per person:</label>
-    					<input type = "number" class = "form-control" name = "price_per_person">
+    					<input type = "number" class = "form-control" name = "price_per_person" required>
   					</div>
 					<div class = "form-group">
     					<label for = "text">Add a photo:</label>
-    					<input type = "file" class = "form-control">
+    					<input type = "file" class = "form-control" required>
   					</div>
 					<hr>
 					<div class = "centered_text">
@@ -186,11 +186,11 @@ by filling forms in pop-up modals -->
 					</div>
 					<div class = "form-group">
     					<label for = "text">Description:</label>
-    					<input type = "text" class = "form-control" name = "description">
+    					<input type = "text" class = "form-control" name = "description" required>
   					</div>
 					<div class = "form-group">
     					<label for = "text">Available rooms:</label>
-    					<input type = "number" class = "form-control" name = "available_rooms">
+    					<input type = "number" class = "form-control" name = "available_rooms" required>
   					</div>
 					<div class = "form-group">
     					<label for = "text" class = "special_label">Room typology:</label><br>
@@ -208,11 +208,11 @@ by filling forms in pop-up modals -->
   					</div>
 					<div class = "form-group">
     					<label for = "text">Free from:</label>
-    					<input type = "date" class = "form-control" name = "free_from">
+    					<input type = "date" class = "form-control" name = "free_from" required>
   					</div>
 					<div class = "form-group">
     					<label for = "text">Address:</label>
-    					<input type = "text" class = "form-control" name = "address">
+    					<input type = "text" class = "form-control" name = "address" required>
   					</div>
 					<div class = "form-group">
     					<label for = "text" class = "special_label">Locality:</label><br>
@@ -229,11 +229,11 @@ by filling forms in pop-up modals -->
   					</div>
 					<div class = "form-group">
     					<label for = "text">Price per person:</label>
-    					<input type = "number" class = "form-control" name = "price_per_person">
+    					<input type = "number" class = "form-control" name = "price_per_person" required>
   					</div>
 					<div class = "form-group">
     					<label for = "text">Add a photo:</label>
-    					<input type = "file" class = "form-control">
+    					<input type = "file" class = "form-control" required>
   					</div>
 					<hr>
 					<div class = "centered_text">
