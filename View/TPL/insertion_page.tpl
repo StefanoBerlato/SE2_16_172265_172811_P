@@ -99,10 +99,8 @@ by which the user can contact the renter -->
                 
                 <!-- Image -->
                 <div class = "img_div">
-                    <img src = "(:photo_src:)">
+                    <img src = "(:photo_src:)" class = "insertion_img">
                 </div>
-				<br>
-				<br>
             </div>
             
             <!-- Information panel -->
