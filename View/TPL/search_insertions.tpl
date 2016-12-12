@@ -145,9 +145,9 @@ accomodation, the name and a short description. -->
                 <div class = "well card_div">
                     <img src = "[:photo_path:]" class = "card_img">
                     <div class = "card_img_div">
-                        <h4 class = "card_title">(:title:)</h4>
+                        <h4 class = "card_title">[:title:]</h4>
                         <hr>
-                        <p class = "short_description">(:description:)</p>
+                        <p class = "short_description">[:description:]</p>
                     </div>
                 </div>
 			:)</div>
