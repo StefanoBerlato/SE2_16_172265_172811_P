@@ -90,6 +90,14 @@ body {
     font-weight: bold;
 }
 
+.close_contact_renter {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+
 .close_register:hover,
 .close_register:focus {
     color: black;
@@ -113,6 +121,13 @@ body {
 
 .close_modify_insertion:hover,
 .close_modify_insertion:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.close_contact_renter:hover,
+.close_contact_renter:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;

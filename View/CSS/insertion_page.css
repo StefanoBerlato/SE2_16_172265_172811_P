@@ -28,6 +28,10 @@
 	font-size: 15px;
 }
 
+.black {
+	color: black !important;
+}
+
 .centered_text {
     text-align: center;
 }

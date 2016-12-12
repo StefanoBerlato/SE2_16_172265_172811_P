@@ -92,6 +92,22 @@ by which the user can contact the renter -->
   			</div>
 		</div>
 		
+		
+		<!-- Contact renter modal -->
+		<div id = "contact_renter_modal" class = "modal">
+			<div class = "modal_content">
+    			<span class = "close_contact_renter">x</span>
+    			<h3 class = "modal_title">Contact the renter</h3>
+				<hr>
+				<div class = "centered_text">
+					<p class = "desc_par black">(:nickname:)</p><br>
+					<p class = "desc_par black">(:email:)</p><br>
+					<p class = "desc_par black">(:phone_number:)</p>
+				</div>
+  			</div>
+		</div>
+		
+		
 		<br>
 		
         <div class = "container">
@@ -116,7 +132,7 @@ by which the user can contact the renter -->
                     <br>
                     <br>
                     <div class = "centered_text">
-                        <button class="btn btn-primary btn-lg">Contact the renter</button>
+                        <button class="btn btn-primary btn-lg" id = "contact_renter_button">Contact the renter</button>
                     </div>
                 </div>
             </div>
