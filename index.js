@@ -19,7 +19,7 @@ app.use(express.static(__dirname + '/Model/photo/insertions')); // ...
 
 // this sorts the requestes for the '/' route in get
 app.get('/', function(req, res) {
-    bind.toFile(__dirname + '/View/TPL/home_page.tpl', {},  
+    bind.toFile(__dirname + '/View/TPL/home_page.html', {},  
     function(data) 
     {
         res.writeHead(200, {'Content-Type': 'text/html'});
