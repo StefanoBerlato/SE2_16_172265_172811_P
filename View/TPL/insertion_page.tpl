@@ -126,9 +126,9 @@ by which the user can contact the renter -->
                     <hr>
                     <p class = "desc_par">(:description:)</p>
                     <br>
-                    <p class = "desc_par">Price : (:price_per_person:)</p>
-                    <p class = "desc_par">Available rooms : (:availableRooms:)</p>
-                    <p class = "desc_par">Free from: (:freeFrom:)</p>
+                    <p class = "desc_par">Price: (:price_per_person:)</p>
+                    <p class = "desc_par">Available rooms: (:available_rooms:)</p>
+                    <p class = "desc_par">Free from: (:free_from:)</p>
                     <br>
                     <br>
                     <div class = "centered_text">
