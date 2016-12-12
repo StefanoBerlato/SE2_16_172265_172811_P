@@ -16,6 +16,7 @@ var message;                                                    // error message
  */
 var card  = function(req, res) 
 {
+    
     var Insertion = {title:req.query.title, description:null, available_rooms:null, rooms_typology:null, house_typology:null, free_from:null, address:null, locality:null, price_per_person:null, photo_path:null, nickname:null};
     code = db.get_insertion(Insertion);
     
@@ -41,7 +42,7 @@ var card  = function(req, res)
         price_per_person : Insertion.price_per_person,  // ...
         photo_src : Insertion.photo_path,               // ...
         nickname : Insertion.nickname,                  // ...
-        error_message : message                         // ...
+        message : message                               // ...
     }, function(data) { res.end(data); });              // return the tpl
 }
 
@@ -54,25 +55,68 @@ var card  = function(req, res)
 var search  = function(req, res) 
 {
     var Insertions = {data:[]};
-    code = db.search_insertions(Insertions.data, req.query.house_typology, req.query.rooms_typology, req.query.locality, req.query.available_rooms, req.query.price_per_person, req.query.free_from);
+   
+       var house = null; 
+    if (req.query.house_typology) {
+        if (Array.isArray(req.query.house_typology)) {
+            house = req.query.house_typology.join("+");
+        }
+        else {
+            house = req.query.house_typology;
+        }
+    }
+
+    var rooms = null; 
+    if (req.query.rooms_typology) {
+        if (Array.isArray(req.query.rooms_typology)) {
+            rooms = req.query.rooms_typology.join("+");
+        }
+        else {
+            rooms = req.query.rooms_typology;
+        }
+    }
+    
+    var loc = null; 
+    if (req.query.locality) {
+        if (Array.isArray(req.query.locality)) {
+            loc = req.query.locality.join("+");
+        }
+        else {
+            loc = req.query.locality;
+        }
+    }
+    
+    var date = null;
+    if (req.query.free_from) {
+        date = req.query.free_from.split("-").reverse().join("_");
+    }
+    
+    var room_num = null;
+    if (req.query.available_rooms) {
+        room_num = req.query.available_rooms;
+    }
+    
+    var price = null;
+    if (req.query.price_per_person) {
+        price = req.query.price_per_person;
+    }
+   
+    code = db.search_insertions(Insertions.data, house, rooms, loc, room_num, price, date);
     
     switch (code) { // setting the http status and eventually the proper error message basing on the 'code' returned by db manager
-        case  1:    to_bind_file_path = __dirname + '/../View/TPL/insertion_page.tpl'; http_status = 200; break;
+        case  1:    to_bind_file_path = __dirname + '/../View/TPL/search_insertions.tpl'; http_status = 200; break;
         case -1:    message = "There isn't any insertion that matches the filters you set. Try again";  
-                    to_bind_file_path = __dirname + '/../View/TPL/error_page.tpl'; http_status = 404; break;
+                    to_bind_file_path = __dirname + '/../View/TPL/error_page.tpl'; http_status = 200; break;
         default:    message = error_message_prefix + "\"search_controller search - error, code " + code + "  " + new Date()  + "\""; 
                     http_status = 500; to_bind_file_path = __dirname + '/../View/TPL/error_page.tpl';
     }
     
-    // e qua bisogna avere il tpl...
-    
-    
-    
-    
-    
-    
-    
-    
+    res.writeHead(http_status, {'Content-Type': 'text/html'});  // write the proper set header
+
+    bind.toFile( to_bind_file_path, {                   // bind to tpl
+        data : Insertions.data,                         // set attributes
+        message : message                               // ...
+    }, function(data) { res.end(data); });              // return the tpl
     
 }
 
