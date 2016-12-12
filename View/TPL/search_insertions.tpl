@@ -41,7 +41,7 @@ accomodation, the name and a short description. -->
     			<h3 class = "modal_title">Register</h3>
 				<hr>
 				<form action="/register" method="post" enctype="multipart/form-data">
-						<div class = "form-group">
+					<div class = "form-group">
 						<label for = "text">Nickname:</label>
     					<input type = "text" class = "form-control" name = "nickname" id = "nickname" required>
 					</div>
@@ -75,7 +75,7 @@ accomodation, the name and a short description. -->
     			<span class = "close_login">x</span>
     			<h3 class = "modal_title">Login</h3>
 				<hr>
-				<form action="/login" method="post" enctype="multipart/form-data">
+				<form action="/login" method="post">
 					<div class = "form-group">
     					<label for = "text">Nickname:</label>
     					<input type = "text" class = "form-control" id = "nickname" name = "nickname" required>
@@ -141,16 +141,20 @@ accomodation, the name and a short description. -->
             </div>
             
             <!-- List of cards -->
+			
             <div class = "col-sm-3 col-sm-offset-1">(:data ~
-                <div class = "well card_div">
-                    <img src = "[:photo_path:]" class = "card_img">
-                    <div class = "card_img_div">
-                        <h4 class = "card_title">[:title:]</h4>
-                        <hr>
-                        <p class = "short_description">[:description:]</p>
-                    </div>
-                </div>
+				<a href = "/card?title=(:title:)">
+					<div class = "well card_div">
+						<img src = "[:photo_path:]" class = "card_img">
+						<div class = "card_img_div">
+							<h4 class = "card_title">[:title:]</h4>
+							<hr>
+							<p class = "short_description">[:description:]</p>
+						</div>
+					</div>
+				</a>
 			:)</div>
+				
         </div>
                 
         <!-- JS scripts -->

@@ -65,7 +65,7 @@
 					</div>
 				</form>
   			</div>
-		</div>
+		</div>>
 		
 		<!-- Login modal -->
 		<div id = "login_modal" class = "modal">
@@ -73,7 +73,7 @@
     			<span class = "close_login">x</span>
     			<h3 class = "modal_title">Login</h3>
 				<hr>
-				<form action="/login" method="post" enctype="multipart/form-data">
+				<form action="/login" method="post">
 					<div class = "form-group">
     					<label for = "text">Nickname:</label>
     					<input type = "text" class = "form-control" id = "nickname" name = "nickname" required>

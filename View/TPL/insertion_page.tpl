@@ -73,9 +73,9 @@ by which the user can contact the renter -->
 		<div id = "login_modal" class = "modal">
 			<div class = "modal_content">
     			<span class = "close_login">x</span>
-    			<h3 class = "modaltitle">Login</h3>
+    			<h3 class = "modal_title">Login</h3>
 				<hr>
-				<form action="/login" method="post" enctype="multipart/form-data">
+				<form action="/login" method="post">
 					<div class = "form-group">
     					<label for = "text">Nickname:</label>
     					<input type = "text" class = "form-control" id = "nickname" name = "nickname" required>
@@ -97,7 +97,7 @@ by which the user can contact the renter -->
         <div class = "container">
             <div class = "col-sm-7">
                 
-                <!-- Map -->
+                <!-- Image -->
                 <div class = "img_div">
                     <img src = "(:photo_src:)">
                 </div>
