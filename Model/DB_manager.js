@@ -52,16 +52,20 @@ var verify_user_presence = function (User) {
     var returning_value;                                        // the number code that is going to be returned
 
     if ( (returning_value = read_db(users_file_path,users_data_wrapper,users)) == 1) {  // if there were no errors while reading the file
-        var query = users.data({nickname:User.nickname, password:User.password});   // execute the query
-        if (query.count() == 1) {                                                   // if there is a match                                            
-            query = query.first();                                                  // take the first (and only) record
-            User.email = query.email;                                               // fills the User object
+        var query;                                                                          // the query that is going to be execute
+        if (User.password != null)                                                          // this is the Login functionality     
+            query = users.data({nickname:User.nickname, password:User.password});           // execute the query
+        else                                                                                // this is only for retrieve data about an user
+            query = users.data({nickname:User.nickname});                                   // execute the query
+        if (query.count() == 1) {                                                           // if there is a match                                            
+            query = query.first();                                                          // take the first (and only) record
+            User.email = query.email;                                                       // fills the User object
             User.phone_number = query.phone_number;
             User.profile_photo_path = query.profile_photo_path;
         }
-        else {                                                                      // else, if there's no match
-            returning_value = -1;                                                   // set the returning value to -1
-            User.nickname = null;                                                   // fills the User object with null values
+        else {                                                                              // else, if there's no match
+            returning_value = -1;                                                           // set the returning value to -1
+            User.nickname = null;                                                           // fills the User object with null values
             User.password = null;
         }
     }
@@ -212,7 +216,7 @@ var delete_insertion_from_db = function (Insertion) {
  * -1 not match found
  * -2 read file error
  */
-var search_insertions_in_db = function (Insertions, house_typ, rooms_typ, local, av_rooms, max_price, from) {
+var search_insertions_in_db = function (Insertions, house_typ, rooms_typ, local, av_rooms, max_price, from, user_nickname) {
     var db = {data:""};                                                     // the object that will contain the db data about insertions
     var returning_value;                                                    // the number code that is going to be returned
     
@@ -224,23 +228,32 @@ var search_insertions_in_db = function (Insertions, house_typ, rooms_typ, local,
     if (from == null) from = "31_12_9999";                                  // ...
 
     if ( (returning_value = read_db(insertions_file_path,insertions_data_wrapper,db)) == 1) {   // filters: if there were no errors while reading the file
-            Insertions.data = db.data({                                                         // do a select query with the filters
-            house_typology:house_typ.split("+"),                                                // so house_typology must be in the house_typ splitted string
-            rooms_typology:rooms_typ.split("+"),                                                // so rooms_typology must be in the rooms_typ splitted string
-            locality:local.split("+"),                                                          // so locality must be in the local splitted string
-            available_rooms:{'>=':av_rooms},                                                    // at least there should be "av_rooms" available rooms
-            price_per_person:{'<=':max_price}                                                   // at most the price shold be "max_price"
-        }).get();                                                                               // retrieves all the data from db as an array of objects    
+        
+        if (user_nickname != null) {                     // if the server wants to retrieve a user's insertions
+            Insertions.data = db.data({                  // do a select query with only one filter
+                nickname: user_nickname,                 // the nickname
+            }).get();  
+        }
+    
+        else {                                           // if the request was to search insertions with some filters
+            Insertions.data = db.data({                  // do a select query with the filters
+                house_typology:house_typ.split("+"),     // so house_typology must be in the house_typ splitted string
+                rooms_typology:rooms_typ.split("+"),     // so rooms_typology must be in the rooms_typ splitted string
+                locality:local.split("+"),               // so locality must be in the local splitted string
+                available_rooms:{'>=':av_rooms},         // at least there should be "av_rooms" available rooms
+                price_per_person:{'<=':max_price}        // at most the price shold be "max_price"
+            }).get();                                    // retrieves all the data from db as an array of objects    
 
-        from = from.split("_");                                                         // filter for date: elaborate the from filter in order to cast it into a date
-        from = new Date(parseInt(from[2]),(parseInt(from[1])-1),parseInt(from[0]));     // creating a date givin as parameters YYYY, MM-1, DD
-        for (var i = 0 ; i < Insertions.data.length ; i++) {                            // then, for each remaining insertion
-            var i_date = Insertions.data[i].free_from.split("_");                       // do the same elaboration for this date as before
-            i_date = new Date(parseInt(i_date[2]),(parseInt(i_date[1])-1),parseInt(i_date[0]));
-            if (from.getTime() < i_date.getTime()) {                                    // if the apartment becomes free after the filter specified by the user
-                Insertions.data.splice(i,1);                                            // remove it
-                i--;                                                                    // obviously decrease the index (we've just cut an elemet)
-            }
+            from = from.split("_");                                                         // filter for date: elaborate the from filter in order to cast it into a date
+            from = new Date(parseInt(from[2]),(parseInt(from[1])-1),parseInt(from[0]));     // creating a date givin as parameters YYYY, MM-1, DD
+            for (var i = 0 ; i < Insertions.data.length ; i++) {                            // then, for each remaining insertion
+                var i_date = Insertions.data[i].free_from.split("_");                       // do the same elaboration for this date as before
+                i_date = new Date(parseInt(i_date[2]),(parseInt(i_date[1])-1),parseInt(i_date[0]));
+                if (from.getTime() < i_date.getTime()) {                                    // if the apartment becomes free after the filter specified by the user
+                    Insertions.data.splice(i,1);                                            // remove it
+                    i--;                                                                    // obviously decrease the index (we've just cut an elemet)
+                }
+            }    
         }
         
         if (Insertions.data.length == 0) {      // and if there are no objects
