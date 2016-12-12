@@ -157,7 +157,7 @@ by filling forms in pop-up modals -->
   					</div>
 					<div class = "form-group">
     					<label for = "text">Add a photo:</label>
-    					<input type = "file" class = "form-control" required>
+    					<input type = "file" name = "file" class = "form-control" required>
   					</div>
 					<hr>
 					<div class = "centered_text">
@@ -233,7 +233,7 @@ by filling forms in pop-up modals -->
   					</div>
 					<div class = "form-group">
     					<label for = "text">Add a photo:</label>
-    					<input type = "file" class = "form-control" required>
+    					<input name = "file" type = "file" class = "form-control" required>
   					</div>
 					<hr>
 					<div class = "centered_text">
