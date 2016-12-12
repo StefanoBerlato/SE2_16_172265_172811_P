@@ -144,7 +144,7 @@ function authenticate_user (nickname, password) {
     switch (code) {                                         // setting the http status and eventually the proper error message basing on the 'code' returned by db manager
         case  1:    break;                                  // 1 user authenticated, -1 wrong credentials, otherwise server error 
         case -1:    message = "It seems like you are not a regulare user... If you think there is an error, contact the webmaster at_support@gmail.com";  
-                    to_bind_file_path = __dirname + '/../View/TPL/error_page.tpl'; break;
+                    http_status= 200; to_bind_file_path = __dirname + '/../View/TPL/error_page.tpl'; break;
         default:    message = error_message_prefix + "\"insertion authenticate_user - error, code " + code + "  " + new Date()  + "\""; 
                     http_status = 500; to_bind_file_path = __dirname + '/../View/TPL/error_page.tpl';
     }
