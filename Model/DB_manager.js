@@ -57,6 +57,7 @@ var verify_user_presence = function (User) {
             query = users.data({nickname:User.nickname, password:User.password});           // execute the query
         else                                                                                // this is only for retrieve data about an user
             query = users.data({nickname:User.nickname});                                   // execute the query
+        
         if (query.count() == 1) {                                                           // if there is a match                                            
             query = query.first();                                                          // take the first (and only) record
             User.email = query.email;                                                       // fills the User object
@@ -240,14 +241,14 @@ var search_insertions_in_db = function (Insertions, house_typ, rooms_typ, local,
                 house_typology:house_typ.split("+"),     // so house_typology must be in the house_typ splitted string
                 rooms_typology:rooms_typ.split("+"),     // so rooms_typology must be in the rooms_typ splitted string
                 locality:local.split("+"),               // so locality must be in the local splitted string
-                available_rooms:{'>=':av_rooms},         // at least there should be "av_rooms" available rooms
-                price_per_person:{'<=':max_price}        // at most the price shold be "max_price"
-            }).get();                                    // retrieves all the data from db as an array of objects    
+                available_rooms:{'>=':parseInt(av_rooms)},         // at least there should be "av_rooms" available rooms
+                price_per_person:{'<=':parseInt(max_price)}        // at most the price shold be "max_price"
+            }).get();                                        // retrieves all the data from db as an array of objects    
 
             from = from.split("_");                                                         // filter for date: elaborate the from filter in order to cast it into a date
             from = new Date(parseInt(from[2]),(parseInt(from[1])-1),parseInt(from[0]));     // creating a date givin as parameters YYYY, MM-1, DD
             for (var i = 0 ; i < Insertions.data.length ; i++) {                            // then, for each remaining insertion
-                var i_date = Insertions.data[i].free_from.split("_");                       // do the same elaboration for this date as before
+                var i_date = Insertions.data[i].free_from.split("-").reverse();             // do the same elaboration for this date
                 i_date = new Date(parseInt(i_date[2]),(parseInt(i_date[1])-1),parseInt(i_date[0]));
                 if (from.getTime() < i_date.getTime()) {                                    // if the apartment becomes free after the filter specified by the user
                     Insertions.data.splice(i,1);                                            // remove it

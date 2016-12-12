@@ -53,7 +53,7 @@ var add_insertion  = function(req, res) {
         }
     }
     
-    response (res);
+    response (res, req.body.nickname);
 }
 
 
@@ -97,7 +97,7 @@ var modify_insertion  = function(req, res) {
         }
     }
     
-   response (res);
+   response (res, req.body.nickname);
 }
 
 
@@ -122,7 +122,7 @@ var delete_insertion  = function(req, res) {
         }
     }
     
-    response (res);
+    response (res, req.body.nickname);
 }
 
 
@@ -157,8 +157,19 @@ function authenticate_user (nickname, password) {
  * @brief internal procedure that responds returning the user.tpl with all the parameters
  * @param res
  */
-function response (res) {
-
+function response (res, nickname) {
+    
+    var Insertions = {data:[]};
+    
+    code = db.search_insertions(Insertions, null, null, null, null, null, null, nickname);
+    
+    switch (code) { // setting the http status and eventually the proper error message basing on the 'code' returned by db manager
+        case  1:    break;
+        case -1:    break;
+        default:    message = error_message_prefix + "\"user_controller response - error, code " + code + "  " + new Date()  + "\""; 
+                    http_status = 500; to_bind_file_path = __dirname + '/../View/TPL/error_page.tpl';
+    }
+    
     res.writeHead(http_status, {'Content-Type': 'text/html'});  // write the proper set header
 
     bind.toFile( to_bind_file_path, {                           // bind to tpl
@@ -167,6 +178,7 @@ function response (res) {
         photo_src : User_pushing_data.profile_photo_path,       // ...
         phone_number : User_pushing_data.phone_number,          // ...
         email : User_pushing_data.email,                        // ...
+        data : Insertions.data,                                 // ...
         message : message                                       // ...
     }, function(data) { res.end(data); });                      // return the tpl
 }

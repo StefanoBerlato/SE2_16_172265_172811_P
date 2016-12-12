@@ -16,17 +16,19 @@ var message;                                                    // error message
  */
 var card  = function(req, res) 
 {
-    
+    var insertionist = {nickname:null, password:null, email:null, phone_number:null, profile_photo_path:null};
     var Insertion = {title:req.query.title, description:null, available_rooms:null, rooms_typology:null, house_typology:null, free_from:null, address:null, locality:null, price_per_person:null, photo_path:null, nickname:null};
     code = db.get_insertion(Insertion);
-    
+
     switch (code) { // setting the http status and eventually the proper error message basing on the 'code' returned by db manager
-        case  1:    var user_code = db.verify_user(Insertion.nickname, null);
+        case  1:    insertionist.nickname = Insertion.nickname;
+                    var user_code = db.verify_user(insertionist);
                     switch (user_code) {
                         case 1: to_bind_file_path = __dirname + '/../View/TPL/insertion_page.tpl'; http_status = 200; break;
-                        default: message = error_message_prefix + "\"search_controller card - user_code - error, code " + code + "  " + new Date()  + "\""; 
+                        default: message = error_message_prefix + "\"search_controller card - user_code - error, code " + user_code + "  " + new Date()  + "\""; 
                                  http_status = 500; to_bind_file_path = __dirname + '/../View/TPL/error_page.tpl';
                     }
+                    break;
         case -1:    message = "Insertion not found";  
                     to_bind_file_path = __dirname + '/../View/TPL/error_page.tpl'; http_status = 404; break;
         default:    message = error_message_prefix + "\"search_controller card - error, code " + code + "  " + new Date()  + "\""; 
@@ -46,9 +48,9 @@ var card  = function(req, res)
         locality : Insertion.locality,                  // ...
         price_per_person : Insertion.price_per_person,  // ...
         photo_src : Insertion.photo_path,               // ...
-        nickname : User.nickname,                       // ...
-        phone_number : User.phone_number,               // ...
-        email : User.email,                             // ...
+        nickname : insertionist.nickname,               // ...
+        phone_number : insertionist.phone_number,       // ...
+        email : insertionist.email,                     // ...
         message : message                               // ...
     }, function(data) { res.end(data); });              // return the tpl
 }
@@ -107,7 +109,7 @@ var search  = function(req, res)
     if (req.query.price_per_person) {
         price = req.query.price_per_person;
     }
-   
+
     code = db.search_insertions(Insertions, house, rooms, loc, room_num, price, date, null);
     
     switch (code) { // setting the http status and eventually the proper error message basing on the 'code' returned by db manager
