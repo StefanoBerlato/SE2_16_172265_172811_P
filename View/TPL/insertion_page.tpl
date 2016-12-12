@@ -24,7 +24,7 @@ by which the user can contact the renter -->
 		<nav class = "centered_nav">
   			<div class="container-fluid">
     			<ul class="nav navbar-nav">
-      				<li><a href="home_page.html" class = "white">Home</a></li>
+      				<li><a href="/" class = "white">Home</a></li>
       				<li><a href="#" id = "login_button">Login</a></li>
       				<li><a href="#" id = "register_button">Register</a></li> 
     			</ul>
