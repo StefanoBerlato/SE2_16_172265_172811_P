@@ -40,7 +40,7 @@ by filling forms in pop-up modals -->
     			<h3 class = "modal_title">Register</h3>
 				<hr>
 				<form action="/register" method="post" enctype="multipart/form-data">
-					<div class = "form-group">
+						<div class = "form-group">
 						<label for = "text">Nickname:</label>
     					<input type = "text" class = "form-control" name = "nickname" id = "nickname" required>
 					</div>
@@ -118,16 +118,16 @@ by filling forms in pop-up modals -->
   					</div>
 					<div class = "form-group">
     					<label for = "text" class = "special_label">Room typology:</label><br>
-    					<input type = "checkbox" name = "rooms_typology" value= "single_room">
+    					<input type = "radio" name = "rooms_typology" value= "single_room">
                         <label>Single room</label><br>
-						<input type = "checkbox" name = "rooms_typology" value= "double_room">
+						<input type = "radio" name = "rooms_typology" value= "double_room">
                         <label>Double room</label><br>
   					</div>
   					<div class = "form-group">
     					<label for = "text" class = "special_label">House typology:</label><br>
-    					<input type = "checkbox" name = "house_typology" value= "boarding_house">
+    					<input type = "radio" name = "house_typology" value= "boarding_house">
                         <label>Boarding house</label><br>
-						<input type = "checkbox" name = "house_typology" value= "apartment">
+						<input type = "radio" name = "house_typology" value= "apartment">
                         <label>Apartment</label><br>
   					</div>
 					<div class = "form-group">
@@ -140,15 +140,15 @@ by filling forms in pop-up modals -->
   					</div>
 					<div class = "form-group">
     					<label for = "text" class = "special_label">Locality:</label><br>
-    					<input type = "checkbox" name = "locality" value= "trento">
+    					<input type = "radio" name = "locality" value= "trento">
                         <label>Trento</label><br>
-                        <input type = "checkbox" name = "locality" value= "povo">
+                        <input type = "radio" name = "locality" value= "povo">
                         <label>Povo</label><br>
-                        <input type = "checkbox" name = "locality" value= "mesiano">
+                        <input type = "radio" name = "locality" value= "mesiano">
                         <label>Mesiano</label><br>
-                        <input type = "checkbox" name = "locality" value= "villazzano">
+                        <input type = "radio" name = "locality" value= "villazzano">
                         <label>Villazzano</label><br>
-                        <input type = "checkbox" name = "locality" value= "san_dona">
+                        <input type = "radio" name = "locality" value= "san_dona">
                         <label>San Donà</label><br>
   					</div>
 					<div class = "form-group">
@@ -194,16 +194,16 @@ by filling forms in pop-up modals -->
   					</div>
 					<div class = "form-group">
     					<label for = "text" class = "special_label">Room typology:</label><br>
-    					<input type = "checkbox" name = "rooms_typology" value= "single_room">
+    					<input type = "radio" name = "rooms_typology" value= "single_room">
                         <label>Single room</label><br>
-						<input type = "checkbox" name = "rooms_typology" value= "double_room">
+						<input type = "radio" name = "rooms_typology" value= "double_room">
                         <label>Double room</label><br>
   					</div>
   					<div class = "form-group">
     					<label for = "text" class = "special_label">House typology:</label><br>
-    					<input type = "checkbox" name = "house_typology" value= "boarding_house">
+    					<input type = "radio" name = "house_typology" value= "boarding_house">
                         <label>Boarding house</label><br>
-						<input type = "checkbox" name = "house_typology" value= "apartment">
+						<input type = "radio" name = "house_typology" value= "apartment">
                         <label>Apartment</label><br>
   					</div>
 					<div class = "form-group">
@@ -216,15 +216,15 @@ by filling forms in pop-up modals -->
   					</div>
 					<div class = "form-group">
     					<label for = "text" class = "special_label">Locality:</label><br>
-    					<input type = "checkbox" name = "locality" value= "trento">
+    					<input type = "radio" name = "locality" value= "trento">
                         <label>Trento</label><br>
-                        <input type = "checkbox" name = "locality" value= "povo">
+                        <input type = "radio" name = "locality" value= "povo">
                         <label>Povo</label><br>
-                        <input type = "checkbox" name = "locality" value= "mesiano">
+                        <input type = "radio" name = "locality" value= "mesiano">
                         <label>Mesiano</label><br>
-                        <input type = "checkbox" name = "locality" value= "villazzano">
+                        <input type = "radio" name = "locality" value= "villazzano">
                         <label>Villazzano</label><br>
-                        <input type = "checkbox" name = "locality" value= "san_dona">
+                        <input type = "radio" name = "locality" value= "san_dona">
                         <label>San Donà</label><br>
   					</div>
 					<div class = "form-group">
