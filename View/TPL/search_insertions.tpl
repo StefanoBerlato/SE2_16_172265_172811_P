@@ -77,8 +77,8 @@ accomodation, the name and a short description. -->
 				<hr>
 				<form action="/login" method="post" enctype="multipart/form-data">
 					<div class = "form-group">
-    					<label for = "email">Email address:</label>
-    					<input type = "email" class = "form-control" id = "email" name = "email">
+    					<label for = "text">Nickname:</label>
+    					<input type = "text" class = "form-control" id = "nickname" name = "nickname">
   					</div>
   					<div class = "form-group">
     					<label for = "pwd">Password:</label>
