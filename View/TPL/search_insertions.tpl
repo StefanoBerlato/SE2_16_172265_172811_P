@@ -42,7 +42,7 @@ accomodation, the name and a short description. -->
 				<hr>
 				<form action="/register" method="post" enctype="multipart/form-data">
 					<div class = "form-group">
-						<label for = "text">Nickname:</label>
+						<label>Nickname:</label>
     					<input type = "text" class = "form-control" name = "nickname" id = "nickname" required>
 					</div>
 					<div class = "form-group">
@@ -103,36 +103,36 @@ accomodation, the name and a short description. -->
                     <hr>
                     <form id = "filterForm" action="/search" method="get" enctype="multipart/form-data">
                         <input type = "checkbox" name = "locality" value= "trento">
-                        <label>Trento</label><br>
+                        <label class = "filters_label">Trento</label><br>
                         <input type = "checkbox" name = "locality" value= "povo">
-                        <label>Povo</label><br>
+                        <label class = "filters_label">Povo</label><br>
                         <input type = "checkbox" name = "locality" value= "mesiano">
-                        <label>Mesiano</label><br>
+                        <label class = "filters_label">Mesiano</label><br>
                         <input type = "checkbox" name = "locality" value= "villazzano">
-                        <label>Villazzano</label><br>
+                        <label class = "filters_label">Villazzano</label><br>
                         <input type = "checkbox" name = "locality" value= "san_dona">
-                        <label>San Donà</label><br>
+                        <label class = "filters_label">San Donà</label><br>
                         <br>
                         <h3 class = "filters_title">Filter by price</h3>
                         <hr>
-                        <label>Maximum Price</label><br>
+                        <label class = "filters_label">Maximum Price</label><br>
                         <input type = "number" name = "price_per_person" class = "filters_input"><br>
                         <br>
                         <h3 class = "filters_title">Filter by available rooms</h3>
                         <hr>
-                        <label>Quantity</label><br>
+                        <label class = "filters_label">Quantity</label><br>
                         <input type = "number" name = "available_rooms" class = "filters_input"><br>
                         <br>
 						<h3 class = "filters_title">Filter by typology</h3>
 						<hr>
 						<input type = "checkbox" name = "rooms_typology" value= "single_room">
-                        <label>Single room</label><br>
+                        <label class = "filters_label">Single room</label><br>
 						<input type = "checkbox" name = "rooms_typology" value= "double_room">
-                        <label>Double room</label><br>
+                        <label class = "filters_label">Double room</label><br>
 						<input type = "checkbox" name = "house_typology" value= "boarding_house">
-                        <label>Boarding house</label><br>
+                        <label class = "filters_label">Boarding house</label><br>
 						<input type = "checkbox" name = "house_typology" value= "apartment">
-                        <label>Apartment</label><br>
+                        <label class = "filters_label">Apartment</label><br>
                         <div class = "centered_text">
                             <button type="submit" class="btn btn-primary btn-lg">Apply Filters</button>
                         </div>
