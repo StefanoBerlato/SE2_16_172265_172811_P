@@ -39,25 +39,25 @@
     			<h3 class = "modal_title">Register</h3>
 				<hr>
 				<form action="/register" method="post" enctype="multipart/form-data">
-					<div class = "form-group">
+						<div class = "form-group">
 						<label for = "text">Nickname:</label>
-    					<input type = "text" class = "form-control" name = "nickname" id = "nickname">
+    					<input type = "text" class = "form-control" name = "nickname" id = "nickname" required>
 					</div>
 					<div class = "form-group">
     					<label for = "email">Email address:</label>
-    					<input type = "email" class = "form-control" name = "email" id = "email">
+    					<input type = "email" class = "form-control" name = "email" id = "email" required>
   					</div>
   					<div class = "form-group">
     					<label for = "pwd">Password:</label>
-    					<input type = "password" class = "form-control" name = "password" id = "pwd">
+    					<input type = "password" class = "form-control" name = "password" id = "pwd" required>
   					</div>
 					<div class = "form-group">
     					<label for = "pwd">Phone number</label>
-    					<input type = "text" class = "form-control" name = "phone_number" id = "phoneNUmber">
+    					<input type = "text" class = "form-control" name = "phone_number" id = "phoneNUmber" required>
   					</div>
 					<div class = "form-group">
     					<label for = "pwd">Choose profile picture</label>
-    					<input type = "file" name = "file" class = "form-control" id = "profilePic">
+    					<input type = "file" name = "file" class = "form-control" id = "profilePic" required>
   					</div>
 					<hr>
 					<div class = "centered_text">
@@ -76,11 +76,11 @@
 				<form action="/login" method="post" enctype="multipart/form-data">
 					<div class = "form-group">
     					<label for = "text">Nickname:</label>
-    					<input type = "text" class = "form-control" id = "nickname" name = "nickname">
+    					<input type = "text" class = "form-control" id = "nickname" name = "nickname" required>
   					</div>
   					<div class = "form-group">
     					<label for = "pwd">Password:</label>
-    					<input type = "password" class = "form-control" id = "pwd" name = "password">
+    					<input type = "password" class = "form-control" id = "pwd" name = "password" required>
   					</div>
 					<hr>
 					<div class = "centered_text">
