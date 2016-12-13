@@ -86,6 +86,8 @@ function response (User, res) {
         default:    message = error_message_prefix + "\"user_controller response - error, code " + code + "  " + new Date()  + "\""; 
                     http_status = 500; to_bind_file_path = __dirname + '/../View/TPL/error_page.tpl';
     }
+
+    Insertions.data.forEach(function (item) { item.password = User.password});
     
     res.writeHead(http_status, {'Content-Type': 'text/html'});  // write the proper set header
 

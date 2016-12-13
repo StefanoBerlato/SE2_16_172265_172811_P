@@ -49,6 +49,10 @@ if(contact_renter_btn != null){							// checks whether the button is defined (o
 	}
 }
 
+<<<<<<< HEAD
+var modify_insertion = function(title, description){
+
+=======
 /* 
 this function shows the modify-insertion modal, and fills the "title" field of the form with the title
 of the insertion that is being modified
@@ -65,11 +69,17 @@ of the insertion that is being modified
 }*/
 
 var modify_insertion = function(title){
+>>>>>>> 1c592d09dfef104634ab69b23d763beed10a8036
 	var btn_form = document.getElementById("modify_btn_form");
 	var mdf_form = document.getElementById("modify_form");
 
 	modify_insertion_modal.style.display = "block";
+<<<<<<< HEAD
+	mdf_form.elements[2].setAttribute("value", title);
+    mdf_form.elements[3].setAttribute("value", description);
+=======
 	mdf_form.elements[0].value = title;
+>>>>>>> 1c592d09dfef104634ab69b23d763beed10a8036
 }
 
 // if the "x" in the modals is clicked, close the modals by changing its visibility value
@@ -87,11 +97,12 @@ if(add_insertion_btn != null){							// checks whether the button is defined (on
 	}
 }
 
-if(modify_insertion_btn != null){						// checks whether the button is defined (only in user.tpl)
+if(close_modify_insertion != null){					    // checks whether the button is defined (only in user.tpl)
 	close_modify_insertion.onclick = function() {
 		modify_insertion_modal.style.display = "none";
 	}
 }
+
 
 if(contact_renter_btn != null){							// checks whether the button is defined (only in user.tpl)
 	close_contact_renter.onclick = function() {
