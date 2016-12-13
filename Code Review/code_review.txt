@@ -1,0 +1,35 @@
+Code review del file Welcome.js
+
+
+
+General
+
+    - MVC rispettato
+
+
+Markup, Accessibility, CSS, Mobile, Javascript, Loops and branches
+
+    - nulla da dire
+
+
+Code Base Checks
+
+    - indentazione delle condizioni degli istruzioni "if" non ottimali rispetto al corpo dell "if" stesso
+    - le funzioni checkParametersGetMap e checkParametersGetMap possono essere condensate e parametrizzate in un unica funzione. Infatti i controlli sugli argomenti sono sempre gli stessi tre ( == "" , == "undefined" , !isNaN), e i parametri di una funzione sono gestiti con una lista, qualsiasi sia il loro numero. Per cui si potrebbe iterare su tale lista eseguendo in un ciclo for i tre controlli su ogni parametro. Ecco una possibile implementazione:
+
+    function checkParametersConsistency () {
+        var i;
+        var returningValue = false;
+        for (i = 0; i < arguments.length; i++) {
+            var currentItem = arguments[i];
+            if (currentItem == "" || currentItem == undefined || isNaN(currentItem)) {
+                returningValue = true;
+            }
+        }
+       return returningValue;
+    }
+
+
+Documentation
+
+    - posizione dei commenti non sempre consistente
