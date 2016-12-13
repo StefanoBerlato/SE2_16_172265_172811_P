@@ -53,7 +53,7 @@ if(contact_renter_btn != null){							// checks whether the button is defined (o
 this function shows the modify-insertion modal, and fills the "title" field of the form with the title
 of the insertion that is being modified
 */
-if(modify_insertion_btn != null){						// checks whether the button is defined (only in user.tpl)
+/*if(modify_insertion_btn != null){						// checks whether the button is defined (only in user.tpl)
 	modify_insertion_btn.onclick = function() {
 		var btn_form = document.getElementById("modify_btn_form");
 		var mdf_form = document.getElementById("modify_form");
@@ -62,6 +62,14 @@ if(modify_insertion_btn != null){						// checks whether the button is defined (
 		modify_insertion_modal.style.display = "block";
 		mdf_form.elements[0].value = title;
 	}
+}*/
+
+var modify_insertion = function(title){
+	var btn_form = document.getElementById("modify_btn_form");
+	var mdf_form = document.getElementById("modify_form");
+
+	modify_insertion_modal.style.display = "block";
+	mdf_form.elements[0].value = title;
 }
 
 // if the "x" in the modals is clicked, close the modals by changing its visibility value

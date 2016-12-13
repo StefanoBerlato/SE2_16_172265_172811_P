@@ -282,7 +282,7 @@ by filling forms in pop-up modals -->
 							<input type = "text" name = "title" value = "[:title:]" class = "hidden_title">
 						</form>
 						<br>
-						<button class = "btn btn-success" id = "modify_insertion_button">Modify Insertion</button>
+						<button class = "btn btn-success" onclick = "modify_insertion([:title:])">Modify Insertion</button>
                     </div>
 					<hr>
 					<hr>
