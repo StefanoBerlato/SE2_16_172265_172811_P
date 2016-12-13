@@ -19,6 +19,7 @@ app.use(express.static(__dirname + '/Model/photo/insertions')); // ...
 
 // this sorts the requestes for the '/' route in get
 app.get('/', function(req, res) {
+    res.header("Access-Control-Allow-Origin", "*");
     bind.toFile(__dirname + '/View/TPL/home_page.html', {},  
     function(data) 
     {
@@ -29,19 +30,19 @@ app.get('/', function(req, res) {
 
 
 // these sort the requestes for the '/search' - '/card' routes in GET to the search_controller module
-app.get('/search', function(req, res) { search_controller.search(req, res); });
-app.get('/card',   function(req, res) { search_controller.card(req, res);   });
+app.get('/search', function(req, res) { res.header("Access-Control-Allow-Origin", "*"); search_controller.search(req, res); });
+app.get('/card',   function(req, res) { res.header("Access-Control-Allow-Origin", "*"); search_controller.card(req, res);   });
 
 
 // thess sort the requestes for the '/login' - '/register' routes in POST to the user_controller module
-app.post('/login',    function(req, res) { user_controller.login(req, res);    });
-app.post('/register', upload.single('file'), function(req, res, next) {user_controller.register(req, res);});
+app.post('/login',    function(req, res) { res.header("Access-Control-Allow-Origin", "*"); user_controller.login(req, res);    });
+app.post('/register', upload.single('file'), function(req, res, next) { res.header("Access-Control-Allow-Origin", "*"); user_controller.register(req, res);});
 
 
 //this sorts the requestes for the '/add_insertion' route in POST to the insertion_controller module
-app.post('/add_insertion',    upload.single('file'), function(req, res, next) { insertion_controller.add_insertion(req, res);    });
-app.post('/modify_insertion', upload.single('file'), function(req, res, next) { insertion_controller.modify_insertion(req, res); });
-app.post('/delete_insertion', function(req, res) { insertion_controller.delete_insertion(req, res); });
+app.post('/add_insertion',    upload.single('file'), function(req, res, next) { res.header("Access-Control-Allow-Origin", "*"); insertion_controller.add_insertion(req, res);    });
+app.post('/modify_insertion', upload.single('file'), function(req, res, next) { res.header("Access-Control-Allow-Origin", "*"); insertion_controller.modify_insertion(req, res); });
+app.post('/delete_insertion', function(req, res) { res.header("Access-Control-Allow-Origin", "*"); insertion_controller.delete_insertion(req, res); });
 
 
 app.set('port', (process.env.PORT || 5000));    // set the port of the application

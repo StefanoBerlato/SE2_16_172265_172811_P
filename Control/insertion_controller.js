@@ -170,6 +170,8 @@ function response (res, nickname) {
                     http_status = 500; to_bind_file_path = __dirname + '/../View/TPL/error_page.tpl';
     }
     
+    Insertions.data.forEach(function (item) { item.password = User_pushing_data.password});
+    
     res.writeHead(http_status, {'Content-Type': 'text/html'});  // write the proper set header
 
     bind.toFile( to_bind_file_path, {                           // bind to tpl
