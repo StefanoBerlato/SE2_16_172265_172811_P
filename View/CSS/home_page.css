@@ -5,7 +5,6 @@ body {
 
 .form_well {
 	background-color: rgba(255, 255, 255, 0.3) !important;
-	width: 55%;
 	margin: auto;
 	border-radius: 15px !important;
 }
@@ -73,6 +72,7 @@ body {
 	background: radial-gradient(rgba(0,0,0, 0.5), rgba(0,0,0, 0.9)) no-repeat center center fixed, url(../Pictures/calendarcard.jpg);
 	border: 3px solid white;
 	background-size:cover !important;
+	overflow: hidden;
 }
 
 .hidden_checkbox {
@@ -94,5 +94,10 @@ body {
 	color: white;
 	font-family: 'Reem Kufi', sans-serif;
 	font-size: 20px;
+}
+
+.date_picker {
+	border-radius: 5px;
+	max-width: 100%;
 }
 

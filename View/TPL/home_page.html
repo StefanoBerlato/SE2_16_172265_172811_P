@@ -93,12 +93,12 @@ submit button -->
 		</div>
 		
 		<!-- Search form -->
-		<form action="/search" method="get">
-			<div class = "well form_well">
-				<div class = "container">
+		<div class = "container">
+			<div class = "well form_well col-sm-10 col-sm-offset-1">
+				<form action="/search" method="get">
 					<form class = "form-vertical">
 						<div class = "form-group">
-							<div class = "col-sm-2">
+							<div class = "col-sm-4">
 
 								<!-- Search by zone -->
 								<h2 class = "search_parameters">Where?</h2>
@@ -125,7 +125,7 @@ submit button -->
 								</div>
 							</div>
 							
-							<div class = "col-sm-2">
+							<div class = "col-sm-4">
 								
 								<!-- Search by type of accomodation -->
 								<h2 class = "search_parameters">What?</h2>
@@ -149,12 +149,12 @@ submit button -->
 							</div>
 							
 							<!-- Search by period of availability -->
-							<div class = "col-sm-offset-1 col-sm-3">
+							<div class = "col-sm-4">
 								<h2 class = "search_parameters">When?</h2>
 								<hr>
 								<div class = "calendar_card well">
 									<h3 class = "calendar_title">From</h4>
-									<input type="date" name="free_from" placeholder="from" style="border-radius: 5px;">
+									<input type="date" name="free_from" placeholder="from" class = "date_picker">
 								</div>
 								<hr>
 								<div style="text-align:center">
