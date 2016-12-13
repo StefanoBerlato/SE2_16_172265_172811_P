@@ -265,47 +265,47 @@ by filling forms in pop-up modals -->
 				
                 <br>
 				<br>
-
-				<div class = "well card_div">(:data ~
-                    <a href = "/card?title=[:title:]">
-                        <img src = "[:photo_path:]" class = "card_img">
-                    </a>
-                    <div class = "card_img_div">
-                        <h4 class = "card_title">[:title:]</h4>
-                        <hr>
-                        <p class = "short_description">[:description:]</p>
-                        <form class = "deletion_form" action = "/delete_insertion" method="post">
-					        <div class = "form-group hidden_field">
-                                <input type = "text" class = "form-control" name = "nickname" value = "[:nickname:]">
-                            </div>
-                            <div class = "form-group hidden_field">
-                                <input type = "text" class = "form-control" name = "password" value = "[:password:]">
-                            </div>
-                            <input type = "text" name = "title" value = "[:title:]" class = "hidden_title">
-                            <br>			
-                            <hr>
-                            <button type = "submit" class = "btn btn-danger">Delete Insertion</button>
-                        </form>
-                        <form id = "modify_btn_form">
-                            <input type = "text" name = "title" value = "[:title:]" class = "hidden_title">
-                        </form>
-                        <br>
-                        <button class = "btn btn-success" onclick = "modify_insertion( &quot;[:title:]&quot; ,&quot;[:description:]&quot;)">Modify Insertion</button>
-						<form class = "deletion_form" action = "/delete_insertion">
-							<input type = "text" name = "title" value = "[:title:]" class = "hidden_title">
-							<br>			
+				
+				<div>(:data ~
+					<div class = "well card_div">(:data ~
+						<a href = "/card?title=[:title:]">
+							<img src = "[:photo_path:]" class = "card_img">
+						</a>
+						<div class = "card_img_div">
+							<h4 class = "card_title">[:title:]</h4>
 							<hr>
-							<button type = "submit" class = "btn btn-danger">Delete Insertion</button>
-						</form>
-						<form id = "modify_btn_form">
-							<input type = "text" name = "title" value = "[:title:]" class = "hidden_title">
-						</form>
-						<br>
-						<button class = "btn btn-success" onclick = "modify_insertion([:title:])">Modify Insertion</button>
-                    </div>
-                    <hr>
-                    <hr>
-                :)</div>
+							<p class = "short_description">[:description:]</p>
+							<form class = "deletion_form" action = "/delete_insertion" method="post">
+								<div class = "form-group hidden_field">
+									<input type = "text" class = "form-control" name = "nickname" value = "[:nickname:]">
+								</div>
+								<div class = "form-group hidden_field">
+									<input type = "text" class = "form-control" name = "password" value = "[:password:]">
+								</div>
+								<input type = "text" name = "title" value = "[:title:]" class = "hidden_title">
+								<br>			
+								<hr>
+								<button type = "submit" class = "btn btn-danger">Delete Insertion</button>
+							</form>
+							<form id = "modify_btn_form">
+								<input type = "text" name = "title" value = "[:title:]" class = "hidden_title">
+							</form>
+							<br>
+							<button class = "btn btn-success" onclick = "modify_insertion( &quot;[:title:]&quot; ,&quot;[:description:]&quot;)">Modify Insertion</button>
+							<form class = "deletion_form" action = "/delete_insertion">
+								<input type = "text" name = "title" value = "[:title:]" class = "hidden_title">
+								<br>			
+								<hr>
+								<button type = "submit" class = "btn btn-danger">Delete Insertion</button>
+							</form>
+							<form id = "modify_btn_form">
+								<input type = "text" name = "title" value = "[:title:]" class = "hidden_title">
+							</form>
+							<br>
+							<button class = "btn btn-success" onclick = "modify_insertion([:title:])">Modify Insertion</button>
+						</div>
+					</div>
+				:)</div>
 				
             </div>
         </div>
