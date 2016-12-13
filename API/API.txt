@@ -1,0 +1,300 @@
+swagger: '2.0'
+info:
+  title: Laboratory project.
+  description: Laboratory project ING SW 2, developed by Giacomo Zara (172265) and Berlato Stefano. (172811)
+  version: "1.0.0"
+# the domain of the service
+host: 127.0.0.1:5000
+# array of all schemes that your API supports
+schemes:
+  - http
+# will be prefixed to all paths
+basePath: /
+produces:
+  - text/html
+consumes:
+  - multipart/form-data
+  - application/x-www-form-urlencoded
+# the APIs
+paths:
+  /:
+    get:
+      summary: Home page
+      description: It provides two main functionalities, search insertions and login/register.
+      responses:
+        200:
+          description: The server returns the home page.
+          
+  /search:
+    get:
+      summary: Search page.
+      description: It operates a research in the db on the basis of the parameters. It provides also some filters.
+      parameters:
+        - name: house_typology
+          in: formData
+          description: house typology filter
+          required: false
+          type: string
+        - name: rooms_typology
+          in: formData
+          description: rooms typology filter
+          required: false
+          type: string
+        - name: locality
+          in: formData
+          description: locality filter
+          required: false
+          type: string
+        - name: available_rooms
+          in: formData
+          description: available rooms filter
+          required: false
+          type: integer
+        - name: price_per_person
+          in: formData
+          description: max price per person filter
+          required: false
+          type: integer
+        - name: free_from
+          in: formData
+          description: free from filter
+          required: false
+          type: string
+      responses:
+        200:
+          description: The server returns the search page with results (0 - all).
+        500:
+          description: The server returns an error page with the proper error message.
+
+  /card:
+    get:
+      summary: Search insertion.
+      description: It operates a research in the db on the basis of the parameter to find a single insertion.
+      parameters:
+        - name: title
+          in: query
+          description: insertion id
+          required: true
+          type: string
+      responses:
+        200:
+          description: The server returns the insertion template page.
+        404:
+          description: The server returns a specific page saying that there's not any insertion with such title
+        500:
+          description: The server returns an error page with the proper error message.
+     
+  /login:
+    post:
+      summary: Login user.
+      description: It checks the parameters via db, then it returns the user template page.
+      parameters:
+        - name: nickname
+          in: formData
+          description: nickname of the user
+          required: true
+          type: string
+        - name: password
+          in: formData
+          description: password of the user
+          required: true
+          type: string
+      responses:
+        200:
+          description: The server returns the user template page with the user data if he was registered, otherwise an error page with the proper error message.
+        500:
+          description: The server returns an error page with the proper error message.
+          
+  /register:
+    post:
+      summary: Register user.
+      description: It checks the parameters consistency, then it redirects the user to its new profile page.
+      parameters:
+        - name: nickname
+          in: formData
+          description: nickname of the user
+          required: true
+          type: string
+        - name: password
+          in: formData
+          description: password of the user
+          required: true
+          type: string
+        - name: email
+          in: formData
+          description: email of the user
+          required: true
+          type: string
+        - name: phone_number
+          in: formData
+          description: telephone number of the user
+          required: true
+          type: integer
+        - name: file
+          in: formData
+          description: user's avatar photo
+          required: true
+          type: string
+      responses:
+        200:
+          description: The server returns the user template page with the user data if the nickname wasn't yet used, otherwise an error page with the proper error message.
+        500:
+          description: The server returns an error page with the proper error message.
+          
+  /add_insertion:
+    post:
+      summary: Add insertion to db.
+      description: It checks the parameters consistency, then it adds the new insertion to the db. Finally it refreshes the user page. 
+      parameters:
+        - name: nickname
+          in: formData
+          description: user's nickname
+          required: true
+          type: string
+        - name: password
+          in: formData
+          description: user's password
+          required: true
+          type: string
+        - name: title
+          in: formData
+          description: insertion title
+          required: true
+          type: string
+        - name: description
+          in: formData
+          description: description of the insertion
+          required: true
+          type: string
+        - name: locality
+          in: formData
+          description: locality of the insertion
+          required: true
+          type: string
+        - name: available_rooms
+          in: formData
+          description: insertion available rooms
+          required: true
+          type: integer
+        - name: price_per_person
+          in: formData
+          description: insertion "price per person"
+          required: true
+          type: integer
+        - name: free_from
+          in: formData
+          description: when the insertion will be free from
+          required: true
+          type: string
+        - name: house_typology
+          in: formData
+          description: house typology
+          required: true
+          type: string
+        - name: address
+          in: formData
+          description: house address
+          required: true
+          type: string
+        - name: file
+          in: formData
+          description: insertion photo
+          required: true
+          type: string
+      responses:
+        200:
+          description: The server returns the user template page with the just added insertion. If the title was already used, it returs an error page with the proper error message.
+        500:
+          description: The server returns an error page with the proper error message.      
+          
+  /modify_insertion:
+    post:
+      summary: Modify insertion in db.
+      description: It modify an insertion. It checks if the request comes from the owner of the insertion. the checks the parameters consistency, update the insertion in the db. Finally it refreshes the user page. 
+      parameters:
+        - name: nickname
+          in: formData
+          description: user's nickname
+          required: true
+          type: string
+        - name: password
+          in: formData
+          description: user's password
+          required: true
+          type: string
+        - name: title
+          in: formData
+          description: title of the insertion
+          required: true
+          type: string
+        - name: description
+          in: formData
+          description: description of the insertion
+          required: true
+          type: string
+        - name: locality
+          in: formData
+          description: locality of the insertion
+          required: true
+          type: string
+        - name: available_rooms
+          in: formData
+          description: insertion available rooms
+          required: true
+          type: integer
+        - name: price_per_person
+          in: formData
+          description: insertion "price per person"
+          required: true
+          type: integer
+        - name: free_from
+          in: formData
+          description: when the insertion will be free from
+          required: true
+          type: string
+        - name: house_typology
+          in: formData
+          description: house typology
+          required: true
+          type: string
+        - name: address
+          in: formData
+          description: house address
+          required: true
+          type: string
+        - name: file
+          in: formData
+          description: insertion photo
+          required: true
+          type: string
+      responses:
+        200:
+          description: The server returns the user template page with the just updated insertion.
+        500:
+          description: The server returns an error page with the proper error message.
+         
+  /delete_insertion:
+    post:
+      summary: Delete the specified insertion from db.
+      description: It delete the insertion that has the specified title.It checks if the request comes from the owner of the insertion. the checks the parameters consistency, delete the insertion from the db. Finally it refreshes the user page. 
+      parameters:
+        - name: nickname
+          in: formData
+          description: user's nickname
+          required: true
+          type: string
+        - name: password
+          in: formData
+          description: user's password
+          required: true
+          type: string
+        - name: title
+          in: formData
+          description: title of the insertion
+          required: true
+          type: string
+      responses:
+        200:
+          description: The server refreshes the user template page.
+        500:
+          description: The server returns an error page with the proper error message.
