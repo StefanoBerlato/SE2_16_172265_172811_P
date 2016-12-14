@@ -1,4 +1,4 @@
-var db = require('../Model/db_manager');        // requiring db_manager
+var db = require('../Model/DB_manager');        // requiring db_manager
 var bind = require('bind');                     // requiring bind, in order to return templates 
 
 var insertions_photos_folder = "insertions";                    // the name of the directory where we save the photos of the insertions
