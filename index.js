@@ -19,7 +19,7 @@ app.use(express.static(__dirname + '/Model/photo/insertions')); // ...
 
 // this sorts the requestes for the '/' route in get
 app.get('/', function(req, res) {
-    //res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Origin", "*");
     bind.toFile(__dirname + '/View/TPL/home_page.html', {},  
     function(data) 
     {
