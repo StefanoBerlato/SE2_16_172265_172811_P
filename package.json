@@ -4,11 +4,20 @@
   "description": "Corso di Ingegneria del Software 2. Progetto basato su mock-up realizzato a lezione. Berlato Stefano, matricola 172811, Giacomo Zara, matricola 172265.",
   "main": "index.js",
   "scripts": {
-    "test": "",
+    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StefanoBerlato/SE2_16_172265_172811_P.git"
   },
   "author": "berlato_stefano giacomo_zara",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/StefanoBerlato/SE2_16_172265_172811_P/issues"
+  },
+  "homepage": "https://github.com/StefanoBerlato/SE2_16_172265_172811_P#readme",
+  "keywords": [],
   "dependencies": {
     "bind": "^0.1.7",
     "body-parser": "^1.15.2",
