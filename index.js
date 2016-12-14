@@ -34,7 +34,7 @@ app.get('/search', function(req, res) { res.header("Access-Control-Allow-Origin"
 app.get('/card',   function(req, res) { res.header("Access-Control-Allow-Origin", "*"); search_controller.card(req, res);   });
 
 
-// thess sort the requestes for the '/login' - '/register' routes in POST to the user_controller module
+// these sort the requestes for the '/login' - '/register' routes in POST to the user_controller module
 app.post('/login',    function(req, res) { res.header("Access-Control-Allow-Origin", "*"); user_controller.login(req, res);    });
 app.post('/register', upload.single('file'), function(req, res, next) { res.header("Access-Control-Allow-Origin", "*"); user_controller.register(req, res);});
 

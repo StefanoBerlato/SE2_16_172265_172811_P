@@ -130,7 +130,6 @@ by which the user can contact the renter -->
                     <p class = "desc_par">House : (:house_typology:)</p>
                     <p class = "desc_par">Rooms : (:rooms_typology:)</p>
                     <p class = "desc_par">Available rooms : (:available_rooms:)</p>
-                    <p class = "desc_par">Free from: (:free_from:)</p>
                     <p class = "desc_par">Locality: (:locality:)</p>
                     <p class = "desc_par">Address: (:address:)</p>
                     <p class = "desc_par">Free from: (:free_from:)</p>

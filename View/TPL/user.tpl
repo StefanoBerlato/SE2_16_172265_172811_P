@@ -249,7 +249,7 @@ by filling forms in pop-up modals -->
         <div class = "container">
             <div class = "col-sm-6">
                 <div class = "profile_pic_div">
-                    <img src = "(:photo_src:)" class = "profile_pic">
+                    <img src = "(:photo_src:)" class = "img-responsive profile_pic">
                 </div>
                 <br>
                 <div class = "well user_well">
