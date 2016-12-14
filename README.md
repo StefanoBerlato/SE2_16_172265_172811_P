@@ -4,7 +4,7 @@ Il progetto consiste in un semplice sito internet, la cui funzione è raccoglier
 
 Live Demo Heroku: https://infinite-island-97642.herokuapp.com/
 
-API: http://editor.swagger.io/#/?import=https://dashboard.heroku.com/apps/infinite-island-97642/API/api.yaml
+API: http://editor.swagger.io/#/?import=https://infinite-island-97642.herokuapp.com/API/api.yaml
 
 Da un punto di vista strutturale, il sito è articolato come riportato nel file "architecture.graphml" (visibile ed editabile con Yed, anche online). 
 
