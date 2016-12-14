@@ -2,6 +2,9 @@
 Corso di Ingegneria del Software 2. Progetto basato su mock-up realizzato a lezione. Berlato Stefano, matricola 172811, Giacomo Zara, matricola 172265.
 Il progetto consiste in un semplice sito internet, la cui funzione è raccogliere annunci di affitti rivolti agli studenti di Trento. A questo scopo è possibile registrarsi come utente e creare-modificare-eliminare inserzioni. E' fornita una funzionalità di ricerca per luogo (centro città, collina, ...), tipologia di sistemazione, disponibilità (in termini di tempo e posti liberi) e altri filtri. La scheda informativa di un annuncio contiene varie foto e descrizione, più i contatti (email, telefono...) di chi ha postato l'annuncio.
 
+Live Demo Heroku:https://infinite-island-97642.herokuapp.com/
+
+API: 
 
 Da un punto di vista strutturale, il sito è articolato come riportato nel file "architecture.graphml" (visibile ed editabile con Yed, anche online). 
 
